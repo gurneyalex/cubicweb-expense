@@ -1,0 +1,413 @@
+# cubicweb-expense i18n catalog.
+# Copyright (C) 2008 Logilab S.A.
+# Logilab Team <contact@logilab.fr>
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"PO-Revision-Date: 2008-07-29 19:29+0200\n"
+"Last-Translator: Logilab Team <contact@logilab.fr>\n"
+"Language-Team: fr <contact@logilab.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, python-format
+msgid ""
+"\n"
+"The expense ``%(title)s`` has been accepted :\n"
+"\n"
+"Description\n"
+"-----------\n"
+"%(description)s\n"
+"\n"
+"Detail\n"
+"-----\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+msgstr ""
+"\n"
+"La note de frais ``%(title)s`` a été acceptée:\n"
+"\n"
+"Description\n"
+"-----------\n"
+"%(description)s\n"
+"\n"
+"Detail\n"
+"------\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Your expenses have been refuned (amount=%(amount)s euros.)\n"
+"\n"
+"Detail\n"
+"------\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+msgstr ""
+"\n"
+"Vos notes de frais ont été remboursées (montant=%(amount)s euros.)\n"
+"\n"
+"Detail\n"
+"------\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+
+msgid ": "
+msgstr " : "
+
+msgid "Activity num"
+msgstr "Code APE"
+
+msgid "All the amounts are displayed in Euros, except if specified"
+msgstr "Sauf indication contraire, tous les montants sont exprimés en Euros"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "Amount (EUR)"
+msgstr "Montant (EUR)"
+
+msgid "Curr."
+msgstr "Dev."
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "EUR"
+msgstr "EUR"
+
+# Établissement
+msgid "Est."
+msgstr "Établissement"
+
+# schema pot file, generated on 2008-03-28 19:31:09
+#
+# singular and plural forms for each entity type
+msgid "Expense"
+msgstr "Note de frais"
+
+msgid "Expense Document"
+msgstr "Fiche de frais"
+
+msgid "Expense Type"
+msgstr "Type dépense"
+
+msgid "ExpenseLine"
+msgstr "Ligne de dépense"
+
+msgid "ExpenseLine_plural"
+msgstr "Lignes de dépense"
+
+msgid "Expense_plural"
+msgstr "Notes de frais"
+
+msgid "New Expense"
+msgstr "Nouvelle note de frais"
+
+msgid "New ExpenseLine"
+msgstr "Nouvelle ligne de frais"
+
+msgid "New PaidByAccount"
+msgstr "Nouveau compte utilisé pour payer"
+
+msgid "New PaidForAccount"
+msgstr "Nouveau compte cible"
+
+msgid "New Refund"
+msgstr "Nouvelle feuille de remboursement"
+
+msgid "Official ID num"
+msgstr "Siren"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "Paid by"
+msgstr "Payé par"
+
+msgid "Paid for"
+msgstr "Payé pour"
+
+msgid "PaidByAccount"
+msgstr "Compte utilisé pour payer"
+
+msgid "PaidByAccount_plural"
+msgstr "Comptes utilisés pour payer"
+
+msgid "PaidForAccount"
+msgstr "Compte cible"
+
+msgid "PaidForAccount_plural"
+msgstr "Comptes cibles"
+
+msgid "Rate"
+msgstr "Taux"
+
+msgid "Reference"
+msgstr "Référence"
+
+msgid "Refund"
+msgstr "Feuille de remboursement"
+
+msgid "Refund Document"
+msgstr "Remboursement de Frais"
+
+msgid "Refund_plural"
+msgstr "Feuilles de remboursements"
+
+msgid "Refunded on"
+msgstr "Remboursé le"
+
+msgid "SS number"
+msgstr "num SS"
+
+msgid "Subject"
+msgstr "Objet"
+
+msgid "Taxes (EUR)"
+msgstr "Taxes (EUR)"
+
+msgid "This Expense"
+msgstr "Cette note de frais"
+
+msgid "This ExpenseLine"
+msgstr "Cette ligne de dépense"
+
+msgid "This PaidByAccount"
+msgstr "Ce compte de paiement"
+
+msgid "This PaidForAccount"
+msgstr "Ce compte cible"
+
+msgid "This Refund"
+msgstr "Cette feuille de remboursement"
+
+msgid "To refund (EUR)"
+msgstr "À rembourser (€)"
+
+msgid "Total (EUR)"
+msgstr "Total (EUR)"
+
+msgid "Workcase"
+msgstr "Affaire"
+
+msgid "accept"
+msgstr "accepter"
+
+msgid "accepted"
+msgstr "acceptée"
+
+msgid "accomodation"
+msgstr "logement"
+
+# subject and object forms for each relation type
+# (no object form for final relation types)
+msgid "account"
+msgstr "compte"
+
+msgid "account to refund"
+msgstr "compte à rembourser"
+
+msgid "actions_pdfaction"
+msgstr "action d'export PDF"
+
+msgid "actions_pdfaction_description"
+msgstr ""
+"action permettant de générer le document PDF à partir d'une fiche de remboursement\n"
+"ou d'une fiche de frais"
+
+# add related box generated message
+msgid "add Expense has_lines ExpenseLine subject"
+msgstr "ligne de dépense"
+
+msgid "add a Expense"
+msgstr "ajouter une note de frais"
+
+msgid "add a ExpenseLine"
+msgstr "ajouter une ligne de dépense"
+
+msgid "add a PaidByAccount"
+msgstr "ajouter un compte de paiement"
+
+msgid "add a PaidForAccount"
+msgstr "ajouter un compte cible"
+
+msgid "add a Refund"
+msgstr "ajouter une feuille de remboursements"
+
+msgid "amount"
+msgstr "montant"
+
+msgid "associated_to"
+msgstr "associé à"
+
+msgid "associated_to_object"
+msgstr "a pour compte"
+
+msgid "by"
+msgstr "par"
+
+msgid "communication"
+msgstr "communication"
+
+msgid "creating ExpenseLine (Expense %(linkto)s has_lines ExpenseLine)"
+msgstr "création d'une ligne de dépense pour la note %(linkto)s"
+
+msgid "currency"
+msgstr "devise"
+
+msgid "diem"
+msgstr "date"
+
+msgid "draft"
+msgstr "brouillon"
+
+msgid "exchange_rate"
+msgstr "taux de change"
+
+msgid "expense accepted: "
+msgstr "note de frais acceptée :"
+
+msgid "food"
+msgstr "repas"
+
+msgid "generate pdf document"
+msgstr "générer le document PDF"
+
+msgid "has_lines"
+msgstr "a pour lignes"
+
+msgid "has_lines_object"
+msgstr "ligne de"
+
+msgid "included taxes (EUR)"
+msgstr "dont taxes (EUR)"
+
+msgid "including taxes"
+msgstr "avec pour taxes"
+
+msgid "lives_at"
+msgstr "adresse"
+
+msgid "lives_at_object"
+msgstr "adresse de"
+
+msgid ""
+"note about security: The RRQLExpression used will only work when adding "
+"ExpenseLines on Expense, and not on refund. ExpenseLines are supposed to be "
+"added to Refund automatically via a hook through an unsafe_execute"
+msgstr ""
+
+msgid "others"
+msgstr "autres"
+
+msgid "paid"
+msgstr "payé"
+
+msgid "paid_by"
+msgstr "payé par"
+
+msgid "paid_by_object"
+msgstr "a payé"
+
+msgid "paid_for"
+msgstr "a payé pour"
+
+msgid "paid_for_object"
+msgstr "a bénéficié de"
+
+msgid "pay"
+msgstr "payer"
+
+msgid "payment date"
+msgstr "date de paiement"
+
+msgid "payment mode"
+msgstr "mode de paiement"
+
+msgid "payment_date"
+msgstr "date de paiement"
+
+msgid "payment_mode"
+msgstr "mode de paiement"
+
+msgid "pdf export"
+msgstr "export pdf"
+
+msgid "preparation"
+msgstr "préparation"
+
+msgid "refund for account"
+msgstr "compte de remboursement"
+
+msgid "remove this Expense"
+msgstr "supprimer cette note de frais"
+
+msgid "remove this ExpenseLine"
+msgstr "supprimer cette ligne de dépense"
+
+msgid "remove this PaidByAccount"
+msgstr "supprimer ce compte de paiement"
+
+msgid "remove this PaidForAccount"
+msgstr "supprimer ce compte cible"
+
+msgid "remove this Refund"
+msgstr "supprimer cette feuille de remboursement"
+
+msgid "social security number"
+msgstr "numéro de sécurité sociale"
+
+msgid "ssnum"
+msgstr "num ss"
+
+msgid "submit"
+msgstr "soumettre"
+
+msgid "submitted"
+msgstr "soumise"
+
+msgid "taxes"
+msgstr "taxes"
+
+msgid "to be refunded to"
+msgstr "à rembourser à"
+
+msgid "to_account"
+msgstr "pour le compte"
+
+msgid "to_account_object"
+msgstr "crédité lors du remboursement"
+
+msgid "total"
+msgstr "total"
+
+msgid "total amount including taxes"
+msgstr "montant total avec taxes"
+
+msgid "total tax"
+msgstr "taxes totales"
+
+msgid "transport"
+msgstr "transport"
+
+msgid "your expense will be refunded on your next payroll"
+msgstr "votre note de frais sera remboursée sur votre prochaine paye"

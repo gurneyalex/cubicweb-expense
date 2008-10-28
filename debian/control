@@ -1,0 +1,62 @@
+Source: cubicweb-expense
+Section: web
+Priority: optional
+Maintainer: Logilab Packaging Team <contact@logilab.fr>
+Uploaders: Sylvain Thenault <sylvain.thenault@logilab.fr> 
+Build-Depends: debhelper (>= 5.0.37.1), python (>=2.4), python-dev (>=2.4)
+Standards-Version: 3.7.3
+
+
+Package: cubicweb-expense
+Architecture: all
+Depends: cubicweb-expense-client (>= ${source:Version}), cubicweb-expense-server (>= ${source:Version})
+Description: cubicweb expense component
+ CubicWeb is a entities / relations bases knowledge management system
+ developed at Logilab.
+ .
+ This component defines the expense schema plus some basic operations
+ .
+ This package will install all the components you need to run the
+ cubicweb-expense application on a single machine. You can also deploy cubicweb by
+ running the different process on different computers, in which case
+ you need to install the corresponding packages on the different
+ hosts.
+
+
+Package: cubicweb-expense-server
+Architecture: all
+Depends: python2.4, cubicweb-server (>= 2.48.0), cubicweb-expense-comp (>= ${source:Version})
+Description: cubicweb expense component, server side
+ CubicWeb is a entities / relations bases knowledge management system
+ developed at Logilab.
+ .
+ This component defines the expense schema plus some basic operations
+ .
+ This package is a virtual package providing necessary package for the
+ server part of the cubicweb-expense application built on top of CubicWeb.
+
+
+Package: cubicweb-expense-client
+Architecture: all
+Depends: python2.4, cubicweb-twisted (>= 2.48.0) | cubicweb-web-frontend, cubicweb-expense-comp (>= ${source:Version}), python-reportlab
+Description: cubicweb expense component, client side
+ CubicWeb is a entities / relations bases knowledge management system
+ developed at Logilab.
+ .
+ This component defines the expense schema plus some basic operations
+ .
+ This package is a virtual package providing necessary package for the
+ web client part of the cubicweb-expense application built on top of CubicWeb.
+
+
+Package: cubicweb-expense-comp
+Architecture: all
+Depends: python2.4
+Description: cubicweb expense component, common modules
+ CubicWeb is a entities / relations bases knowledge management system
+ developed at Logilab.
+ .
+ This component defines the expense schema plus some basic operations
+ .
+ This package provides the code of the cubicweb-expense application built on top
+ of CubicWeb.

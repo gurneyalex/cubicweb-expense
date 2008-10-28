@@ -1,0 +1,386 @@
+# # cubicweb-expense i18n catalog.
+# # Copyright (C) 2008 Logilab S.A.
+# # Logilab Team <contact@logilab.fr>
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"PO-Revision-Date: 2008-03-28 19:46+0100\n"
+"Last-Translator: Logilab Team <contact@logilab.fr>\n"
+"Language-Team: en <contact@logilab.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, python-format
+msgid ""
+"\n"
+"The expense ``%(title)s`` has been accepted :\n"
+"\n"
+"Description\n"
+"-----------\n"
+"%(description)s\n"
+"\n"
+"Detail\n"
+"-----\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Your expenses have been refuned (amount=%(amount)s euros.)\n"
+"\n"
+"Detail\n"
+"------\n"
+"%(detail)s\n"
+"\n"
+"URL\n"
+"---\n"
+"%(url)s\n"
+msgstr ""
+
+msgid ": "
+msgstr ""
+
+msgid "Activity num"
+msgstr ""
+
+msgid "All the amounts are displayed in Euros, except if specified"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Amount (EUR)"
+msgstr ""
+
+msgid "Curr."
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "EUR"
+msgstr ""
+
+msgid "Est."
+msgstr ""
+
+# schema pot file, generated on 2008-03-28 19:31:09
+#
+# singular and plural forms for each entity type
+msgid "Expense"
+msgstr ""
+
+msgid "Expense Document"
+msgstr ""
+
+msgid "Expense Type"
+msgstr ""
+
+msgid "ExpenseLine"
+msgstr "Expense line"
+
+msgid "ExpenseLine_plural"
+msgstr "Expense lines"
+
+msgid "Expense_plural"
+msgstr "Expenses"
+
+msgid "New Expense"
+msgstr ""
+
+msgid "New ExpenseLine"
+msgstr "New expense line"
+
+msgid "New PaidByAccount"
+msgstr "New payment account"
+
+msgid "New PaidForAccount"
+msgstr "New target account"
+
+msgid "New Refund"
+msgstr ""
+
+msgid "Official ID num"
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Paid by"
+msgstr ""
+
+msgid "Paid for"
+msgstr ""
+
+msgid "PaidByAccount"
+msgstr "Payment account"
+
+msgid "PaidByAccount_plural"
+msgstr "Payment accounts"
+
+msgid "PaidForAccount"
+msgstr "Target account"
+
+msgid "PaidForAccount_plural"
+msgstr "Target accounts"
+
+msgid "Rate"
+msgstr ""
+
+msgid "Reference"
+msgstr ""
+
+msgid "Refund"
+msgstr "Refund"
+
+msgid "Refund Document"
+msgstr ""
+
+msgid "Refund_plural"
+msgstr "Refunds"
+
+msgid "Refunded on"
+msgstr ""
+
+msgid "SS number"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Taxes (EUR)"
+msgstr ""
+
+msgid "This Expense"
+msgstr ""
+
+msgid "This ExpenseLine"
+msgstr "This expense line"
+
+msgid "This PaidByAccount"
+msgstr "This payment accoutn"
+
+msgid "This PaidForAccount"
+msgstr "This target account"
+
+msgid "This Refund"
+msgstr ""
+
+msgid "To refund (EUR)"
+msgstr ""
+
+msgid "Total (EUR)"
+msgstr ""
+
+msgid "Workcase"
+msgstr ""
+
+msgid "accept"
+msgstr ""
+
+msgid "accepted"
+msgstr ""
+
+msgid "accomodation"
+msgstr ""
+
+# subject and object forms for each relation type
+# (no object form for final relation types)
+msgid "account"
+msgstr ""
+
+msgid "account to refund"
+msgstr ""
+
+msgid "actions_pdfaction"
+msgstr ""
+
+msgid "actions_pdfaction_description"
+msgstr ""
+
+# add related box generated message
+msgid "add Expense has_lines ExpenseLine subject"
+msgstr "expense line"
+
+msgid "add a Expense"
+msgstr ""
+
+msgid "add a ExpenseLine"
+msgstr "add an expense line"
+
+msgid "add a PaidByAccount"
+msgstr "add a payment account"
+
+msgid "add a PaidForAccount"
+msgstr "add a target account"
+
+msgid "add a Refund"
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "associated_to"
+msgstr "associated to"
+
+msgid "associated_to_object"
+msgstr "has account"
+
+msgid "by"
+msgstr ""
+
+msgid "communication"
+msgstr ""
+
+msgid "creating ExpenseLine (Expense %(linkto)s has_lines ExpenseLine)"
+msgstr "creating expense line inside %(linkto)s"
+
+msgid "currency"
+msgstr ""
+
+msgid "diem"
+msgstr ""
+
+msgid "draft"
+msgstr ""
+
+msgid "exchange_rate"
+msgstr "exchange rate"
+
+msgid "expense accepted: "
+msgstr ""
+
+msgid "food"
+msgstr ""
+
+msgid "generate pdf document"
+msgstr ""
+
+msgid "has_lines"
+msgstr "has lines"
+
+msgid "has_lines_object"
+msgstr "contained by"
+
+msgid "included taxes (EUR)"
+msgstr ""
+
+msgid "including taxes"
+msgstr ""
+
+msgid "lives_at"
+msgstr ""
+
+msgid "lives_at_object"
+msgstr ""
+
+msgid ""
+"note about security: The RRQLExpression used will only work when adding "
+"ExpenseLines on Expense, and not on refund. ExpenseLines are supposed to be "
+"added to Refund automatically via a hook through an unsafe_execute"
+msgstr ""
+
+msgid "others"
+msgstr ""
+
+msgid "paid"
+msgstr ""
+
+msgid "paid_by"
+msgstr "paid by"
+
+msgid "paid_by_object"
+msgstr ""
+
+msgid "paid_for"
+msgstr "paid for"
+
+msgid "paid_for_object"
+msgstr "was paid"
+
+msgid "pay"
+msgstr ""
+
+msgid "payment date"
+msgstr ""
+
+msgid "payment mode"
+msgstr ""
+
+msgid "payment_date"
+msgstr ""
+
+msgid "payment_mode"
+msgstr ""
+
+msgid "pdf export"
+msgstr ""
+
+msgid "preparation"
+msgstr ""
+
+msgid "refund for account"
+msgstr ""
+
+msgid "remove this Expense"
+msgstr ""
+
+msgid "remove this ExpenseLine"
+msgstr "remove this expense line"
+
+msgid "remove this PaidByAccount"
+msgstr "remove this payment account"
+
+msgid "remove this PaidForAccount"
+msgstr "remove this target account"
+
+msgid "remove this Refund"
+msgstr ""
+
+msgid "social security number"
+msgstr ""
+
+msgid "ssnum"
+msgstr ""
+
+msgid "submit"
+msgstr ""
+
+msgid "submitted"
+msgstr ""
+
+msgid "taxes"
+msgstr ""
+
+msgid "to be refunded to"
+msgstr ""
+
+msgid "to_account"
+msgstr "to account"
+
+msgid "to_account_object"
+msgstr "refunded by"
+
+msgid "total"
+msgstr ""
+
+msgid "total amount including taxes"
+msgstr ""
+
+msgid "total tax"
+msgstr ""
+
+msgid "transport"
+msgstr ""
+
+msgid "your expense will be refunded on your next payroll"
+msgstr ""
