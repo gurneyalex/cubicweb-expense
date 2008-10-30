@@ -1,5 +1,5 @@
 # template's specific schema
-from cubicweb.common.schema import format_constraint
+from cubicweb.schema import format_constraint
 
 EUser = import_erschema('EUser')
 EUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')
