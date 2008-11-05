@@ -8,4 +8,4 @@
 
 # CSS stylesheets to include in HTML headers
 # uncomment the line below to use template specific stylesheet
-# STYLESHEETS = DATADIR/cubicweb-expense.css
+# STYLESHEETS = DATADIR/cubes.expense.css
