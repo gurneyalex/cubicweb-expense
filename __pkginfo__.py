@@ -3,7 +3,7 @@
 
 distname = 'cubicweb-expense'
 
-numversion = (0, 2, 4)
+numversion = (0, 3, 0)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
@@ -18,9 +18,6 @@ long_desc = '''defines the expense schema plus some basic operations'''
 
 from os import listdir as _listdir
 from os.path import join, isdir
-
-from glob import glob
-scripts = glob(join('bin', 'expense-*'))
 
 web, ftp = '', ''
 
