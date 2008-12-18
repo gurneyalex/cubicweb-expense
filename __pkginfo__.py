@@ -16,6 +16,7 @@ author_email = 'contact@logilab.fr'
 short_desc = 'cubicweb expense component'
 long_desc = '''defines the expense schema plus some basic operations'''
 
+from glob imprt glob
 from os import listdir as _listdir
 from os.path import join, isdir
 
