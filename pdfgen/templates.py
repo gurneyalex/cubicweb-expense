@@ -15,6 +15,8 @@ from reportlab.lib.units import cm
 from reportlab.lib.utils import ImageReader
 from reportlab.platypus import PageTemplate, BaseDocTemplate, Frame
 
+from logilab.mtconverter import html_escape
+
 _ = unicode
 
 
