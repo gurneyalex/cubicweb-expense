@@ -40,6 +40,15 @@ class HelpersTC(EnvBasedTC):
         return self.execute('Any COUNT(EL) WHERE R is Refund, R has_lines EL, R to_account A, '
                             'A eid %(a)s, R in_state S, S name "preparation"',
                             {'a': account})[0][0]
+
+    def create_and_submit_expense(self):
+        expense = self.add_entity('Expense', title=u'company expense')
+        self.execute('SET X in_state S WHERE X eid %(x)s, S name "draft"',
+                     {'x': expense.eid})
+        lineeid = self.add_expense_line(expense, self.account1)
+        self.execute('SET X in_state S WHERE X eid %(x)s, S name "submitted"',
+                     {'x': expense.eid})        
+        return expense
         
     def setup_database(self):
         add = self.add_entity
