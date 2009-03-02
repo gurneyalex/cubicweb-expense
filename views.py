@@ -24,6 +24,7 @@ class PDFAction(EntityAction):
     accepts = ('Expense','Refund')
     id = 'pdfaction'
     title = _('generate pdf document')
+    category = 'mainactions'
     
     def url(self):
         entity = self.entity(0, 0)
