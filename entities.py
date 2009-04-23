@@ -1,11 +1,7 @@
 """this contains the template-specific entities' classes"""
 
 from cubicweb.entities import AnyEntity, fetch_config
-from cubicweb.entities.authobjs import EUser as BaseEUser
 
-
-class EUser(BaseEUser):
-    __rtags__ = {'lives_at': 'inlineview'}
 
 class LineContainerMixIn(object):
     """mixin class used by all entities containing expense lines"""
@@ -40,7 +36,7 @@ class LineContainerMixIn(object):
                 tot.setdefault(euser, 0.0)
                 tot[euser] += line.euro_amount()
         return tot
-            
+
     @property
     def start(self):
         return min(line.diem for line in self.has_lines)
@@ -57,12 +53,10 @@ class LineContainerMixIn(object):
     def taxes(self):
         return sum(line.taxes for line in self.has_lines)
 
-    
 
 class Expense(LineContainerMixIn, AnyEntity):
     id = 'Expense'
     fetch_attrs, fetch_order = fetch_config(['title'])
-    __rtags__ = {'has_lines' : ('inlineview', 'add_on_new')}
 
     def dc_long_title(self):
         users = self.paid_by()
@@ -74,9 +68,9 @@ class Expense(LineContainerMixIn, AnyEntity):
 
 class ExpenseLine(AnyEntity):
     id = 'ExpenseLine'
-    fetch_attrs, fetch_order = fetch_config(['diem', 'type', 'title', 'amount', 'currency'],
-                                            'diem')
-    
+    fetch_attrs, fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
+                                             'currency'])
+
     @property
     def parent_expense(self):
         expenses = [entity for entity in self.reverse_has_lines
@@ -91,7 +85,7 @@ class ExpenseLine(AnyEntity):
     def dc_title(self):
         return u'%s - %s - %s - %s %s' % (self.format_date(self.diem),
                                           self.req._(self.type), self.title,
-                                          self.amount, self.currency) 
+                                          self.amount, self.currency)
 
 
     def dc_long_title(self):
@@ -112,7 +106,7 @@ class ExpenseLine(AnyEntity):
             else:
                 real_taxes = self.taxes * self.exchange_rate
         return real_taxes
-                
+
 
 class PaidByAccount(AnyEntity):
     id = 'PaidByAccount'
@@ -131,9 +125,8 @@ class PaidForAccount(PaidByAccount):
 
 class Refund(LineContainerMixIn, AnyEntity):
     id = 'Refund'
-
     fetch_attrs = ('payment_date', 'payment_mode')
-    
+
     def dc_title(self):
         _ = self.req._
         return u'%s %s, %s: %s' % (_('refund for account'),

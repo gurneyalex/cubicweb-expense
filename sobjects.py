@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
-"""cubicweb-expense specific hooks
+"""cubicweb-expense specific hooks and notification views
 
 :organization: Logilab
-:copyright: 2008 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2009 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 
@@ -13,7 +12,7 @@ from logilab.common.textutils import normalize_text
 
 from cubicweb.server.pool import PreCommitOperation
 from cubicweb.server.hooksmanager import Hook
-from cubicweb.sobjects.notification import (RecipientsFinder, StatusChangeMixIn, 
+from cubicweb.sobjects.notification import (RecipientsFinder, StatusChangeMixIn,
                                          NotificationView)
 
 class UpdateRefundStateOperation(PreCommitOperation):
@@ -52,7 +51,7 @@ class UpdateRefundStateOperation(PreCommitOperation):
         return self.session.unsafe_execute(rql, {'a': account})[0][0]
 
 
-            
+
 class OnExpenseAcceptedHook(Hook):
     """
     * when an expense is going from "submitted" to "accepted", create
@@ -75,13 +74,13 @@ class ExpenseLinesRecipientsFinder(RecipientsFinder):
     accepts = ('Expense', 'Refund')
     users_rql = ('Any X,E,A WHERE EE has_lines EL, EL paid_by AC, AC associated_to X, '
                  'X primary_email E, E address A, EE eid %(ee)s')
-    
+
     def recipients(self):
         expense = self.entity(0)
         rset = self.req.execute(self.users_rql, {'ee': expense.eid})
         return sorted(set((u.get_email(), u.property_value('ui.language'))
                           for u in rset.entities()))
-        
+
 
 class ExpenseAcceptedView(StatusChangeMixIn, NotificationView):
     accepts = ('Expense',)
@@ -115,7 +114,7 @@ URL
                         'url': entity.absolute_url(),
                         'detail': detail,})
         return context
-    
+
 
 
 class RefundActedView(StatusChangeMixIn, NotificationView):
@@ -143,4 +142,4 @@ URL
                         'url': entity.absolute_url(),
                         'detail': detail,})
         return context
-    
+
