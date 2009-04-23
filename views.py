@@ -14,11 +14,8 @@ from logilab.mtconverter import html_escape
 from cubicweb.selectors import one_line_rset, implements
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
-from cubicweb.web.views import baseviews, editforms, workflow
-from cubicweb.web.views.baseforms import ChangeStateForm
-from cubicweb.web.views.urlrewrite import SimpleReqRewriter
+from cubicweb.web.views import baseviews, editforms, workflow, urlrewrite
 
-from cubes.expense.pdfgen.writers import PDFWriter
 
 uicfg.rinlined.set_rtag(True, 'lives_at', 'subject', 'CWUser')
 uicfg.rinlined.set_rtag(True, 'has_lines', 'subject', 'Expense')
@@ -30,7 +27,7 @@ uicfg.rmode.set_rtag('create', 'filed_under', 'object')
 
 class PDFAction(action.EntityAction):
     id = 'pdfaction'
-    __select__ = one_line_rset() && implements('Expense','Refund')
+    __select__ = one_line_rset() & implements('Expense','Refund')
 
     title = _('generate pdf document')
     category = 'mainactions'
@@ -39,7 +36,7 @@ class PDFAction(action.EntityAction):
         return self.entity(self.row, self.col).absolute_url(vid='pdfexport')
 
 
-class ExpenseURLRewriter(SimpleReqRewriter):
+class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
     rules = [
         ('/todo', dict(rql='Any E,S WHERE E is Expense, '
                        'E in_state S, S name "submitted"')),
@@ -73,7 +70,7 @@ class RefundPrimaryView(baseviews.PrimaryView):
     skip_rels = ('paid_by_accounts', 'has_lines')
 
     def content_title(self, entity):
-        return = html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
+        return html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
 
     def render_entity_attributes(self, entity):
         _ = self.req._
@@ -101,6 +98,8 @@ class PdfExportView(EntityView):
     binary = True
 
     def cell_call(self, row, col):
+        # import error to avoid import error if reportlab isn't available
+        from cubes.expense.pdfgen.writers import PDFWriter
         _ = self.req._
         writer = PDFWriter(self.config)
         entity = self.rset.get_entity(row, col)
@@ -118,7 +117,7 @@ class PdfExportView(EntityView):
             os.getcwd = getcwd_backup
 
 
-class RefundChangeStateForm(ChangeStateForm):
+class RefundChangeStateForm(workflow.ChangeStateForm):
     __select__ = implements('Refund',)
     payment_date = editforms.etype_relation_field('Refund', 'payment_date')
     payment_mode = editforms.etype_relation_field('Refund', 'payment_mode')
