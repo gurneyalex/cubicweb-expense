@@ -20,7 +20,8 @@ from cubicweb.web.views import baseviews, editforms, workflow, urlrewrite
 uicfg.rinlined.set_rtag(True, 'lives_at', 'subject', 'CWUser')
 uicfg.rinlined.set_rtag(True, 'has_lines', 'subject', 'Expense')
 
-uicfg.rpermissions_overrides.add_rtag('add_on_new', 'has_lines', 'subject', 'Expense')
+uicfg.rpermissions_overrides.add_rtag('add_on_new', 'has_lines', 'subject',
+                                      'Expense')
 
 uicfg.rmode.set_rtag('link', 'filed_under', 'subject')
 uicfg.rmode.set_rtag('create', 'filed_under', 'object')
@@ -56,13 +57,17 @@ class ExpensePrimaryView(baseviews.PrimaryView):
         _ = self.req._
         self.w(u'%s: %s %s %s' % (_('total'), entity.total,
                                   _('including taxes'), entity.taxes))
-        rset = self.req.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL GROUPBY EID,T,ET,EC,EA,C,CL '
-                                'WHERE X has_lines E, X eid %(x)s, E eid EID, E type T, '
-                                'E title ET, E currency EC, E amount EA, E paid_by C?, '
-                                'C label CL, E paid_for CC, CC label CCL' , {'x': entity.eid})
-        headers = [_('id'), _('type'), _('title'), _('amount'), _('currency'),
-                   _('payed_by'), _('payed_for') ]
-        self.wview('table', rset, headers=headers, displaycols=range(7), displayfilter=True)
+        rset = self.req.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL '
+                                'GROUPBY EID,T,ET,EC,EA,C,CL '
+                                'WHERE X has_lines E, X eid %(x)s, E eid EID, '
+                                'E type T, E title ET, E currency EC, '
+                                'E amount EA, E paid_by C?, C label CL, '
+                                'E paid_for CC, CC label CCL' ,
+                                {'x': entity.eid})
+        headers = [_('eid'), _('type'), _('title'), _('amount'), _('currency'),
+                   _('paid_by'), _('paid_for') ]
+        self.wview('table', rset, headers=headers,
+                   displaycols=range(len(headers)), displayfilter=True)
 
 
 class RefundPrimaryView(baseviews.PrimaryView):

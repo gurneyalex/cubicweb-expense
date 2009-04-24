@@ -95,7 +95,7 @@ msgid "Expense_plural"
 msgstr "Expenses"
 
 msgid "New Expense"
-msgstr ""
+msgstr "New expense"
 
 msgid "New ExpenseLine"
 msgstr "New expense line"
@@ -107,7 +107,7 @@ msgid "New PaidForAccount"
 msgstr "New target account"
 
 msgid "New Refund"
-msgstr ""
+msgstr "New refund"
 
 msgid "Official ID num"
 msgstr ""
@@ -143,7 +143,7 @@ msgid "Refund"
 msgstr "Refund"
 
 msgid "Refund Document"
-msgstr ""
+msgstr "Refund document"
 
 msgid "Refund_plural"
 msgstr "Refunds"
@@ -161,7 +161,7 @@ msgid "Taxes (EUR)"
 msgstr ""
 
 msgid "This Expense"
-msgstr ""
+msgstr "This expense"
 
 msgid "This ExpenseLine"
 msgstr "This expense line"
@@ -173,7 +173,7 @@ msgid "This PaidForAccount"
 msgstr "This target account"
 
 msgid "This Refund"
-msgstr ""
+msgstr "This refund"
 
 msgid "To refund (EUR)"
 msgstr ""
@@ -202,7 +202,7 @@ msgid "account to refund"
 msgstr ""
 
 msgid "actions_pdfaction"
-msgstr ""
+msgstr "pdf export"
 
 msgid "actions_pdfaction_description"
 msgstr ""
@@ -212,7 +212,7 @@ msgid "add Expense has_lines ExpenseLine subject"
 msgstr "expense line"
 
 msgid "add a Expense"
-msgstr ""
+msgstr "add an expense"
 
 msgid "add a ExpenseLine"
 msgstr "add an expense line"
@@ -224,7 +224,7 @@ msgid "add a PaidForAccount"
 msgstr "add a target account"
 
 msgid "add a Refund"
-msgstr ""
+msgstr "add a refund"
 
 msgid "amount"
 msgstr ""
@@ -253,6 +253,9 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
+msgid "eid"
+msgstr ""
+
 msgid "exchange_rate"
 msgstr "exchange rate"
 
@@ -278,16 +281,10 @@ msgid "including taxes"
 msgstr ""
 
 msgid "lives_at"
-msgstr ""
+msgstr "lives at"
 
 msgid "lives_at_object"
-msgstr ""
-
-msgid ""
-"note about security: The RRQLExpression used will only work when adding "
-"ExpenseLines on Expense, and not on refund. ExpenseLines are supposed to be "
-"added to Refund automatically via a hook through an unsafe_execute"
-msgstr ""
+msgstr "is hosting"
 
 msgid "others"
 msgstr ""
@@ -299,7 +296,7 @@ msgid "paid_by"
 msgstr "paid by"
 
 msgid "paid_by_object"
-msgstr ""
+msgstr "has paid"
 
 msgid "paid_for"
 msgstr "paid for"
@@ -317,10 +314,10 @@ msgid "payment mode"
 msgstr ""
 
 msgid "payment_date"
-msgstr ""
+msgstr "payment date"
 
 msgid "payment_mode"
-msgstr ""
+msgstr "payment mode"
 
 msgid "pdf export"
 msgstr ""
@@ -332,7 +329,7 @@ msgid "refund for account"
 msgstr ""
 
 msgid "remove this Expense"
-msgstr ""
+msgstr "remove this expense"
 
 msgid "remove this ExpenseLine"
 msgstr "remove this expense line"
@@ -344,7 +341,7 @@ msgid "remove this PaidForAccount"
 msgstr "remove this target account"
 
 msgid "remove this Refund"
-msgstr ""
+msgstr "remove this refund"
 
 msgid "social security number"
 msgstr ""
@@ -359,6 +356,12 @@ msgid "submitted"
 msgstr ""
 
 msgid "taxes"
+msgstr ""
+
+msgid "taxes_currency"
+msgstr "taxes currency"
+
+msgid "title"
 msgstr ""
 
 msgid "to be refunded to"
@@ -380,6 +383,9 @@ msgid "total tax"
 msgstr ""
 
 msgid "transport"
+msgstr ""
+
+msgid "type"
 msgstr ""
 
 msgid "your expense will be refunded on your next payroll"

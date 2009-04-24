@@ -1,5 +1,4 @@
 # template's specific schema
-from cubicweb.schema import format_constraint
 
 CWUser = import_erschema('CWUser')
 CWUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')
@@ -13,9 +12,7 @@ class Expense(EntityType):
                    'delete': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
                    }
     title = String(maxsize=128, required=True)
-    description_format = String(meta=True, internationalizable=True,
-                                default='text/rest', constraints=[format_constraint])
-    description        = String(fulltextindexed=True)
+    description = RichString(fulltextindexed=True)
 
     has_lines = SubjectRelation('ExpenseLine', cardinality='+1', composite='subject')
     # workflow : submitted, accepted
@@ -85,11 +82,9 @@ class Refund(EntityType):
 
 
 class has_lines(RelationType):
-    """
-    note about security: The RRQLExpression used will only work when adding
-    ExpenseLines on Expense, and not on refund. ExpenseLines are supposed
-    to be added to Refund automatically via a hook through an unsafe_execute
-    """
+    # note: The RRQLExpression used will only work when adding ExpenseLines on
+    # Expense, and not on refund. ExpenseLines are supposed to be added to
+    # Refund automatically via a hook through an unsafe_execute
     permissions = {
         'read' : ('managers', 'users'),
         'add': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),

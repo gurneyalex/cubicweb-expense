@@ -231,7 +231,8 @@ msgstr "action d'export PDF"
 
 msgid "actions_pdfaction_description"
 msgstr ""
-"action permettant de générer le document PDF à partir d'une fiche de remboursement\n"
+"action permettant de générer le document PDF à partir d'une fiche de "
+"remboursement\n"
 "ou d'une fiche de frais"
 
 # add related box generated message
@@ -280,6 +281,9 @@ msgstr "date"
 msgid "draft"
 msgstr "brouillon"
 
+msgid "eid"
+msgstr ""
+
 msgid "exchange_rate"
 msgstr "taux de change"
 
@@ -310,12 +314,6 @@ msgstr "adresse"
 msgid "lives_at_object"
 msgstr "adresse de"
 
-msgid ""
-"note about security: The RRQLExpression used will only work when adding "
-"ExpenseLines on Expense, and not on refund. ExpenseLines are supposed to be "
-"added to Refund automatically via a hook through an unsafe_execute"
-msgstr ""
-
 msgid "others"
 msgstr "autres"
 
@@ -329,7 +327,7 @@ msgid "paid_by_object"
 msgstr "a payé"
 
 msgid "paid_for"
-msgstr "a payé pour"
+msgstr "pour le compte"
 
 msgid "paid_for_object"
 msgstr "a bénéficié de"
@@ -388,6 +386,12 @@ msgstr "soumise"
 msgid "taxes"
 msgstr "taxes"
 
+msgid "taxes_currency"
+msgstr "devise des taxes"
+
+msgid "title"
+msgstr ""
+
 msgid "to be refunded to"
 msgstr "à rembourser à"
 
@@ -409,5 +413,14 @@ msgstr "taxes totales"
 msgid "transport"
 msgstr "transport"
 
+msgid "type"
+msgstr ""
+
 msgid "your expense will be refunded on your next payroll"
 msgstr "votre note de frais sera remboursée sur votre prochaine paye"
+
+#~ msgid "id"
+#~ msgstr "id"
+
+#~ msgid "payed_for"
+#~ msgstr "affaire"
