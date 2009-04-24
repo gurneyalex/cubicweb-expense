@@ -12,7 +12,7 @@ Package: cubicweb-expense
 Architecture: all
 Conflicts: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
 Replaces: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
-Depends: cubicweb-common (>= 2.99.0)
+Depends: cubicweb-common (>= 3.2.0)
 Description: cubicweb expense component
  CubicWeb is a semantic web application framework.
  .
