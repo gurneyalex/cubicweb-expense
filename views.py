@@ -26,7 +26,7 @@ uicfg.rpermissions_overrides.add_rtag('add_on_new', 'has_lines', 'subject',
 uicfg.rmode.set_rtag('link', 'filed_under', 'subject')
 uicfg.rmode.set_rtag('create', 'filed_under', 'object')
 
-class PDFAction(action.EntityAction):
+class PDFAction(action.Action):
     id = 'pdfaction'
     __select__ = one_line_rset() & implements('Expense','Refund')
 
@@ -45,9 +45,10 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
 
 ## views and forms ############################################################
 
+uicfg.rdisplay.tag_relation({}, ('Expense', 'has_lines', '*'), 'subject')
+
 class ExpensePrimaryView(baseviews.PrimaryView):
     __select__ = implements('Expense',)
-    skip_rels = ('has_lines')
 
     def content_title(self, entity):
         return html_escape(u'%s - %s' % (entity.dc_title(),
@@ -69,10 +70,11 @@ class ExpensePrimaryView(baseviews.PrimaryView):
         self.wview('table', rset, headers=headers,
                    displaycols=range(len(headers)), displayfilter=True)
 
+uicfg.rdisplay.tag_relation({}, ('Refund', 'has_lines', '*'), 'subject')
+uicfg.rdisplay.tag_relation({}, ('Refund', 'paid_by_accounts', '*'), 'subject')
 
 class RefundPrimaryView(baseviews.PrimaryView):
     __select__ = implements('Refund',)
-    skip_rels = ('paid_by_accounts', 'has_lines')
 
     def content_title(self, entity):
         return html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
