@@ -7,7 +7,6 @@
 __docformat__ = "restructuredtext en"
 
 import os
-from mx.DateTime import today
 
 from logilab.mtconverter import html_escape
 
@@ -51,9 +50,11 @@ uicfg.rdisplay.tag_relation({}, ('Expense', 'has_lines', '*'), 'subject')
 class ExpensePrimaryView(baseviews.PrimaryView):
     __select__ = implements('Expense',)
 
-    def content_title(self, entity):
-        return html_escape(u'%s - %s' % (entity.dc_title(),
-                                         self.req._(entity.state)))
+    def render_entity_title(self, entity):
+        title = html_escape(u'%s - %s' % (entity.dc_title(),
+                                          self.req._(entity.state)))
+        self.w(u'<h1><span class="etype">%s</span> %s</h1>'
+               % (entity.dc_type().capitalize(), title))
 
     def render_entity_attributes(self, entity):
         _ = self.req._
