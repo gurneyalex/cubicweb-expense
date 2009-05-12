@@ -78,8 +78,10 @@ uicfg.rdisplay.tag_relation({}, ('Refund', 'paid_by_accounts', '*'), 'subject')
 class RefundPrimaryView(baseviews.PrimaryView):
     __select__ = implements('Refund',)
 
-    def content_title(self, entity):
-        return html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
+    def render_entity_title(self, entity):
+        title = html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
+        self.w(u'<h1><span class="etype">%s</span> %s</h1>'
+               % (entity.dc_type().capitalize(), title))
 
     def render_entity_attributes(self, entity):
         _ = self.req._
