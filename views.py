@@ -19,11 +19,15 @@ from cubicweb.web.views import baseviews, editforms, workflow, urlrewrite
 uicfg.autoform_is_inlined.tag_subject_of(('CWUser', 'lives_at', '*'), True)
 uicfg.autoform_is_inlined.tag_subject_of(('Expense', 'has_lines', '*'), True)
 
-uicfg.rpermissions_overrides.tag_subject_of(('Expense', 'has_lines', '*'),
+uicfg.autoform_permissions_overrides.tag_subject_of(('Expense', 'has_lines', '*'),
                                             'add_on_new')
 
 uicfg.actionbox_appearsin_addmenu.tag_subject_of(('*', 'filed_under', '*'), False)
 uicfg.actionbox_appearsin_addmenu.tag_object_of(('*', 'filed_under', '*'), True)
+
+uicfg.primaryview_section.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
+uicfg.primaryview_section.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
+uicfg.primaryview_section.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
 
 
 class PDFAction(action.Action):
@@ -44,8 +48,6 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
         ]
 
 ## views and forms ############################################################
-
-uicfg.rdisplay.tag_relation({}, ('Expense', 'has_lines', '*'), 'subject')
 
 class ExpensePrimaryView(baseviews.PrimaryView):
     __select__ = implements('Expense',)
@@ -72,8 +74,6 @@ class ExpensePrimaryView(baseviews.PrimaryView):
         self.wview('table', rset, headers=headers,
                    displaycols=range(len(headers)), displayfilter=True)
 
-uicfg.rdisplay.tag_relation({}, ('Refund', 'has_lines', '*'), 'subject')
-uicfg.rdisplay.tag_relation({}, ('Refund', 'paid_by_accounts', '*'), 'subject')
 
 class RefundPrimaryView(baseviews.PrimaryView):
     __select__ = implements('Refund',)
