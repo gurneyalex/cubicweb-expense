@@ -17,14 +17,15 @@ from cubicweb.web import uicfg, action
 from cubicweb.web.views import baseviews, editforms, workflow, urlrewrite
 
 
-uicfg.rinlined.set_rtag(True, 'lives_at', 'subject', 'CWUser')
-uicfg.rinlined.set_rtag(True, 'has_lines', 'subject', 'Expense')
+uicfg.autoform_is_inlined.tag_subject_of(('CWUser', 'lives_at', '*'), True)
+uicfg.autoform_is_inlined.tag_subject_of(('Expense', 'has_lines', '*'), True)
 
-uicfg.rpermissions_overrides.add_rtag('add_on_new', 'has_lines', 'subject',
-                                      'Expense')
+uicfg.rpermissions_overrides.tag_subject_of(('Expense', 'has_lines', '*'),
+                                            'add_on_new')
 
-uicfg.rmode.set_rtag('link', 'filed_under', 'subject')
-uicfg.rmode.set_rtag('create', 'filed_under', 'object')
+uicfg.actionbox_appearsin_addmenu.tag_subject_of(('*', 'filed_under', '*'), False)
+uicfg.actionbox_appearsin_addmenu.tag_object_of(('*', 'filed_under', '*'), True)
+
 
 class PDFAction(action.Action):
     id = 'pdfaction'
