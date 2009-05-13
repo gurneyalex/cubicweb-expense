@@ -1,6 +1,6 @@
 """base helper classes for eexpense's unittests"""
 
-from mx.DateTime import today
+from datetime import date
 
 from cubicweb.devtools.apptest import EnvBasedTC
 
@@ -12,12 +12,12 @@ class HelpersTC(EnvBasedTC):
 
 
     def new_expense_line(self, paid_by_eid):
-        line = self.add_entity('ExpenseLine', title=u'aline', diem=today(),
+        line = self.add_entity('ExpenseLine', title=u'aline', diem=date.today(),
                                type=u'food', amount=1., taxes=0.)
         self.add_relation(line.eid, 'paid_by', paid_by_eid)
         self.add_relation(line.eid, 'paid_for', self.accountfor)
         return line
-    
+
     def add_expense_line(self, expense, paid_by_eid):
         line = self.new_expense_line(paid_by_eid)
         self.add_relation(expense.eid, 'has_lines', line.eid)
@@ -27,7 +27,7 @@ class HelpersTC(EnvBasedTC):
         self.execute('SET X in_state S WHERE X eid %(x)s, S name "accepted"',
                      {'x': expense.eid})
         self.commit() # to fire corresponding operations
-        
+
     def new_account(self, login):
         user = self.create_user(login)
         self.execute('INSERT EmailAddress E: E address %(add)s, U use_email E, U primary_email E '
@@ -47,9 +47,9 @@ class HelpersTC(EnvBasedTC):
                      {'x': expense.eid})
         lineeid = self.add_expense_line(expense, self.account1)
         self.execute('SET X in_state S WHERE X eid %(x)s, S name "submitted"',
-                     {'x': expense.eid})        
+                     {'x': expense.eid})
         return expense
-        
+
     def setup_database(self):
         add = self.add_entity
         # users and accounts initialization
@@ -66,4 +66,4 @@ class HelpersTC(EnvBasedTC):
         line_comp = self.add_expense_line(self.expense, account_comp.eid)
         self.accept(self.expense)
 
-    
+
