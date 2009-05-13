@@ -4,11 +4,11 @@
 distname = 'cubicweb-expense'
 modname = distname.split('-', 1)[1]
 
-numversion = (0, 3, 1)
+numversion = (0, 4, 0)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
-copyright = '''Copyright (c) 2008 LOGILAB S.A. (Paris, FRANCE).
+copyright = '''Copyright (c) 2008-2009 LOGILAB S.A. (Paris, FRANCE).
 http://www.logilab.fr/ -- mailto:contact@logilab.fr'''
 
 author = 'Logilab'
@@ -36,7 +36,7 @@ def listdir(dirpath):
 
 def include(dirname):
     return [join(THIS_CUBE_DIR, dirname),  listdir(dirname)]
-    
+
 try:
     data_files = [
         # common files
@@ -48,7 +48,7 @@ try:
         include('pdfgen'),
         # Note: here, you'll need to add views' subdirectories if you want
         # them to be included in the debian package
-        
+
         # server files
         include('migration'),
         ]
