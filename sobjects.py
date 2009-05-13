@@ -10,6 +10,7 @@ from itertools import groupby
 
 from logilab.common.textutils import normalize_text
 
+from cubicweb.selectors import implements
 from cubicweb.server.pool import PreCommitOperation
 from cubicweb.server.hooksmanager import Hook
 from cubicweb.sobjects.notification import (RecipientsFinder, StatusChangeMixIn,
@@ -71,7 +72,7 @@ class OnExpenseAcceptedHook(Hook):
 
 
 class ExpenseLinesRecipientsFinder(RecipientsFinder):
-    accepts = ('Expense', 'Refund')
+    __select__ = implements('Expense', 'Refund')
     users_rql = ('Any X,E,A WHERE EE has_lines EL, EL paid_by AC, AC associated_to X, '
                  'X primary_email E, E address A, EE eid %(ee)s')
 
@@ -83,7 +84,7 @@ class ExpenseLinesRecipientsFinder(RecipientsFinder):
 
 
 class ExpenseAcceptedView(StatusChangeMixIn, NotificationView):
-    accepts = ('Expense',)
+    __select__ = implements('Expense')
     content = _("""
 The expense ``%(title)s`` has been accepted :
 
@@ -118,7 +119,7 @@ URL
 
 
 class RefundActedView(StatusChangeMixIn, NotificationView):
-    accepts = ('Refund',)
+    __select__ = implements('Refund')
     content = _("""
 Your expenses have been refuned (amount=%(amount)s euros.)
 
