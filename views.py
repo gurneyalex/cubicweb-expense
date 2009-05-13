@@ -13,7 +13,7 @@ from logilab.mtconverter import html_escape
 from cubicweb.selectors import one_line_rset, implements
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
-from cubicweb.web.views import baseviews, editforms, workflow, urlrewrite
+from cubicweb.web.views import primary, autoform, workflow, urlrewrite
 
 
 uicfg.autoform_is_inlined.tag_subject_of(('CWUser', 'lives_at', '*'), True)
@@ -49,7 +49,7 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
 
 ## views and forms ############################################################
 
-class ExpensePrimaryView(baseviews.PrimaryView):
+class ExpensePrimaryView(primary.PrimaryView):
     __select__ = implements('Expense',)
 
     def render_entity_title(self, entity):
@@ -75,7 +75,7 @@ class ExpensePrimaryView(baseviews.PrimaryView):
                    displaycols=range(len(headers)), displayfilter=True)
 
 
-class RefundPrimaryView(baseviews.PrimaryView):
+class RefundPrimaryView(primary.PrimaryView):
     __select__ = implements('Refund',)
 
     def render_entity_title(self, entity):
@@ -130,6 +130,6 @@ class PdfExportView(EntityView):
 
 class RefundChangeStateForm(workflow.ChangeStateForm):
     __select__ = implements('Refund',)
-    payment_date = editforms.etype_relation_field('Refund', 'payment_date')
-    payment_mode = editforms.etype_relation_field('Refund', 'payment_mode')
+    payment_date = autoform.etype_relation_field('Refund', 'payment_date')
+    payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
 
