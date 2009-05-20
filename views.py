@@ -38,7 +38,7 @@ class PDFAction(action.Action):
     category = 'mainactions'
 
     def url(self):
-        return self.entity(self.row, self.col).absolute_url(vid='pdfexport')
+        return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
 
 
 class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
