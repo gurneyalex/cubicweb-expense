@@ -17,13 +17,16 @@ from cubicweb.web.views import primary, autoform, workflow, urlrewrite
 
 
 uicfg.autoform_is_inlined.tag_subject_of(('CWUser', 'lives_at', '*'), True)
+uicfg.autoform_section.tag_subject_of(('CWUser', 'lives_at', '*'), 'generated')
 uicfg.autoform_is_inlined.tag_subject_of(('Expense', 'has_lines', '*'), True)
+uicfg.autoform_section.tag_subject_of(('Expense', 'has_lines', '*'), 'generated')
+uicfg.autoform_section.tag_subject_of(('ExpenseLine', 'paid_by', '*'), 'primary')
+uicfg.autoform_field_kwargs.tag_subject_of(('ExpenseLine', 'paid_by', '*'), {'sort': True})
+uicfg.autoform_section.tag_subject_of(('ExpenseLine', 'paid_for', '*'), 'secondary')
+uicfg.autoform_field_kwargs.tag_subject_of(('ExpenseLine', 'paid_for', '*'), {'sort': True})
 
 uicfg.autoform_permissions_overrides.tag_subject_of(('Expense', 'has_lines', '*'),
                                             'add_on_new')
-
-uicfg.actionbox_appearsin_addmenu.tag_subject_of(('*', 'filed_under', '*'), False)
-uicfg.actionbox_appearsin_addmenu.tag_object_of(('*', 'filed_under', '*'), True)
 
 uicfg.primaryview_section.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
 uicfg.primaryview_section.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
