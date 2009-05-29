@@ -7,6 +7,7 @@
 __docformat__ = "restructuredtext en"
 
 import os
+from cStringIO import StringIO
 
 from logilab.mtconverter import html_escape
 
@@ -124,7 +125,10 @@ class PdfExportView(EntityView):
         try:
             os.environ['HOME'] = 'wtf'
             os.getcwd = lambda: 'wtf'
-            writer.write(entity, self._stream)
+            # NOTE: we could use self.w.__self__ directly
+            stream = StringIO()
+            writer.write(entity, stream)
+            self.w(stream.getvalue())
         finally:
             if home_backup:
                 os.environ['HOME'] = home_backup
