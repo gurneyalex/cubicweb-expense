@@ -21,7 +21,8 @@ from glob import glob
 from os import listdir as _listdir
 from os.path import join, isdir
 
-web, ftp = '', ''
+ftp = ''
+web = 'http://www.cubicweb.org/project/%s' % distname
 
 pyversions = ['2.4']
 
