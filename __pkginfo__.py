@@ -60,3 +60,9 @@ except OSError:
 cube_eid = None # <=== FIXME if you need direct bug-subscription
 __use__ = ('addressbook',)
 
+classifiers = [
+           'Environment :: Web Environment',
+           'Framework :: CubicWeb',
+           'Programming Language :: Python',
+           'Programming Language :: JavaScript',
+]
