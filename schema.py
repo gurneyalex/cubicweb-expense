@@ -1,4 +1,6 @@
-# template's specific schema
+from yams.buildobjs import (EntityType, RelationType, SubjectRelation,
+                            ObjectRelation, Float, Date, String, RichString)
+from cubicweb.schema import RRQLExpression, ERQLExpression, RQLConstraint
 
 CWUser = import_erschema('CWUser')
 CWUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')
