@@ -64,8 +64,8 @@ class ExpensePrimaryView(primary.PrimaryView):
 
     def render_entity_attributes(self, entity):
         _ = self.req._
-        self.w(u'%s: %s %s %s' % (_('total'), entity.total,
-                                  _('including taxes'), entity.taxes))
+        self.w(u'%s: %s %s %s' % (_('total'), entity.euro_total(),
+                                  _('including taxes'), entity.euro_taxes()))
         rset = self.req.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL '
                                 'GROUPBY EID,T,ET,EC,EA,C,CL '
                                 'WHERE X has_lines E, X eid %(x)s, E eid EID, '
