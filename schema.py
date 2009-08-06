@@ -37,6 +37,7 @@ class ExpenseLine(EntityType):
     amount = Float(required=True, description=_('total amount including taxes'))
     taxes = Float(required=True, description=_('total tax'))
     taxes_currency = String(required=True, maxsize=10, default=u'EUR')
+    taxes_exchange_rate = Float(required=True, default=1.0)
 
     paid_by = SubjectRelation('PaidByAccount', cardinality='1*')
     paid_for = SubjectRelation('PaidForAccount', cardinality='+*')

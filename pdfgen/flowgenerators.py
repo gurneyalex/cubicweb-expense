@@ -268,7 +268,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         s = "<i>%s</i>" % html_escape(_(u"included taxes (EUR)"))
         lin_data.append( Paragraph(s, style_table_data) )
         
-        s = u"<i>%s</i>" %format_number(entity.taxes,2)
+        s = u"<i>%s</i>" %format_number(entity.euro_taxes(),2)
         lin_data.append( Paragraph(s ,style_table_data_num) )
 
         tab_data.append(lin_data)
@@ -432,7 +432,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
                 % format_number(exp_line.euro_amount(),2)
             lin_data_2.append( Paragraph(s,style_table_data_num) )
 
-            s = "<i>%s</i>" %format_number(exp_line.taxes,2)
+            s = "<i>%s</i>" %format_number(exp_line.euro_taxes(),2)
             lin_data_2.append( Paragraph(s,style_table_data_num) )
 
             # adds a table built with the two previously defined lines

@@ -65,6 +65,11 @@ class Expense(LineContainerMixIn, AnyEntity):
                                  ', '.join(euser.login for euser in self.paid_by()))
         return self.title
 
+    def euro_taxes(self):
+        return sum(line.euro_taxes() for line in self.has_lines)
+
+    def euro_total(self):
+        return sum(line.euro_amount() for line in self.has_lines)
 
 class ExpenseLine(AnyEntity):
     id = 'ExpenseLine'
@@ -97,15 +102,14 @@ class ExpenseLine(AnyEntity):
 
 
     def euro_amount(self):
+        if self.currency == 'EUR':
+            return self.amount        
         return self.exchange_rate * self.amount
 
     def euro_taxes(self):
-        if self.currency == self.taxe_currency:
-            if self.currency == 'EUR':
-                real_taxes = self.taxes
-            else:
-                real_taxes = self.taxes * self.exchange_rate
-        return real_taxes
+        if self.taxes_currency == 'EUR':
+            return self.taxes
+        return self.taxes_exchange_rate * self.taxes
 
 
 class PaidByAccount(AnyEntity):
