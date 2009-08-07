@@ -136,7 +136,7 @@ class PdfExportView(EntityView):
 
 
 class RefundChangeStateForm(workflow.ChangeStateForm):
-    __select__ = implements('Refund',)
+    __select__ = implements('Refund')
     payment_date = autoform.etype_relation_field('Refund', 'payment_date')
     payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
 
