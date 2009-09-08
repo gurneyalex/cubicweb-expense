@@ -13,8 +13,9 @@ Package: cubicweb-expense
 Architecture: all
 Conflicts: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
 Replaces: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
-Depends: cubicweb-common (>= 3.2.0)
-Description: cubicweb expense component
- CubicWeb is a semantic web application framework.
+Depends: cubicweb-addressbook, cubicweb-common (>= 3.2.0)
+Description: expense component for the CubicWeb framework
+ This CubicWeb component models expenses (usable to implement
+ expense tracking application).
  .
- This package defines the expense schema plus some basic operations
+ CubicWeb is a semantic web application framework, see http://www.cubicweb.org
