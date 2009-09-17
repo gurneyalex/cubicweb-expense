@@ -4,7 +4,7 @@
 modname = 'expense'
 distname = 'cubicweb-expense'
 
-numversion = (0, 4, 4)
+numversion = (0, 5, 0)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
@@ -34,7 +34,7 @@ classifiers = [
 ]
 
 __depends_cubes__ = {'addressbook': None}
-__depends__ = {'cubicweb': '>= 3.2.0'}
+__depends__ = {'cubicweb': '>= 3.5.0'}
 for key, value in __depends_cubes__.items():
     __depends__['cubicweb-'+key] = value
 __use__ = tuple(__depends_cubes__)
@@ -74,5 +74,3 @@ try:
 except OSError:
     # we are in an installed directory
     pass
-
-cube_eid = None # <=== FIXME if you need direct bug-subscription
