@@ -223,6 +223,14 @@ msgstr "logement"
 msgid "account"
 msgstr "compte"
 
+msgctxt "PaidForAccount"
+msgid "account"
+msgstr "compte"
+
+msgctxt "PaidByAccount"
+msgid "account"
+msgstr "compte"
+
 msgid "account to refund"
 msgstr "compte à rembourser"
 
@@ -239,26 +247,34 @@ msgstr ""
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "ligne de dépense"
 
-msgid "add a Expense"
-msgstr "ajouter une note de frais"
-
+msgctxt "inlined:Expense.has_lines.subject"
 msgid "add a ExpenseLine"
-msgstr "ajouter une ligne de dépense"
+msgstr "ligne de dépense"
 
-msgid "add a PaidByAccount"
-msgstr "ajouter un compte de paiement"
+# schema pot file, generated on 2009-09-17 16:23:59
+#
+# singular and plural forms for each entity type
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "add a PostalAddress"
+msgstr "ajouter une adresse postable"
 
-msgid "add a PaidForAccount"
-msgstr "ajouter un compte cible"
+msgid "amount"
+msgstr "montant"
 
-msgid "add a Refund"
-msgstr "ajouter une feuille de remboursements"
-
+msgctxt "ExpenseLine"
 msgid "amount"
 msgstr "montant"
 
 msgid "associated_to"
 msgstr "associé à"
+
+msgctxt "PaidByAccount"
+msgid "associated_to"
+msgstr "associé à"
+
+msgctxt "CWUser"
+msgid "associated_to_object"
+msgstr "a pour compte"
 
 msgid "associated_to_object"
 msgstr "a pour compte"
@@ -275,6 +291,22 @@ msgstr "création d'une ligne de dépense pour la note %(linkto)s"
 msgid "currency"
 msgstr "devise"
 
+msgctxt "ExpenseLine"
+msgid "currency"
+msgstr "devise"
+
+msgctxt "Expense"
+msgid "description"
+msgstr "description"
+
+msgctxt "Expense"
+msgid "description_format"
+msgstr "format"
+
+msgid "diem"
+msgstr "date"
+
+msgctxt "ExpenseLine"
 msgid "diem"
 msgstr "date"
 
@@ -282,13 +314,20 @@ msgid "draft"
 msgstr "brouillon"
 
 msgid "eid"
-msgstr ""
+msgstr "eid"
 
+msgid "exchange_rate"
+msgstr "taux de change"
+
+msgctxt "ExpenseLine"
 msgid "exchange_rate"
 msgstr "taux de change"
 
 msgid "expense accepted: "
 msgstr "note de frais acceptée :"
+
+msgid "expense workflow"
+msgstr "workflow des notes de frais"
 
 msgid "food"
 msgstr "repas"
@@ -299,6 +338,18 @@ msgstr "générer le document PDF"
 msgid "has_lines"
 msgstr "a pour lignes"
 
+msgctxt "Refund"
+msgid "has_lines"
+msgstr "a pour lignes"
+
+msgctxt "Expense"
+msgid "has_lines"
+msgstr "a pour lignes"
+
+msgctxt "ExpenseLine"
+msgid "has_lines_object"
+msgstr "ligne de"
+
 msgid "has_lines_object"
 msgstr "ligne de"
 
@@ -308,8 +359,24 @@ msgstr "dont taxes (EUR)"
 msgid "including taxes"
 msgstr "avec pour taxes"
 
+msgctxt "PaidForAccount"
+msgid "label"
+msgstr "label"
+
+msgctxt "PaidByAccount"
+msgid "label"
+msgstr "label"
+
 msgid "lives_at"
 msgstr "adresse"
+
+msgctxt "CWUser"
+msgid "lives_at"
+msgstr "adresse"
+
+msgctxt "PostalAddress"
+msgid "lives_at_object"
+msgstr "adresse de"
 
 msgid "lives_at_object"
 msgstr "adresse de"
@@ -323,11 +390,27 @@ msgstr "payé"
 msgid "paid_by"
 msgstr "payé par"
 
+msgctxt "ExpenseLine"
+msgid "paid_by"
+msgstr "payé par"
+
+msgctxt "PaidByAccount"
+msgid "paid_by_object"
+msgstr "a payé"
+
 msgid "paid_by_object"
 msgstr "a payé"
 
 msgid "paid_for"
 msgstr "pour le compte"
+
+msgctxt "ExpenseLine"
+msgid "paid_for"
+msgstr "pour le compte"
+
+msgctxt "PaidForAccount"
+msgid "paid_for_object"
+msgstr "a bénéficié de"
 
 msgid "paid_for_object"
 msgstr "a bénéficié de"
@@ -344,6 +427,14 @@ msgstr "mode de paiement"
 msgid "payment_date"
 msgstr "date de paiement"
 
+msgctxt "Refund"
+msgid "payment_date"
+msgstr "date de paiement"
+
+msgid "payment_mode"
+msgstr "mode de paiement"
+
+msgctxt "Refund"
 msgid "payment_mode"
 msgstr "mode de paiement"
 
@@ -356,24 +447,24 @@ msgstr "préparation"
 msgid "refund for account"
 msgstr "compte de remboursement"
 
-msgid "remove this Expense"
-msgstr "supprimer cette note de frais"
+msgid "refund workflow"
+msgstr "worflow des remboursements"
 
+msgctxt "inlined:Expense:has_lines:subject"
 msgid "remove this ExpenseLine"
-msgstr "supprimer cette ligne de dépense"
+msgstr "supprimer cette ligne"
 
-msgid "remove this PaidByAccount"
-msgstr "supprimer ce compte de paiement"
-
-msgid "remove this PaidForAccount"
-msgstr "supprimer ce compte cible"
-
-msgid "remove this Refund"
-msgstr "supprimer cette feuille de remboursement"
+msgctxt "inlined:CWUser:lives_at:subject"
+msgid "remove this PostalAddress"
+msgstr "supprimer cette adresse"
 
 msgid "social security number"
 msgstr "numéro de sécurité sociale"
 
+msgid "ssnum"
+msgstr "num ss"
+
+msgctxt "CWUser"
 msgid "ssnum"
 msgstr "num ss"
 
@@ -386,17 +477,48 @@ msgstr "soumise"
 msgid "taxes"
 msgstr "taxes"
 
+msgctxt "ExpenseLine"
+msgid "taxes"
+msgstr "taxes"
+
 msgid "taxes_currency"
 msgstr "devise des taxes"
 
+msgctxt "ExpenseLine"
+msgid "taxes_currency"
+msgstr "devise des taxes"
+
+msgid "taxes_exchange_rate"
+msgstr "taux de change"
+
+msgctxt "ExpenseLine"
+msgid "taxes_exchange_rate"
+msgstr "taux de change"
+
+msgctxt "ExpenseLine"
 msgid "title"
-msgstr ""
+msgstr "titre"
+
+msgctxt "Expense"
+msgid "title"
+msgstr "titre"
+
+msgid "title"
+msgstr "titre"
 
 msgid "to be refunded to"
 msgstr "à rembourser à"
 
 msgid "to_account"
 msgstr "pour le compte"
+
+msgctxt "Refund"
+msgid "to_account"
+msgstr "pour le compte"
+
+msgctxt "PaidByAccount"
+msgid "to_account_object"
+msgstr "crédité lors du remboursement"
 
 msgid "to_account_object"
 msgstr "crédité lors du remboursement"
@@ -413,14 +535,12 @@ msgstr "taxes totales"
 msgid "transport"
 msgstr "transport"
 
+msgctxt "ExpenseLine"
 msgid "type"
-msgstr ""
+msgstr "type"
+
+msgid "type"
+msgstr "type"
 
 msgid "your expense will be refunded on your next payroll"
 msgstr "votre note de frais sera remboursée sur votre prochaine paye"
-
-#~ msgid "id"
-#~ msgstr "id"
-
-#~ msgid "payed_for"
-#~ msgstr "affaire"

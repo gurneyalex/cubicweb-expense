@@ -198,6 +198,14 @@ msgstr ""
 msgid "account"
 msgstr ""
 
+msgctxt "PaidForAccount"
+msgid "account"
+msgstr ""
+
+msgctxt "PaidByAccount"
+msgid "account"
+msgstr ""
+
 msgid "account to refund"
 msgstr ""
 
@@ -211,26 +219,34 @@ msgstr ""
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "expense line"
 
-msgid "add a Expense"
-msgstr "add an expense"
-
+msgctxt "inlined:Expense.has_lines.subject"
 msgid "add a ExpenseLine"
-msgstr "add an expense line"
+msgstr "expense line"
 
-msgid "add a PaidByAccount"
-msgstr "add a payment account"
+# schema pot file, generated on 2009-09-17 16:23:59
+#
+# singular and plural forms for each entity type
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "add a PostalAddress"
+msgstr "add a postal address"
 
-msgid "add a PaidForAccount"
-msgstr "add a target account"
+msgid "amount"
+msgstr ""
 
-msgid "add a Refund"
-msgstr "add a refund"
-
+msgctxt "ExpenseLine"
 msgid "amount"
 msgstr ""
 
 msgid "associated_to"
 msgstr "associated to"
+
+msgctxt "PaidByAccount"
+msgid "associated_to"
+msgstr "assoicated to"
+
+msgctxt "CWUser"
+msgid "associated_to_object"
+msgstr "has account"
 
 msgid "associated_to_object"
 msgstr "has account"
@@ -247,8 +263,24 @@ msgstr "creating expense line inside %(linkto)s"
 msgid "currency"
 msgstr ""
 
-msgid "diem"
+msgctxt "ExpenseLine"
+msgid "currency"
 msgstr ""
+
+msgctxt "Expense"
+msgid "description"
+msgstr ""
+
+msgctxt "Expense"
+msgid "description_format"
+msgstr "format"
+
+msgid "diem"
+msgstr "date"
+
+msgctxt "ExpenseLine"
+msgid "diem"
+msgstr "date"
 
 msgid "draft"
 msgstr ""
@@ -259,7 +291,14 @@ msgstr ""
 msgid "exchange_rate"
 msgstr "exchange rate"
 
+msgctxt "ExpenseLine"
+msgid "exchange_rate"
+msgstr "exchange rate"
+
 msgid "expense accepted: "
+msgstr ""
+
+msgid "expense workflow"
 msgstr ""
 
 msgid "food"
@@ -271,6 +310,18 @@ msgstr ""
 msgid "has_lines"
 msgstr "has lines"
 
+msgctxt "Refund"
+msgid "has_lines"
+msgstr "has lines"
+
+msgctxt "Expense"
+msgid "has_lines"
+msgstr "has lines"
+
+msgctxt "ExpenseLine"
+msgid "has_lines_object"
+msgstr "contained by"
+
 msgid "has_lines_object"
 msgstr "contained by"
 
@@ -280,8 +331,24 @@ msgstr ""
 msgid "including taxes"
 msgstr ""
 
+msgctxt "PaidForAccount"
+msgid "label"
+msgstr ""
+
+msgctxt "PaidByAccount"
+msgid "label"
+msgstr ""
+
 msgid "lives_at"
 msgstr "lives at"
+
+msgctxt "CWUser"
+msgid "lives_at"
+msgstr "lives at"
+
+msgctxt "PostalAddress"
+msgid "lives_at_object"
+msgstr "is hosting"
 
 msgid "lives_at_object"
 msgstr "is hosting"
@@ -295,11 +362,27 @@ msgstr ""
 msgid "paid_by"
 msgstr "paid by"
 
+msgctxt "ExpenseLine"
+msgid "paid_by"
+msgstr "paid by"
+
+msgctxt "PaidByAccount"
+msgid "paid_by_object"
+msgstr "has paid"
+
 msgid "paid_by_object"
 msgstr "has paid"
 
 msgid "paid_for"
 msgstr "paid for"
+
+msgctxt "ExpenseLine"
+msgid "paid_for"
+msgstr "paid for"
+
+msgctxt "PaidForAccount"
+msgid "paid_for_object"
+msgstr "was paid"
 
 msgid "paid_for_object"
 msgstr "was paid"
@@ -316,6 +399,14 @@ msgstr ""
 msgid "payment_date"
 msgstr "payment date"
 
+msgctxt "Refund"
+msgid "payment_date"
+msgstr "payment date"
+
+msgid "payment_mode"
+msgstr "payment mode"
+
+msgctxt "Refund"
 msgid "payment_mode"
 msgstr "payment mode"
 
@@ -328,24 +419,24 @@ msgstr ""
 msgid "refund for account"
 msgstr ""
 
-msgid "remove this Expense"
-msgstr "remove this expense"
+msgid "refund workflow"
+msgstr ""
 
+msgctxt "inlined:Expense:has_lines:subject"
 msgid "remove this ExpenseLine"
 msgstr "remove this expense line"
 
-msgid "remove this PaidByAccount"
-msgstr "remove this payment account"
-
-msgid "remove this PaidForAccount"
-msgstr "remove this target account"
-
-msgid "remove this Refund"
-msgstr "remove this refund"
+msgctxt "inlined:CWUser:lives_at:subject"
+msgid "remove this PostalAddress"
+msgstr "remove this address"
 
 msgid "social security number"
 msgstr ""
 
+msgid "ssnum"
+msgstr ""
+
+msgctxt "CWUser"
 msgid "ssnum"
 msgstr ""
 
@@ -358,8 +449,31 @@ msgstr ""
 msgid "taxes"
 msgstr ""
 
+msgctxt "ExpenseLine"
+msgid "taxes"
+msgstr ""
+
 msgid "taxes_currency"
 msgstr "taxes currency"
+
+msgctxt "ExpenseLine"
+msgid "taxes_currency"
+msgstr "taxes currency"
+
+msgid "taxes_exchange_rate"
+msgstr "taxes exchange rate"
+
+msgctxt "ExpenseLine"
+msgid "taxes_exchange_rate"
+msgstr "taxes exchange rate"
+
+msgctxt "ExpenseLine"
+msgid "title"
+msgstr ""
+
+msgctxt "Expense"
+msgid "title"
+msgstr ""
 
 msgid "title"
 msgstr ""
@@ -369,6 +483,14 @@ msgstr ""
 
 msgid "to_account"
 msgstr "to account"
+
+msgctxt "Refund"
+msgid "to_account"
+msgstr "to account"
+
+msgctxt "PaidByAccount"
+msgid "to_account_object"
+msgstr "refunded by"
 
 msgid "to_account_object"
 msgstr "refunded by"
@@ -383,6 +505,10 @@ msgid "total tax"
 msgstr ""
 
 msgid "transport"
+msgstr ""
+
+msgctxt "ExpenseLine"
+msgid "type"
 msgstr ""
 
 msgid "type"
