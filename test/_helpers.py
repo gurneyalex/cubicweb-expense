@@ -24,8 +24,7 @@ class HelpersTC(EnvBasedTC):
         return line.eid
 
     def accept(self, expense):
-        self.execute('SET X in_state S WHERE X eid %(x)s, S name "accepted"',
-                     {'x': expense.eid})
+        expense.change_state('accepted')
         self.commit() # to fire corresponding operations
 
     def new_account(self, login):
@@ -43,11 +42,9 @@ class HelpersTC(EnvBasedTC):
 
     def create_and_submit_expense(self):
         expense = self.add_entity('Expense', title=u'company expense')
-        self.execute('SET X in_state S WHERE X eid %(x)s, S name "draft"',
-                     {'x': expense.eid})
         lineeid = self.add_expense_line(expense, self.account1)
-        self.execute('SET X in_state S WHERE X eid %(x)s, S name "submitted"',
-                     {'x': expense.eid})
+        self.commit()
+        expense.fire_transition('submit')
         return expense
 
     def setup_database(self):
@@ -64,6 +61,7 @@ class HelpersTC(EnvBasedTC):
         self.expense = add('Expense', title=u'sprint')
         self.line1 = line1 = self.add_expense_line(self.expense, account1.eid)
         line_comp = self.add_expense_line(self.expense, account_comp.eid)
+        self.commit()
         self.accept(self.expense)
 
 

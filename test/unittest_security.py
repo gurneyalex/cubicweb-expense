@@ -9,7 +9,7 @@ from _helpers import HelpersTC
 
 class SecurityTC(HelpersTC):
 
-    
+
     def test_users_cannot_modify_accepted_expense(self):
         self.login('john')
         rset = self.execute('Any E WHERE E is Expense, E has_lines EE, EE paid_by PA, '
@@ -23,12 +23,13 @@ class SecurityTC(HelpersTC):
     def test_users_cannot_accept_expense(self):
         self.login('john')
         expense = self.create_and_submit_expense()
-        self.assertRaises(ValidationError, self.execute, 'SET X in_state S WHERE X eid %(x)s, S name "accepted"',
-                          {'x': expense.eid})
+        self.commit()
+        self.assertRaises(ValidationError, expense.fire_transition, 'accept')
 
     def test_users_cannot_update_accepted_expense_line(self):
         expense = self.add_entity('Expense', title=u'company expense')
         lineeid = self.add_expense_line(expense, self.account1)
+        self.commit()
         self.accept(expense)
         self.login('john')
         self.execute('SET E amount %(a)s WHERE E eid %(e)s', {'e': lineeid, 'a': 12.3})
@@ -36,9 +37,9 @@ class SecurityTC(HelpersTC):
 
     def test_users_can_create_expenses(self):
         self.login('john')
-        self.create_and_submit_expense()               
-        self.commit()       
-   
+        self.create_and_submit_expense()
+        self.commit()
+
     def test_users_cannot_create_refunds(self):
         self.login('john')
         rset = self.execute('Any EE WHERE E is Expense, E has_lines EE, EE paid_by PA, '
@@ -61,7 +62,7 @@ class SecurityTC(HelpersTC):
         self.execute(rql, {'e': line.eid})
         self.assertRaises(Unauthorized, self.commit)
 
-           
+
 
 if __name__ == '__main__':
     unittest_main()
