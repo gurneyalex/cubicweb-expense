@@ -1,13 +1,15 @@
 from yams.buildobjs import (EntityType, RelationType, SubjectRelation,
                             ObjectRelation, Float, Date, String, RichString)
-from cubicweb.schema import RRQLExpression, ERQLExpression, RQLConstraint
+from cubicweb.schema import (WorkflowableEntityType, RQLConstraint,
+                             RRQLExpression, ERQLExpression)
 
-CWUser = import_erschema('CWUser')
+from cubicweb.schemas.base import CWUser
+
 CWUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')
 CWUser.add_relation(SubjectRelation('PostalAddress', cardinality='?1', composite='subject'), name='lives_at')
 
 
-class Expense(EntityType):
+class Expense(WorkflowableEntityType):
     permissions = {'read': ('users', 'managers'),
                    'add': ('users', 'managers'),
                    'update': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
@@ -18,9 +20,6 @@ class Expense(EntityType):
 
     has_lines = SubjectRelation('ExpenseLine', cardinality='+1', composite='subject')
     # workflow : submitted, accepted
-    in_state = SubjectRelation('State', cardinality='1*',
-                               constraints=[RQLConstraint('O state_of ET, S is ET')])
-    wf_info_for = ObjectRelation('TrInfo', cardinality='1*', composite='object')
 
 
 class ExpenseLine(EntityType):
@@ -67,7 +66,7 @@ class PaidForAccount(EntityType):
     account = String(maxsize=16)
 
 
-class Refund(EntityType):
+class Refund(WorkflowableEntityType):
     permissions = {'read': ('users', 'managers'),
                    'add': ('managers', ),
                    'update': ('managers',),
@@ -79,9 +78,6 @@ class Refund(EntityType):
     has_lines = SubjectRelation('ExpenseLine', cardinality='+*')
     to_account = SubjectRelation('PaidByAccount', cardinality='1*')
     # workflow : preparation / paid
-    in_state = SubjectRelation('State', cardinality='1*',
-                               constraints=[RQLConstraint('O state_of ET, S is ET')])
-    wf_info_for = ObjectRelation('TrInfo', cardinality='1*', composite='object')
 
 
 class has_lines(RelationType):
