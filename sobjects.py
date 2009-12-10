@@ -65,7 +65,7 @@ class OnExpenseAcceptedHook(Hook):
         etype = session.describe(fromeid)[0]
         if etype != 'Expense':
             return
-        newstate = session.entity(toeid).name
+        newstate = session.entity_from_eid(toeid).name
         if newstate == 'accepted':
             UpdateRefundStateOperation(session, expense=fromeid)
 
@@ -77,7 +77,7 @@ class ExpenseLinesRecipientsFinder(RecipientsFinder):
                  'X primary_email E, E address A, EE eid %(ee)s')
 
     def recipients(self):
-        expense = self.entity(0)
+        expense = self.rset.get_entity(0, 0)
         rset = self.req.execute(self.users_rql, {'ee': expense.eid})
         return sorted(set((u.get_email(), u.property_value('ui.language'))
                           for u in rset.entities()))
@@ -102,7 +102,8 @@ URL
 """)
 
     def subject(self):
-        return u'%s %s' % (self.req._('expense accepted: '), self.entity(0).title)
+        entity = self.rset.get_entity(0, 0)
+        return u'%s %s' % (self.req._('expense accepted: '), entity.title)
 
     def context(self, **kwargs):
         context = super(ExpenseAcceptedView, self).context(**kwargs)

@@ -20,6 +20,7 @@ class HooksTC(HelpersTC):
         refund = rset[0][0]
         expense = self.add_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense, self.account1)
+        self.commit()
         self.accept(expense)
         rset = self.execute('Any COUNT(L) WHERE R has_lines L, R eid %(r)s', {'r': refund})
         self.assertEquals(rset[0][0], 2)
@@ -28,6 +29,7 @@ class HooksTC(HelpersTC):
         count = self.execute('Any COUNT(R) WHERE R is Refund, R in_state S, S name "preparation"')[0][0]
         expense = self.add_entity('Expense', title=u'company expense')
         self.add_expense_line(expense, self.account_comp)
+        self.commit()
         self.accept(expense)
         newcount = self.execute('Any COUNT(R) WHERE R is Refund, R in_state S, S name "preparation"')[0][0]
         self.assertEquals(newcount, count)
@@ -58,9 +60,12 @@ class HooksTC(HelpersTC):
     def test_refund_acted_notification(self):
         expense1 = self.add_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense1, self.account1)
+        self.commit()
         self.accept(expense1)
+        MAILBOX[:] = []
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid"'
-        rset = self.execute(rql, {'a': self.account1})
+        account1 = self.execute('Any X WHERE X eid %(x)s', {'x': self.account1}, 'x').get_entity(0, 0)
+        account1.reverse_to_account[0].fire_transition('pay')
         self.assertEquals(len(MAILBOX), 0, MAILBOX)
         self.commit() # to fire corresponding operations
         self.assertEquals(len(MAILBOX), 1, MAILBOX)
@@ -69,9 +74,11 @@ class HooksTC(HelpersTC):
         MAILBOX[:] = []
         expense2 = self.add_entity('Expense', title=u'expense 3')
         self.add_expense_line(expense2, self.account1)
+        self.commit()
         self.accept(expense2)
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid", NOT R in_state S'
-        rset = self.execute(rql, {'a': self.account1})
+        account1.clear_all_caches()
+        account1.reverse_to_account[0].fire_transition('pay')
         self.commit() # to fire corresponding operations
         email2 = MAILBOX[0]
         self.assertUnorderedIterableEquals(email2.recipients, ['john@test.org'])
@@ -81,20 +88,21 @@ class HooksTC(HelpersTC):
     def test_automatic_refund_with_existing_line(self):
         refund = self.add_entity('Refund')
         # NOTE: use account2 which doesn't have a refund yet
-        self.add_relation(refund.eid, 'to_account', self.account2)        
+        self.add_relation(refund.eid, 'to_account', self.account2)
         expense = self.add_entity('Expense', title=u'expense 2')
         line1eid = self.add_expense_line(expense, self.account2)
         line2eid = self.add_expense_line(expense, self.account2)
         line3eid = self.add_expense_line(expense, self.account2)
         self.add_relation(refund.eid, 'has_lines', line1eid)
         self.add_relation(refund.eid, 'has_lines', line2eid)
+        self.commit()
         rset = self.execute('Any R,COUNT(L) WHERE R has_lines L, R eid %s' % refund.eid)
         self.assertEquals(len(rset), 1)
         self.assertEquals(rset[0][1], 2)
         self.accept(expense)
         rset = self.execute('Any L WHERE R has_lines L, R eid %(r)s', {'r': refund.eid})
         self.assertEquals(len(rset), 3)
-        
+
 
 if __name__ == '__main__':
     unittest_main()
