@@ -77,8 +77,8 @@ class ExpenseLinesRecipientsFinder(RecipientsFinder):
                  'X primary_email E, E address A, EE eid %(ee)s')
 
     def recipients(self):
-        expense = self.rset.get_entity(0, 0)
-        rset = self.req.execute(self.users_rql, {'ee': expense.eid})
+        expense = self._cw.get_entity(0, 0)
+        rset = self._cw.execute(self.users_rql, {'ee': expense.eid})
         return sorted(set((u.get_email(), u.property_value('ui.language'))
                           for u in rset.entities()))
 
@@ -102,12 +102,12 @@ URL
 """)
 
     def subject(self):
-        entity = self.rset.get_entity(0, 0)
-        return u'%s %s' % (self.req._('expense accepted: '), entity.title)
+        entity = self._cw.get_entity(0, 0)
+        return u'%s %s' % (self._cw._('expense accepted: '), entity.title)
 
     def context(self, **kwargs):
         context = super(ExpenseAcceptedView, self).context(**kwargs)
-        entity = self.complete_entity(0, 0)
+        entity = self.cw_rset.complete_entity(0, 0)
         description = entity.printable_value('description', format='text/plain')
         description = normalize_text(description, 80)
         detail = u'\n'.join(line.view('textoutofcontext') for line in entity.has_lines)
@@ -134,7 +134,7 @@ URL
 """)
 
     def subject(self):
-        return self.req._('your expense will be refunded on your next payroll')
+        return self._cw._('your expense will be refunded on your next payroll')
 
     def context(self, **kwargs):
         context = super(RefundActedView, self).context(**kwargs)

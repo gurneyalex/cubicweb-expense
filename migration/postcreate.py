@@ -2,7 +2,7 @@
 wf = add_workflow(_('expense workflow'), 'Expense')
 draft = wf.add_state(_('draft'), initial=True)
 submitted = wf.add_state(_('submitted'))
-accepted = wf.add_state(_('accepted'),  'Expense')
+accepted = wf.add_state(_('accepted'))
 wf.add_transition(_('accept'), submitted, accepted,
                   requiredgroups=('managers',))
 wf.add_transition(_('submit'), draft, submitted)

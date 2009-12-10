@@ -2,7 +2,7 @@
 
 from logilab.common.testlib import unittest_main
 
-from cubicweb.devtools.apptest import MAILBOX
+from cubicweb.devtools.testlib import MAILBOX
 from cubicweb import Unauthorized, ValidationError
 
 from _helpers import HelpersTC

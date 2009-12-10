@@ -89,7 +89,7 @@ class ExpenseLine(AnyEntity):
 
     def dc_title(self):
         return u'%s - %s - %s - %s %s' % (self.format_date(self.diem),
-                                          self.req._(self.type), self.title,
+                                          self._cw._(self.type), self.title,
                                           self.amount, self.currency)
 
 
@@ -103,7 +103,7 @@ class ExpenseLine(AnyEntity):
 
     def euro_amount(self):
         if self.currency == 'EUR':
-            return self.amount        
+            return self.amount
         return self.exchange_rate * self.amount
 
     def euro_taxes(self):
@@ -132,7 +132,7 @@ class Refund(LineContainerMixIn, AnyEntity):
     fetch_attrs = ('payment_date', 'payment_mode')
 
     def dc_title(self):
-        _ = self.req._
+        _ = self._cw._
         return u'%s %s, %s: %s' % (_('refund for account'),
                                    self.paid_by_accounts()[0].view('textincontext'),
                                    _('amount'), self.total)
