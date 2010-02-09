@@ -6,7 +6,7 @@ from cubicweb.schema import (WorkflowableEntityType, RQLConstraint,
 from cubicweb.schemas.base import CWUser
 
 CWUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')
-CWUser.add_relation(SubjectRelation('PostalAddress', cardinality='?1', composite='subject'), name='lives_at')
+CWUser.add_relation(SubjectRelation('PostalAddress', cardinality='??', composite='subject'), name='lives_at')
 
 
 class Expense(WorkflowableEntityType):
@@ -18,7 +18,9 @@ class Expense(WorkflowableEntityType):
     title = String(maxsize=128, required=True)
     description = RichString(fulltextindexed=True)
 
-    has_lines = SubjectRelation('ExpenseLine', cardinality='+1', composite='subject')
+    # XXX '*' cardinality since ExpendLine has to be a line of an Expense and
+    # may also be a line of a Refund
+    has_lines = SubjectRelation('ExpenseLine', cardinality='+*', composite='subject')
     # workflow : submitted, accepted
 
 
@@ -76,6 +78,8 @@ class Refund(WorkflowableEntityType):
     payment_date = Date(description=_('payment date'))
     payment_mode = String(maxsize=64, description=_('payment mode'))
 
+    # XXX '*' cardinality since ExpendLine has to be a line of an Expense and
+    # may also be a line of a Refund
     has_lines = SubjectRelation('ExpenseLine', cardinality='+*')
     to_account = SubjectRelation('PaidByAccount', cardinality='1*')
     # workflow : preparation / paid
