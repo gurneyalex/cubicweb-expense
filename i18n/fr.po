@@ -110,6 +110,10 @@ msgstr "Fiche de frais"
 msgid "Expense Type"
 msgstr "Type dépense"
 
+msgctxt "inlined:Expense.has_lines.subject"
+msgid "ExpenseLine"
+msgstr "Ligne de dépense"
+
 msgid "ExpenseLine"
 msgstr "Ligne de dépense"
 
@@ -157,6 +161,10 @@ msgstr "Compte cible"
 
 msgid "PaidForAccount_plural"
 msgstr "Comptes cibles"
+
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "PostalAddress"
+msgstr "adresse"
 
 msgid "Rate"
 msgstr "Taux"
@@ -246,6 +254,17 @@ msgstr ""
 # add related box generated message
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "ligne de dépense"
+
+msgctxt "inlined:Expense.has_lines.subject"
+msgid "add a ExpenseLine"
+msgstr "nouvelle ligne de dépense"
+
+# schema pot file, generated on 2010-02-09 11:03:10
+#
+# singular and plural forms for each entity type
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "add a PostalAddress"
+msgstr "nouvelle adresse"
 
 msgid "amount"
 msgstr "montant"

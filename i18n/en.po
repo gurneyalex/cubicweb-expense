@@ -85,6 +85,10 @@ msgstr ""
 msgid "Expense Type"
 msgstr ""
 
+msgctxt "inlined:Expense.has_lines.subject"
+msgid "ExpenseLine"
+msgstr ""
+
 msgid "ExpenseLine"
 msgstr "Expense line"
 
@@ -132,6 +136,10 @@ msgstr "Target account"
 
 msgid "PaidForAccount_plural"
 msgstr "Target accounts"
+
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "PostalAddress"
+msgstr ""
 
 msgid "Rate"
 msgstr ""
@@ -218,6 +226,17 @@ msgstr ""
 # add related box generated message
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "expense line"
+
+msgctxt "inlined:Expense.has_lines.subject"
+msgid "add a ExpenseLine"
+msgstr ""
+
+# schema pot file, generated on 2010-02-09 11:03:10
+#
+# singular and plural forms for each entity type
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "add a PostalAddress"
+msgstr ""
 
 msgid "amount"
 msgstr ""
