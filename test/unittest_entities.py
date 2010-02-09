@@ -5,7 +5,7 @@ from _helpers import HelpersTC
 class EntitiesTC(HelpersTC):
 
     def test_totals_paid_by(self):
-        expense = self.add_entity('Expense', title=u'expense 2')
+        expense = self.request().create_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense, self.account1)
         self.add_expense_line(expense, self.account2)
         self.add_expense_line(expense, self.account1)

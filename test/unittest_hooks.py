@@ -18,7 +18,7 @@ class HooksTC(HelpersTC):
     def test_refunds_gets_updated_on_new_lines(self):
         rset = self.execute('Any R,PA WHERE R has_lines L, R to_account PA')
         refund = rset[0][0]
-        expense = self.add_entity('Expense', title=u'expense 2')
+        expense = self.request().create_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense, self.account1)
         self.commit()
         self.accept(expense)
@@ -27,7 +27,7 @@ class HooksTC(HelpersTC):
 
     def test_no_refund_is_created_for_company_account(self):
         count = self.execute('Any COUNT(R) WHERE R is Refund, R in_state S, S name "preparation"')[0][0]
-        expense = self.add_entity('Expense', title=u'company expense')
+        expense = self.request().create_entity('Expense', title=u'company expense')
         self.add_expense_line(expense, self.account_comp)
         self.commit()
         self.accept(expense)
@@ -37,7 +37,7 @@ class HooksTC(HelpersTC):
     def test_no_refund_is_created_while_not_accepted(self):
         """make sure no refund is created until expense was accepted"""
         count = self.refund_lines_count(self.account1)
-        expense = self.add_entity('Expense', title=u'expense 1')
+        expense = self.request().create_entity('Expense', title=u'expense 1')
         self.add_expense_line(expense, self.account1)
         self.commit() # to fire corresponding operations
         newcount = self.refund_lines_count(self.account1)
@@ -48,7 +48,7 @@ class HooksTC(HelpersTC):
 
 
     def test_expense_accepted_notification(self):
-        expense = self.add_entity('Expense', title=u'expense 2')
+        expense = self.request().create_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense, self.account1)
         # force expense to its initial state, otherwise StatusChangeHook won't be called
         self.commit()
@@ -58,7 +58,7 @@ class HooksTC(HelpersTC):
         self.assertUnorderedIterableEquals(MAILBOX[0].recipients, ['john@test.org'])
 
     def test_refund_acted_notification(self):
-        expense1 = self.add_entity('Expense', title=u'expense 2')
+        expense1 = self.request().create_entity('Expense', title=u'expense 2')
         self.add_expense_line(expense1, self.account1)
         self.commit()
         self.accept(expense1)
@@ -72,7 +72,7 @@ class HooksTC(HelpersTC):
         email1 = MAILBOX[0]
         self.assertUnorderedIterableEquals(email1.recipients, ['john@test.org'])
         MAILBOX[:] = []
-        expense2 = self.add_entity('Expense', title=u'expense 3')
+        expense2 = self.request().create_entity('Expense', title=u'expense 3')
         self.add_expense_line(expense2, self.account1)
         self.commit()
         self.accept(expense2)
@@ -86,10 +86,10 @@ class HooksTC(HelpersTC):
 
 
     def test_automatic_refund_with_existing_line(self):
-        refund = self.add_entity('Refund')
+        refund = self.request().create_entity('Refund')
         # NOTE: use account2 which doesn't have a refund yet
         self.add_relation(refund.eid, 'to_account', self.account2)
-        expense = self.add_entity('Expense', title=u'expense 2')
+        expense = self.request().create_entity('Expense', title=u'expense 2')
         line1eid = self.add_expense_line(expense, self.account2)
         line2eid = self.add_expense_line(expense, self.account2)
         line3eid = self.add_expense_line(expense, self.account2)
