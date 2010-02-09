@@ -1,7 +1,7 @@
 """specific views for expense component
 
 :organization: Logilab
-:copyright: 2008-2009 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2010 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 __docformat__ = "restructuredtext en"
@@ -11,7 +11,7 @@ from cStringIO import StringIO
 
 from logilab.mtconverter import xml_escape
 
-from cubicweb.selectors import one_line_rset, implements
+from cubicweb.selectors import yes, one_line_rset, implements
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
 from cubicweb.web.views import primary, autoform, workflow, urlrewrite
@@ -105,50 +105,51 @@ class RefundPrimaryView(primary.PrimaryView):
 
 try:
     from cubes.expense.pdfgen.writers import PDFWriter
+    has_reportlab = yes()
 except ImportError:
-    # reportlab not install
-    # XXX emit warning?
-    pass
-else:
+    has_reportlab = yes(0)
 
-    class PDFAction(action.Action):
-        __regid__ = 'pdfaction'
-        __select__ = one_line_rset() & implements('Expense','Refund')
+# use the has_reportlab selector trick to have them in the registry anyway
+# and avoid for instance i18n messages removing due to missing reportlab
 
-        title = _('generate pdf document')
-        category = 'mainactions'
+class PDFAction(action.Action):
+    __regid__ = 'pdfaction'
+    __select__ = has_reportlab & one_line_rset() & implements('Expense','Refund')
 
-        def url(self):
-            return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
+    title = _('generate pdf document')
+    category = 'mainactions'
+
+    def url(self):
+        return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
 
 
-    class PdfExportView(EntityView):
-        __regid__ = 'pdfexport'
-        __select__ = one_line_rset() & implements('Refund', 'Expense')
+class PdfExportView(EntityView):
+    __regid__ = 'pdfexport'
+    __select__ = has_reportlab & one_line_rset() & implements('Refund', 'Expense')
 
-        title = _('pdf export')
-        content_type = 'application/pdf'
-        templatable = False
-        binary = True
+    title = _('pdf export')
+    content_type = 'application/pdf'
+    templatable = False
+    binary = True
 
-        def cell_call(self, row, col):
-            # import error to avoid import error if reportlab isn't available
-            _ = self._cw._
-            writer = PDFWriter(self.config)
-            entity = self.cw_rset.get_entity(row, col)
-            entity.complete()
-            # XXX reportlab needs HOME and getcwd to find fonts
-            home_backup = os.environ.get('HOME')
-            getcwd_backup = os.getcwd
-            try:
-                os.environ['HOME'] = 'wtf'
-                os.getcwd = lambda: 'wtf'
-                # NOTE: we could use self.w.__self__ directly
-                stream = StringIO()
-                writer.write(entity, stream)
-                self.w(stream.getvalue())
-            finally:
-                if home_backup:
-                    os.environ['HOME'] = home_backup
-                os.getcwd = getcwd_backup
+    def cell_call(self, row, col):
+        # import error to avoid import error if reportlab isn't available
+        _ = self._cw._
+        writer = PDFWriter(self.config)
+        entity = self.cw_rset.get_entity(row, col)
+        entity.complete()
+        # XXX reportlab needs HOME and getcwd to find fonts
+        home_backup = os.environ.get('HOME')
+        getcwd_backup = os.getcwd
+        try:
+            os.environ['HOME'] = 'wtf'
+            os.getcwd = lambda: 'wtf'
+            # NOTE: we could use self.w.__self__ directly
+            stream = StringIO()
+            writer.write(entity, stream)
+            self.w(stream.getvalue())
+        finally:
+            if home_backup:
+                os.environ['HOME'] = home_backup
+            os.getcwd = getcwd_backup
 
