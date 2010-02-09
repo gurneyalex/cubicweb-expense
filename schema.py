@@ -44,6 +44,7 @@ class ExpenseLine(EntityType):
     currency = String(required=True, maxsize=30, default=u'EUR')
     exchange_rate = Float(required=True, default=1.0)
 
+
 class PaidByAccount(EntityType):
     __permissions__ = {'read': ('users', 'managers'),
                        'add': ('managers', ),
@@ -86,6 +87,6 @@ class has_lines(RelationType):
     # Refund automatically via a hook through an unsafe_execute
     __permissions__ = {
         'read' : ('managers', 'users'),
-        'add': ('managers', RRQLExpression('S is Expense, NOT EXISTS(S in_state ST, NOT ST name "accepted")')),
-        'delete': ('managers', RRQLExpression('S is Expense, NOT EXISTS(S in_state ST, NOT ST name "accepted")')),
+        'add': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
+        'delete': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
         }

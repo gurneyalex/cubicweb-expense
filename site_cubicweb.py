@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+try:
+    from cubicweb import server
+    server.ON_COMMIT_ADD_RELATIONS.add('has_lines')
+except ImportError:
+    pass
 
 options = (
     ('logo-filename',
