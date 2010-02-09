@@ -219,17 +219,6 @@ msgstr ""
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "expense line"
 
-msgctxt "inlined:Expense.has_lines.subject"
-msgid "add a ExpenseLine"
-msgstr "expense line"
-
-# schema pot file, generated on 2009-09-17 16:23:59
-#
-# singular and plural forms for each entity type
-msgctxt "inlined:CWUser.lives_at.subject"
-msgid "add a PostalAddress"
-msgstr "add a postal address"
-
 msgid "amount"
 msgstr ""
 
@@ -421,14 +410,6 @@ msgstr ""
 
 msgid "refund workflow"
 msgstr ""
-
-msgctxt "inlined:Expense:has_lines:subject"
-msgid "remove this ExpenseLine"
-msgstr "remove this expense line"
-
-msgctxt "inlined:CWUser:lives_at:subject"
-msgid "remove this PostalAddress"
-msgstr "remove this address"
 
 msgid "social security number"
 msgstr ""
