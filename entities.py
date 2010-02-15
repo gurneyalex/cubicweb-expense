@@ -55,7 +55,7 @@ class LineContainerMixIn(object):
 
 
 class Expense(LineContainerMixIn, AnyEntity):
-    id = 'Expense'
+    __regid__ = 'Expense'
     fetch_attrs, fetch_order = fetch_config(['title'])
 
     def dc_long_title(self):
@@ -72,7 +72,7 @@ class Expense(LineContainerMixIn, AnyEntity):
         return sum(line.euro_amount() for line in self.has_lines)
 
 class ExpenseLine(AnyEntity):
-    id = 'ExpenseLine'
+    __regid__ = 'ExpenseLine'
     fetch_attrs, fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
                                              'currency'])
 
@@ -88,8 +88,8 @@ class ExpenseLine(AnyEntity):
         return self.parent_expense
 
     def dc_title(self):
-        return u'%s - %s - %s - %s %s' % (self.format_date(self.diem),
-                                          self.req._(self.type), self.title,
+        return u'%s - %s - %s - %s %s' % (self._cw.format_date(self.diem),
+                                          self._cw._(self.type), self.title,
                                           self.amount, self.currency)
 
 
@@ -103,7 +103,7 @@ class ExpenseLine(AnyEntity):
 
     def euro_amount(self):
         if self.currency == 'EUR':
-            return self.amount        
+            return self.amount
         return self.exchange_rate * self.amount
 
     def euro_taxes(self):
@@ -113,7 +113,7 @@ class ExpenseLine(AnyEntity):
 
 
 class PaidByAccount(AnyEntity):
-    id = 'PaidByAccount'
+    __regid__ = 'PaidByAccount'
     fetch_attrs, fetch_order = fetch_config(['label', 'account'])
 
     def dc_title(self):
@@ -124,15 +124,15 @@ class PaidByAccount(AnyEntity):
 
 
 class PaidForAccount(PaidByAccount):
-    id = 'PaidForAccount'
+    __regid__ = 'PaidForAccount'
 
 
 class Refund(LineContainerMixIn, AnyEntity):
-    id = 'Refund'
+    __regid__ = 'Refund'
     fetch_attrs = ('payment_date', 'payment_mode')
 
     def dc_title(self):
-        _ = self.req._
+        _ = self._cw._
         return u'%s %s, %s: %s' % (_('refund for account'),
                                    self.paid_by_accounts()[0].view('textincontext'),
                                    _('amount'), self.total)

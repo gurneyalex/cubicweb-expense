@@ -1,7 +1,7 @@
 """specific views for expense component
 
 :organization: Logilab
-:copyright: 2008-2009 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2010 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 __docformat__ = "restructuredtext en"
@@ -9,40 +9,12 @@ __docformat__ = "restructuredtext en"
 import os
 from cStringIO import StringIO
 
-from logilab.mtconverter import html_escape
+from logilab.mtconverter import xml_escape
 
-from cubicweb.selectors import one_line_rset, implements
+from cubicweb.selectors import yes, one_line_rset, implements
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
 from cubicweb.web.views import primary, autoform, workflow, urlrewrite
-
-
-uicfg.autoform_is_inlined.tag_subject_of(('CWUser', 'lives_at', '*'), True)
-uicfg.autoform_section.tag_subject_of(('CWUser', 'lives_at', '*'), 'generated')
-uicfg.autoform_is_inlined.tag_subject_of(('Expense', 'has_lines', '*'), True)
-uicfg.autoform_section.tag_subject_of(('Expense', 'has_lines', '*'), 'generated')
-uicfg.autoform_section.tag_subject_of(('ExpenseLine', 'paid_by', '*'), 'primary')
-uicfg.autoform_field_kwargs.tag_subject_of(('ExpenseLine', 'paid_by', '*'), {'sort': True})
-uicfg.autoform_section.tag_subject_of(('ExpenseLine', 'paid_for', '*'), 'secondary')
-uicfg.autoform_field_kwargs.tag_subject_of(('ExpenseLine', 'paid_for', '*'), {'sort': True})
-
-uicfg.autoform_permissions_overrides.tag_subject_of(('Expense', 'has_lines', '*'),
-                                            'add_on_new')
-
-uicfg.primaryview_section.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
-uicfg.primaryview_section.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
-uicfg.primaryview_section.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
-
-
-class PDFAction(action.Action):
-    id = 'pdfaction'
-    __select__ = one_line_rset() & implements('Expense','Refund')
-
-    title = _('generate pdf document')
-    category = 'mainactions'
-
-    def url(self):
-        return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
 
 
 class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
@@ -51,22 +23,51 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
                        'E in_state S, S name "submitted"')),
         ]
 
-## views and forms ############################################################
+## forms #######################################################################
+
+_afs = uicfg.autoform_section
+_affk = uicfg.autoform_field_kwargs
+_afs.tag_subject_of(('CWUser', 'lives_at', '*'), 'main', 'inlined')
+_afs.tag_subject_of(('Expense', 'has_lines', '*'), 'main', 'inlined')
+
+_afs.tag_subject_of(('ExpenseLine', 'paid_by', '*'), 'main', 'attributes')
+_afs.tag_subject_of(('ExpenseLine', 'paid_by', '*'), 'muledit', 'attributes')
+_affk.tag_subject_of(('ExpenseLine', 'paid_by', '*'), {'sort': True})
+_afs.tag_subject_of(('ExpenseLine', 'paid_for', '*'), 'main', 'attributes')
+_affk.tag_subject_of(('ExpenseLine', 'paid_for', '*'), {'sort': True})
+
+# XXX still necessary?
+uicfg.autoform_permissions_overrides.tag_subject_of(
+    ('Expense', 'has_lines', '*'), 'add_on_new')
+
+
+class RefundChangeStateForm(workflow.ChangeStateForm):
+    __select__ = implements('Refund')
+    payment_date = autoform.etype_relation_field('Refund', 'payment_date')
+    payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
+
+
+## views #######################################################################
+
+_pvs = uicfg.primaryview_section
+_pvs.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
+_pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
+_pvs.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
 
 class ExpensePrimaryView(primary.PrimaryView):
     __select__ = implements('Expense',)
 
     def render_entity_title(self, entity):
-        title = html_escape(u'%s - %s' % (entity.dc_title(),
-                                          self.req._(entity.state)))
+        title = xml_escape(u'%s - %s' % (entity.dc_title(),
+                                         self._cw._(entity.state)))
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
     def render_entity_attributes(self, entity):
-        _ = self.req._
+        _ = self._cw._
         self.w(u'%s: %s %s %s' % (_('total'), entity.euro_total(),
                                   _('including taxes'), entity.euro_taxes()))
-        rset = self.req.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL '
+        rset = self._cw.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL '
                                 'GROUPBY EID,T,ET,EC,EA,C,CL '
                                 'WHERE X has_lines E, X eid %(x)s, E eid EID, '
                                 'E type T, E title ET, E currency EC, '
@@ -83,29 +84,48 @@ class RefundPrimaryView(primary.PrimaryView):
     __select__ = implements('Refund',)
 
     def render_entity_title(self, entity):
-        title = html_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
+        title = xml_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
     def render_entity_attributes(self, entity):
-        _ = self.req._
+        _ = self._cw._
         self.field(_('account to refund'),
                    entity.paid_by_accounts()[0].view('oneline'), tr=False)
         self.field(_('total'), entity.total, tr=False)
         if entity.payment_date:
-            self.field(_('payment date'), self.format_date(entity.payment_date),
-                       tr=False)
+            self.field('payment_date', entity.printable_value('payment_date'))
         if entity.payment_mode:
-            self.field(_('payment mode'), entity.payment_mode, tr=False)
-        rset = self.req.execute('Any E,ET,EC,EA WHERE X has_lines E, X eid %(x)s, '
+            self.field('payment_mode', xml_escape(entity.payment_mode))
+        rset = self._cw.execute('Any E,ET,EC,EA WHERE X has_lines E, X eid %(x)s, '
                                 'E title ET, E currency EC, E amount EA',
                                 {'x': entity.eid})
         self.wview('table', rset, displayfilter=True)
 
 
+try:
+    from cubes.expense.pdfgen.writers import PDFWriter
+    has_reportlab = yes()
+except ImportError:
+    has_reportlab = yes(0)
+
+# use the has_reportlab selector trick to have them in the registry anyway
+# and avoid for instance i18n messages removing due to missing reportlab
+
+class PDFAction(action.Action):
+    __regid__ = 'pdfaction'
+    __select__ = has_reportlab & one_line_rset() & implements('Expense','Refund')
+
+    title = _('generate pdf document')
+    category = 'mainactions'
+
+    def url(self):
+        return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
+
+
 class PdfExportView(EntityView):
-    id = 'pdfexport'
-    __select__ = one_line_rset() & implements('Refund', 'Expense')
+    __regid__ = 'pdfexport'
+    __select__ = has_reportlab & one_line_rset() & implements('Refund', 'Expense')
 
     title = _('pdf export')
     content_type = 'application/pdf'
@@ -114,10 +134,9 @@ class PdfExportView(EntityView):
 
     def cell_call(self, row, col):
         # import error to avoid import error if reportlab isn't available
-        from cubes.expense.pdfgen.writers import PDFWriter
-        _ = self.req._
+        _ = self._cw._
         writer = PDFWriter(self.config)
-        entity = self.rset.get_entity(row, col)
+        entity = self.cw_rset.get_entity(row, col)
         entity.complete()
         # XXX reportlab needs HOME and getcwd to find fonts
         home_backup = os.environ.get('HOME')
@@ -133,10 +152,4 @@ class PdfExportView(EntityView):
             if home_backup:
                 os.environ['HOME'] = home_backup
             os.getcwd = getcwd_backup
-
-
-class RefundChangeStateForm(workflow.ChangeStateForm):
-    __select__ = implements('Refund')
-    payment_date = autoform.etype_relation_field('Refund', 'payment_date')
-    payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
 

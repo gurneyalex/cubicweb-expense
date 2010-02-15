@@ -4,11 +4,11 @@
 modname = 'expense'
 distname = 'cubicweb-expense'
 
-numversion = (0, 5, 0)
+numversion = (0, 6, 0)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
-copyright = '''Copyright (c) 2008-2009 LOGILAB S.A. (Paris, FRANCE).
+copyright = '''Copyright (c) 2008-2010 LOGILAB S.A. (Paris, FRANCE).
 http://www.logilab.fr/ -- mailto:contact@logilab.fr'''
 
 author = 'Logilab'
@@ -34,7 +34,7 @@ classifiers = [
 ]
 
 __depends_cubes__ = {'addressbook': None}
-__depends__ = {'cubicweb': '>= 3.5.0'}
+__depends__ = {'cubicweb': '>= 3.6.0'}
 for key, value in __depends_cubes__.items():
     __depends__['cubicweb-'+key] = value
 __use__ = tuple(__depends_cubes__)

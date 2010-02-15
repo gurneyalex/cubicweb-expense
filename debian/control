@@ -13,7 +13,7 @@ Package: cubicweb-expense
 Architecture: all
 Conflicts: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
 Replaces: erudi-expense, erudi-expense-server, erudi-expense-client, erudi-expense-comp
-Depends: cubicweb-addressbook, cubicweb-common (>= 3.5.0)
+Depends: cubicweb-addressbook, cubicweb-common (>= 3.6.0)
 Description: expense component for the CubicWeb framework
  This CubicWeb component models expenses (usable to implement
  expense tracking application).

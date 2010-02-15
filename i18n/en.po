@@ -85,6 +85,10 @@ msgstr ""
 msgid "Expense Type"
 msgstr ""
 
+msgctxt "inlined:Expense.has_lines.subject"
+msgid "ExpenseLine"
+msgstr ""
+
 msgid "ExpenseLine"
 msgstr "Expense line"
 
@@ -132,6 +136,10 @@ msgstr "Target account"
 
 msgid "PaidForAccount_plural"
 msgstr "Target accounts"
+
+msgctxt "inlined:CWUser.lives_at.subject"
+msgid "PostalAddress"
+msgstr ""
 
 msgid "Rate"
 msgstr ""
@@ -221,14 +229,14 @@ msgstr "expense line"
 
 msgctxt "inlined:Expense.has_lines.subject"
 msgid "add a ExpenseLine"
-msgstr "expense line"
+msgstr ""
 
-# schema pot file, generated on 2009-09-17 16:23:59
+# schema pot file, generated on 2010-02-09 11:03:10
 #
 # singular and plural forms for each entity type
 msgctxt "inlined:CWUser.lives_at.subject"
 msgid "add a PostalAddress"
-msgstr "add a postal address"
+msgstr ""
 
 msgid "amount"
 msgstr ""
@@ -421,14 +429,6 @@ msgstr ""
 
 msgid "refund workflow"
 msgstr ""
-
-msgctxt "inlined:Expense:has_lines:subject"
-msgid "remove this ExpenseLine"
-msgstr "remove this expense line"
-
-msgctxt "inlined:CWUser:lives_at:subject"
-msgid "remove this PostalAddress"
-msgstr "remove this address"
 
 msgid "social security number"
 msgstr ""

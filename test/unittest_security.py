@@ -2,7 +2,7 @@
 
 from logilab.common.testlib import unittest_main
 
-from cubicweb.devtools.apptest import MAILBOX
+from cubicweb.devtools.testlib import MAILBOX
 from cubicweb import Unauthorized, ValidationError
 
 from _helpers import HelpersTC
@@ -27,7 +27,7 @@ class SecurityTC(HelpersTC):
         self.assertRaises(ValidationError, expense.fire_transition, 'accept')
 
     def test_users_cannot_update_accepted_expense_line(self):
-        expense = self.add_entity('Expense', title=u'company expense')
+        expense = self.request().create_entity('Expense', title=u'company expense')
         lineeid = self.add_expense_line(expense, self.account1)
         self.commit()
         self.accept(expense)
@@ -51,7 +51,7 @@ class SecurityTC(HelpersTC):
         self.execute(rql, {'e': lineeid, 'a': self.account1})
         self.assertRaises(Unauthorized, self.commit)
 
-    def test_users_canot_update_refunds(self):
+    def test_users_cannot_update_refunds(self):
         self.login('john')
         rset = self.execute('Any R WHERE R is Refund, R has_lines EE, EE paid_by PA, '
                             'R to_account PA, PA associated_to U, U eid %(u)s',
