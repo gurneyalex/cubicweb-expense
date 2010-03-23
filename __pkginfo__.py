@@ -15,10 +15,11 @@ author = 'Logilab'
 author_email = 'contact@logilab.fr'
 
 short_desc = 'expense component for the CubicWeb framework'
-long_desc = '''This CubicWeb component models expenses (usable to implement
-expense tracking application).
+long_desc = '''\
+This cube provides to implement `expense tracking application`_
+by modeling `Expenses`, to ask for `Refund`.
 
-CubicWeb is a semantic web application framework, see http://www.cubicweb.org
+.. _`expense tracking application`: http://www.cubicweb.org/project/fresh
 '''
 
 ftp = ''
