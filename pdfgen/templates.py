@@ -89,12 +89,13 @@ class FreshPageTemplate(PageTemplate):
         # company logo
         try:
             logo = ImageReader(self.company_data["logo-filename"])
-            if reportlab_version >= "2.1":
+            if reportlab_version >= "2.1" and reportlab_version <= "2.3":
                 canvas.drawImage(logo, 1.2*cm, 28.5*cm, 5*cm, 2.5*cm,
                                preserveAspectRatio=True, anchor="nw")
             else:
                 # Old version of reportlab. must compute the height and width
                 # of the image. draws the image from the southwest corner.
+                # 2.4 Version has the same problem!
                 img_width,img_height = logo.getSize()
                 ratio = img_width / img_height
                 if ratio >= 5/2.5:
