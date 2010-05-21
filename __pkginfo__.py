@@ -14,17 +14,9 @@ http://www.logilab.fr/ -- mailto:contact@logilab.fr'''
 author = 'Logilab'
 author_email = 'contact@logilab.fr'
 
-short_desc = 'expense component for the CubicWeb framework'
-long_desc = '''This CubicWeb component models expenses (usable to implement
-expense tracking application).
+description = 'expense component for the CubicWeb framework'
 
-CubicWeb is a semantic web application framework, see http://www.cubicweb.org
-'''
-
-ftp = ''
 web = 'http://www.cubicweb.org/project/%s' % distname
-
-pyversions = ['2.4']
 
 classifiers = [
            'Environment :: Web Environment',
@@ -33,12 +25,8 @@ classifiers = [
            'Programming Language :: JavaScript',
 ]
 
-__depends_cubes__ = {'addressbook': None}
-__depends__ = {'cubicweb': '>= 3.6.0'}
-for key, value in __depends_cubes__.items():
-    __depends__['cubicweb-'+key] = value
-__use__ = tuple(__depends_cubes__)
-__recommend__ = ()
+__depends__ = {'cubicweb': '>= 3.6.0',
+               'cubicweb-addressbook': None}
 
 from glob import glob
 from os import listdir as _listdir
