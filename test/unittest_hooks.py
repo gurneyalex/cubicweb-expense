@@ -64,7 +64,7 @@ class HooksTC(HelpersTC):
         self.accept(expense1)
         MAILBOX[:] = []
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid"'
-        account1 = self.execute('Any X WHERE X eid %(x)s', {'x': self.account1}, 'x').get_entity(0, 0)
+        account1 = self.execute('Any X WHERE X eid %(x)s', {'x': self.account1}).get_entity(0, 0)
         account1.reverse_to_account[0].fire_transition('pay')
         self.assertEquals(len(MAILBOX), 0, MAILBOX)
         self.commit() # to fire corresponding operations

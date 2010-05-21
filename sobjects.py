@@ -23,7 +23,7 @@ class UpdateRefundStateOperation(hook.Operation):
 
     def precommit_event(self):
         session = self.session
-        execute = session.unsafe_execute
+        execute = session.execute
         rql = 'Any A,U,EL ORDERBY A WHERE X has_lines EL, EL paid_by A, ' \
               'A associated_to U?, X eid %(x)s'
         acc_rset = execute(rql, {'x' : self.expense})
@@ -46,7 +46,7 @@ class UpdateRefundStateOperation(hook.Operation):
             return rset[0][0]
         rql = 'INSERT Refund R: R to_account A WHERE A eid %(a)s'
         # users don't have permission to add refunds
-        return self.session.unsafe_execute(rql, {'a': account})[0][0]
+        return self.session.execute(rql, {'a': account})[0][0]
 
 
 

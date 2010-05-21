@@ -8,8 +8,6 @@ numversion = (0, 6, 0)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
-copyright = '''Copyright (c) 2008-2010 LOGILAB S.A. (Paris, FRANCE).
-http://www.logilab.fr/ -- mailto:contact@logilab.fr'''
 
 author = 'Logilab'
 author_email = 'contact@logilab.fr'
@@ -25,7 +23,7 @@ classifiers = [
            'Programming Language :: JavaScript',
 ]
 
-__depends__ = {'cubicweb': '>= 3.6.0',
+__depends__ = {'cubicweb': '>= 3.8.0',
                'cubicweb-addressbook': None}
 
 from glob import glob
