@@ -190,7 +190,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Expense.         .
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         col_data = []
 
         s = u"%s%s%s" %( xml_escape(_(u"Subject")),
@@ -250,7 +250,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Expense.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         tab_data = []
 
         # First line
@@ -299,7 +299,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Expense.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         col_data = []
 
         refundable_tot = entity.totals_paid_by()
@@ -347,7 +347,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Expense.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         tab_data = []
 
         # Writes the header lines
@@ -560,7 +560,7 @@ class RefundFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Refund.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         col_data = []
 
         euser = entity.for_user()
@@ -615,7 +615,7 @@ class RefundFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Refund.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         lin_data = []
 
         s = "<b>%s</b>" % xml_escape(_(u"To refund (EUR)"))
@@ -652,7 +652,7 @@ class RefundFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Refund.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         col_data = []
 
         if entity.payment_date is None:
@@ -696,7 +696,7 @@ class RefundFlowGenerator (AbstractFlowGenerator) :
         entity: Entity. Any entity of class Refund.
         Returns: Flowable (very likely a Table).
         """
-        _ = entity.req._
+        _ = entity._cw._
         tab_data = []
 
         # Writes the header line

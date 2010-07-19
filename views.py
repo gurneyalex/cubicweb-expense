@@ -11,7 +11,7 @@ from cStringIO import StringIO
 
 from logilab.mtconverter import xml_escape
 
-from cubicweb.selectors import yes, one_line_rset, implements
+from cubicweb.selectors import yes, one_line_rset, is_instance
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
 from cubicweb.web.views import primary, autoform, workflow, urlrewrite
@@ -42,7 +42,7 @@ uicfg.autoform_permissions_overrides.tag_subject_of(
 
 
 class RefundChangeStateForm(workflow.ChangeStateForm):
-    __select__ = implements('Refund')
+    __select__ = is_instance('Refund')
     payment_date = autoform.etype_relation_field('Refund', 'payment_date')
     payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
 
@@ -55,11 +55,11 @@ _pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
 _pvs.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
 
 class ExpensePrimaryView(primary.PrimaryView):
-    __select__ = implements('Expense',)
+    __select__ = is_instance('Expense',)
 
     def render_entity_title(self, entity):
-        title = xml_escape(u'%s - %s' % (entity.dc_title(),
-                                         self._cw._(entity.state)))
+        state = self._cw._(entity.cw_adapt_to('IWorkflowable').state)
+        title = xml_escape(u'%s - %s' % (entity.dc_title(), state))
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
@@ -81,10 +81,11 @@ class ExpensePrimaryView(primary.PrimaryView):
 
 
 class RefundPrimaryView(primary.PrimaryView):
-    __select__ = implements('Refund',)
+    __select__ = is_instance('Refund',)
 
     def render_entity_title(self, entity):
-        title = xml_escape(u'%s - %s' % (entity.dc_title(), _(entity.state)))
+        state = self._cw._(entity.cw_adapt_to('IWorkflowable').state)
+        title = xml_escape(u'%s - %s' % (entity.dc_title(), state))
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
@@ -114,18 +115,18 @@ except ImportError:
 
 class PDFAction(action.Action):
     __regid__ = 'pdfaction'
-    __select__ = has_reportlab & one_line_rset() & implements('Expense','Refund')
+    __select__ = has_reportlab & one_line_rset() & is_instance('Expense','Refund')
 
     title = _('generate pdf document')
     category = 'mainactions'
 
     def url(self):
-        return self.entity(self.row or 0, self.col or 0).absolute_url(vid='pdfexport')
+        return self.cw_rset.get_entity(self.cw_row or 0, self.cw_col or 0).absolute_url(vid='pdfexport')
 
 
 class PdfExportView(EntityView):
     __regid__ = 'pdfexport'
-    __select__ = has_reportlab & one_line_rset() & implements('Refund', 'Expense')
+    __select__ = has_reportlab & one_line_rset() & is_instance('Refund', 'Expense')
 
     title = _('pdf export')
     content_type = 'application/pdf'
@@ -135,7 +136,7 @@ class PdfExportView(EntityView):
     def cell_call(self, row, col):
         # import error to avoid import error if reportlab isn't available
         _ = self._cw._
-        writer = PDFWriter(self.config)
+        writer = PDFWriter(self._cw.vreg.config)
         entity = self.cw_rset.get_entity(row, col)
         entity.complete()
         # XXX reportlab needs HOME and getcwd to find fonts

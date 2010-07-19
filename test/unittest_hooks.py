@@ -65,7 +65,7 @@ class HooksTC(HelpersTC):
         MAILBOX[:] = []
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid"'
         account1 = self.execute('Any X WHERE X eid %(x)s', {'x': self.account1}).get_entity(0, 0)
-        account1.reverse_to_account[0].fire_transition('pay')
+        account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
         self.assertEquals(len(MAILBOX), 0, MAILBOX)
         self.commit() # to fire corresponding operations
         self.assertEquals(len(MAILBOX), 1, MAILBOX)
@@ -78,7 +78,7 @@ class HooksTC(HelpersTC):
         self.accept(expense2)
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid", NOT R in_state S'
         account1.clear_all_caches()
-        account1.reverse_to_account[0].fire_transition('pay')
+        account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
         self.commit() # to fire corresponding operations
         email2 = MAILBOX[0]
         self.assertUnorderedIterableEquals(email2.recipients, ['john@test.org'])

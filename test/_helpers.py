@@ -24,7 +24,7 @@ class HelpersTC(CubicWebTC):
         return line.eid
 
     def accept(self, expense):
-        expense.change_state('accepted')
+        expense.cw_adapt_to('IWorkflowable').change_state('accepted')
         self.commit() # to fire corresponding operations
 
     def new_account(self, login):
@@ -44,7 +44,7 @@ class HelpersTC(CubicWebTC):
         expense = self.request().create_entity('Expense', title=u'company expense')
         lineeid = self.add_expense_line(expense, self.account1)
         self.commit()
-        expense.fire_transition('submit')
+        expense.cw_adapt_to('IWorkflowable').fire_transition('submit')
         return expense
 
     def setup_database(self):
