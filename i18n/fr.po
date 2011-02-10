@@ -7,6 +7,7 @@ msgstr ""
 "PO-Revision-Date: 2008-07-29 19:29+0200\n"
 "Last-Translator: Logilab Team <contact@logilab.fr>\n"
 "Language-Team: fr <contact@logilab.fr>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -110,10 +111,10 @@ msgstr "Fiche de frais"
 msgid "Expense Type"
 msgstr "Type dépense"
 
-msgctxt "inlined:Expense.has_lines.subject"
 msgid "ExpenseLine"
 msgstr "Ligne de dépense"
 
+msgctxt "inlined:Expense.has_lines.subject"
 msgid "ExpenseLine"
 msgstr "Ligne de dépense"
 
@@ -231,25 +232,16 @@ msgstr "logement"
 msgid "account"
 msgstr "compte"
 
-msgctxt "PaidForAccount"
+msgctxt "PaidByAccount"
 msgid "account"
 msgstr "compte"
 
-msgctxt "PaidByAccount"
+msgctxt "PaidForAccount"
 msgid "account"
 msgstr "compte"
 
 msgid "account to refund"
 msgstr "compte à rembourser"
-
-msgid "actions_pdfaction"
-msgstr "action d'export PDF"
-
-msgid "actions_pdfaction_description"
-msgstr ""
-"action permettant de générer le document PDF à partir d'une fiche de "
-"remboursement\n"
-"ou d'une fiche de frais"
 
 # add related box generated message
 msgid "add Expense has_lines ExpenseLine subject"
@@ -280,10 +272,10 @@ msgctxt "PaidByAccount"
 msgid "associated_to"
 msgstr "associé à"
 
-msgctxt "CWUser"
 msgid "associated_to_object"
 msgstr "a pour compte"
 
+msgctxt "CWUser"
 msgid "associated_to_object"
 msgstr "a pour compte"
 
@@ -346,18 +338,18 @@ msgstr "générer le document PDF"
 msgid "has_lines"
 msgstr "a pour lignes"
 
-msgctxt "Refund"
-msgid "has_lines"
-msgstr "a pour lignes"
-
 msgctxt "Expense"
 msgid "has_lines"
 msgstr "a pour lignes"
 
-msgctxt "ExpenseLine"
+msgctxt "Refund"
+msgid "has_lines"
+msgstr "a pour lignes"
+
 msgid "has_lines_object"
 msgstr "ligne de"
 
+msgctxt "ExpenseLine"
 msgid "has_lines_object"
 msgstr "ligne de"
 
@@ -367,11 +359,11 @@ msgstr "dont taxes (EUR)"
 msgid "including taxes"
 msgstr "avec pour taxes"
 
-msgctxt "PaidForAccount"
+msgctxt "PaidByAccount"
 msgid "label"
 msgstr "label"
 
-msgctxt "PaidByAccount"
+msgctxt "PaidForAccount"
 msgid "label"
 msgstr "label"
 
@@ -382,10 +374,10 @@ msgctxt "CWUser"
 msgid "lives_at"
 msgstr "adresse"
 
-msgctxt "PostalAddress"
 msgid "lives_at_object"
 msgstr "adresse de"
 
+msgctxt "PostalAddress"
 msgid "lives_at_object"
 msgstr "adresse de"
 
@@ -402,10 +394,10 @@ msgctxt "ExpenseLine"
 msgid "paid_by"
 msgstr "payé par"
 
-msgctxt "PaidByAccount"
 msgid "paid_by_object"
 msgstr "a payé"
 
+msgctxt "PaidByAccount"
 msgid "paid_by_object"
 msgstr "a payé"
 
@@ -416,10 +408,10 @@ msgctxt "ExpenseLine"
 msgid "paid_for"
 msgstr "pour le compte"
 
-msgctxt "PaidForAccount"
 msgid "paid_for_object"
 msgstr "a bénéficié de"
 
+msgctxt "PaidForAccount"
 msgid "paid_for_object"
 msgstr "a bénéficié de"
 
@@ -495,7 +487,6 @@ msgctxt "ExpenseLine"
 msgid "taxes_exchange_rate"
 msgstr "taux de change"
 
-msgctxt "ExpenseLine"
 msgid "title"
 msgstr "titre"
 
@@ -503,6 +494,7 @@ msgctxt "Expense"
 msgid "title"
 msgstr "titre"
 
+msgctxt "ExpenseLine"
 msgid "title"
 msgstr "titre"
 
@@ -516,10 +508,10 @@ msgctxt "Refund"
 msgid "to_account"
 msgstr "pour le compte"
 
-msgctxt "PaidByAccount"
 msgid "to_account_object"
 msgstr "crédité lors du remboursement"
 
+msgctxt "PaidByAccount"
 msgid "to_account_object"
 msgstr "crédité lors du remboursement"
 
@@ -535,12 +527,21 @@ msgstr "taxes totales"
 msgid "transport"
 msgstr "transport"
 
-msgctxt "ExpenseLine"
 msgid "type"
 msgstr "type"
 
+msgctxt "ExpenseLine"
 msgid "type"
 msgstr "type"
 
 msgid "your expense will be refunded on your next payroll"
 msgstr "votre note de frais sera remboursée sur votre prochaine paye"
+
+#~ msgid "actions_pdfaction"
+#~ msgstr "action d'export PDF"
+
+#~ msgid "actions_pdfaction_description"
+#~ msgstr ""
+#~ "action permettant de générer le document PDF à partir d'une fiche de "
+#~ "remboursement\n"
+#~ "ou d'une fiche de frais"

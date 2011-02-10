@@ -10,7 +10,7 @@ from itertools import groupby
 
 from logilab.common.textutils import normalize_text
 
-from cubicweb.selectors import implements
+from cubicweb.selectors import is_instance
 from cubicweb.server import hook
 from cubicweb.sobjects import notification
 
@@ -23,7 +23,7 @@ class UpdateRefundStateOperation(hook.Operation):
 
     def precommit_event(self):
         session = self.session
-        execute = session.unsafe_execute
+        execute = session.execute
         rql = 'Any A,U,EL ORDERBY A WHERE X has_lines EL, EL paid_by A, ' \
               'A associated_to U?, X eid %(x)s'
         acc_rset = execute(rql, {'x' : self.expense})
@@ -37,7 +37,6 @@ class UpdateRefundStateOperation(hook.Operation):
                 # users don't have permissions to add lines to refunds
                 execute('SET R has_lines EL WHERE R is Refund, R eid %(r)s, EL eid %(el)s, NOT EXISTS(R has_lines EL)', {'r' : ref, 'el': line})
 
-
     def get_or_create_refund_for(self, account):
         rql = 'Any R WHERE R is Refund, R to_account A, A eid %(a)s, ' \
               'R in_state S, S name "preparation"'
@@ -46,8 +45,7 @@ class UpdateRefundStateOperation(hook.Operation):
             return rset[0][0]
         rql = 'INSERT Refund R: R to_account A WHERE A eid %(a)s'
         # users don't have permission to add refunds
-        return self.session.unsafe_execute(rql, {'a': account})[0][0]
-
+        return self.session.execute(rql, {'a': account})[0][0]
 
 
 class OnExpenseAcceptedHook(hook.Hook):
@@ -69,22 +67,21 @@ class OnExpenseAcceptedHook(hook.Hook):
             UpdateRefundStateOperation(session, expense=self.eidfrom)
 
 
-
 class ExpenseLinesRecipientsFinder(notification.RecipientsFinder):
-    __select__ = implements('Expense', 'Refund')
+    __select__ = is_instance('Expense', 'Refund')
     users_rql = ('Any X,E,A WHERE EE has_lines EL, EL paid_by AC, AC associated_to X, '
                  'X primary_email E, E address A, EE eid %(ee)s')
 
     def recipients(self):
         expense = self.cw_rset.get_entity(0, 0)
         rset = self._cw.execute(self.users_rql, {'ee': expense.eid})
-        return sorted(set((u.get_email(), u.property_value('ui.language'))
-                          for u in rset.entities()))
+        return sorted(set((u.cw_adapt_to('IEmailable').get_email(),
+                           u.property_value('ui.language')) for u in rset.entities()))
 
 
 class ExpenseAcceptedView(notification.StatusChangeMixIn,
                           notification.NotificationView):
-    __select__ = implements('Expense')
+    __select__ = is_instance('Expense')
     content = _("""
 The expense ``%(title)s`` has been accepted :
 
@@ -118,10 +115,9 @@ URL
         return context
 
 
-
 class RefundActedView(notification.StatusChangeMixIn,
                       notification.NotificationView):
-    __select__ = implements('Refund')
+    __select__ = is_instance('Refund')
     content = _("""
 Your expenses have been refuned (amount=%(amount)s euros.)
 
@@ -145,4 +141,3 @@ URL
                         'url': entity.absolute_url(),
                         'detail': detail,})
         return context
-

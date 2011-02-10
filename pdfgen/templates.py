@@ -15,7 +15,7 @@ from reportlab.lib.units import cm
 from reportlab.lib.utils import ImageReader
 from reportlab.platypus import PageTemplate, BaseDocTemplate, Frame
 
-from logilab.mtconverter import html_escape
+from logilab.mtconverter import xml_escape
 
 _ = unicode
 
@@ -33,9 +33,9 @@ class FreshPageTemplate(PageTemplate):
         """
         Instanciates a FreshPageTemplate.
 
-        doc_type: string. type of the document. Can be "refund" 
+        doc_type: string. type of the document. Can be "refund"
                   (Refund) or "expense" (Expense).
-        company_data: {'':u"", }. dictionnary containing data about the 
+        company_data: {'':u"", }. dictionnary containing data about the
                       company (logo filename, company address, etc.)
         template_id: string. id of the page template.
         """
@@ -43,13 +43,13 @@ class FreshPageTemplate(PageTemplate):
         main_f = Frame(1*cm, 1*cm, 19*cm, 23.9*cm,
                        leftPadding=0*cm, bottomPadding=0*cm,
                        rightPadding=0*cm, topPadding=0*cm)
-        
+
         self.company_data = company_data
         self.doc_type = doc_type
         self._ = _
 
         PageTemplate.__init__(self, id=template_id, frames=[main_f])
-    
+
 
     def beforeDrawPage(self, canvas, document) :
         """
@@ -79,7 +79,7 @@ class FreshPageTemplate(PageTemplate):
         """
         _ = self._
         # Here we don't use a Frame and the platypus machinery because we want
-        # to draw various elements that are absolutely positioned. Moreover, 
+        # to draw various elements that are absolutely positioned. Moreover,
         # with platypus, we can't draw an image (logo) that is left-aligned.
 
         # rectangle around the header
@@ -108,7 +108,7 @@ class FreshPageTemplate(PageTemplate):
         except IOError:
             # Unable to read logo filename
             canvas.setFont("Helvetica",12)
-            str_data = html_escape( self.company_data["company-name"] )
+            str_data = xml_escape( self.company_data["company-name"] )
             canvas.drawString(1.2*cm,28*cm,str_data)
 
         canvas.setFont("Helvetica",8)
@@ -132,7 +132,7 @@ class FreshPageTemplate(PageTemplate):
                    + self.company_data["company-actnum"]
         self.draw_string_in_width(canvas,str_data,16.7*cm,25.6*cm,3.5*cm)
 
-        # title depending on document type 
+        # title depending on document type
         title = u""
         if self.doc_type == "refund":
             title = _(u"Refund Document").upper()
@@ -149,7 +149,7 @@ class FreshPageTemplate(PageTemplate):
 
     def draw_string_in_width(self,canvas,string,x,y,width):
         """
-        In a canvas, draws a string from the x,y position and within the 
+        In a canvas, draws a string from the x,y position and within the
         specified width. If the value is too large, the string
         is truncated in order to keep it into the specified width. Therefore,
         the string is drawned between the positions (x,y) and (x+width,y).
@@ -190,9 +190,9 @@ class FreshDocTemplate(BaseDocTemplate) :
         output: string or output flow. name of the PDF output file or
                 writable flow where to write the PDF output
 
-        doc_type: string. type of the document that can be "refund" 
+        doc_type: string. type of the document that can be "refund"
                   (Refund) or or "expense" (Expense).
-        company_data: {'':u"", }. dictionnary containing various data about 
+        company_data: {'':u"", }. dictionnary containing various data about
                       the company.
         """
         # Initializes the document template with the correct page templates

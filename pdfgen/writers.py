@@ -3,7 +3,7 @@
 """
 Library package containing the definition of the class that can write a PDF
 file for Fresh documents (Refund or Expense). The PDF generation uses
-ReportLab platypus and is based on specific flow generators and 
+ReportLab platypus and is based on specific flow generators and
 templates.
 """
 
@@ -12,7 +12,7 @@ from cubes.expense.pdfgen.flowgenerators import ExpenseFlowGenerator
 from cubes.expense.pdfgen.flowgenerators import RefundFlowGenerator
 
 
-class PDFWriter :
+class PDFWriter(object):
     """
     Class writing the PDF for the Fresh documents (Refund or Expense). This
     class instanciates a flow generator specific to the kind of document
@@ -23,7 +23,7 @@ class PDFWriter :
         """
         Instanciates a PDF writer.
 
-        company_data: {'':u"", }. dictionnary containing various data about 
+        company_data: {'':u"", }. dictionnary containing various data about
                       the company.
         """
         self.company_data = company_data
@@ -36,8 +36,8 @@ class PDFWriter :
 
     def __init_flow_generator(self, entity) :
         """
-        Instanciates the flow generator that will create the PDF flow content 
-        of the document. The real class of flow generator 
+        Instanciates the flow generator that will create the PDF flow content
+        of the document. The real class of flow generator
         (ExpenseFlowGenerator or RefundFlowGenerator) depends on the class
         of the entity object.
 
@@ -74,7 +74,7 @@ class PDFWriter :
             raise Exception(err_msg)
 
         # Opens the PDF document
-        pdf_doc = FreshDocTemplate(output, self._doc_type, self.company_data, entity.req._)
+        pdf_doc = FreshDocTemplate(output, self._doc_type, self.company_data, entity._cw._)
 
         # Builds it with the content flow returned by the flow generator
         pdf_doc.build( self._flow_generator.generate_flow(entity) )
