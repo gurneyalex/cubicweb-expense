@@ -1,7 +1,7 @@
 """specific views for expense component
 
 :organization: Logilab
-:copyright: 2008-2010 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2011 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 __docformat__ = "restructuredtext en"
@@ -14,7 +14,13 @@ from logilab.mtconverter import xml_escape
 from cubicweb.selectors import yes, one_line_rset, is_instance
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
-from cubicweb.web.views import primary, autoform, workflow, urlrewrite
+from cubicweb.web.views import primary, autoform, workflow, urlrewrite, ibreadcrumbs
+
+class ExpenseLineIBreadCrumbsAdapter(ibreadcrumbs.IBreadCrumbsAdapter):
+    __select__ = is_instance('IBreadCrumbs')
+
+    def parent_entity(self):
+        return self.entity.parent_expense
 
 
 class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):

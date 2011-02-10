@@ -84,9 +84,6 @@ class ExpenseLine(AnyEntity):
             return expenses[0]
         return None
 
-    def parent(self):
-        return self.parent_expense
-
     def dc_title(self):
         return u'%s - %s - %s - %s %s' % (self._cw.format_date(self.diem),
                                           self._cw._(self.type), self.title,
