@@ -536,12 +536,3 @@ msgstr "type"
 
 msgid "your expense will be refunded on your next payroll"
 msgstr "votre note de frais sera remboursée sur votre prochaine paye"
-
-#~ msgid "actions_pdfaction"
-#~ msgstr "action d'export PDF"
-
-#~ msgid "actions_pdfaction_description"
-#~ msgstr ""
-#~ "action permettant de générer le document PDF à partir d'une fiche de "
-#~ "remboursement\n"
-#~ "ou d'une fiche de frais"

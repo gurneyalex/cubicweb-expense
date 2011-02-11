@@ -1,3 +1,9 @@
+cubicweb-expense (0.6.1-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Sylvain Thénault <sylvain.thenault@logilab.fr>  Thu, 10 Feb 2011 12:08:05 +0100
+
 cubicweb-expense (0.6.0-1) unstable; urgency=low
 
   * new upstream release
