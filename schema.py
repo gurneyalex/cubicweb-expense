@@ -15,7 +15,7 @@ class Expense(WorkflowableEntityType):
                        'update': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
                        'delete': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
                    }
-    title = String(maxsize=128, required=True)
+    title = String(maxsize=128, required=True, fulltextindexed=True)
     description = RichString(fulltextindexed=True)
 
     # XXX '*' cardinality since ExpendLine has to be a line of an Expense and
@@ -30,7 +30,7 @@ class ExpenseLine(EntityType):
                        'update': ('managers', ERQLExpression('E is Expense, E has_lines X, E in_state S, NOT S name "accepted"')),
                        'delete': ('managers', ERQLExpression('E is Expense, E has_lines X, E in_state S, NOT S name "accepted"')),
                    }
-    title = String(maxsize=256, required=True)
+    title = String(maxsize=256, required=True, fulltextindexed=True)
     diem = Date(required=True)
     type = String(required=True, internationalizable=True,
                   vocabulary=(_('transport'), _('accomodation'), _('food'),
