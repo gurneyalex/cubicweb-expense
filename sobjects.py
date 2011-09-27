@@ -119,7 +119,7 @@ class RefundActedView(notification.StatusChangeMixIn,
                       notification.NotificationView):
     __select__ = is_instance('Refund')
     content = _("""
-Your expenses have been refuned (amount=%(amount)s euros.)
+Your expenses have been refunded (amount=%(amount)s euros.)
 
 Detail
 ------

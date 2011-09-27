@@ -33,7 +33,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Your expenses have been refuned (amount=%(amount)s euros.)\n"
+"Your expenses have been refunded (amount=%(amount)s euros.)\n"
 "\n"
 "Detail\n"
 "------\n"
