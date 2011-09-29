@@ -2,7 +2,7 @@
 """cubicweb-expense specific hooks and notification views
 
 :organization: Logilab
-:copyright: 2008-2010 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2011 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 
@@ -10,7 +10,7 @@ from itertools import groupby
 
 from logilab.common.textutils import normalize_text
 
-from cubicweb.selectors import is_instance
+from cubicweb.selectors import is_instance, is_in_state
 from cubicweb.server import hook
 from cubicweb.sobjects import notification
 
@@ -81,7 +81,7 @@ class ExpenseLinesRecipientsFinder(notification.RecipientsFinder):
 
 class ExpenseAcceptedView(notification.StatusChangeMixIn,
                           notification.NotificationView):
-    __select__ = is_instance('Expense')
+    __select__ = is_instance('Expense') & is_in_state('accepted')
     content = _("""
 The expense ``%(title)s`` has been accepted :
 
