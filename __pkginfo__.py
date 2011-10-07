@@ -4,7 +4,7 @@
 modname = 'expense'
 distname = 'cubicweb-expense'
 
-numversion = (0, 6, 1)
+numversion = (0, 6, 3)
 version = '.'.join(str(num) for num in numversion)
 
 license = 'LGPL'
@@ -42,7 +42,7 @@ data_files = [
     [THIS_CUBE_DIR, [fname for fname in glob('*.py') if fname != 'setup.py']],
     ]
 # check for possible extended cube layout
-for dirname in ('entities', 'views', 'sobjects', 'hooks', 'schema', 'data', 'i18n', 'migration', 'wdoc'):
+for dirname in ('pdfgen', 'entities', 'views', 'sobjects', 'hooks', 'schema', 'data', 'i18n', 'migration', 'wdoc'):
     if isdir(dirname):
         data_files.append([join(THIS_CUBE_DIR, dirname), listdir(dirname)])
 # Note: here, you'll need to add subdirectories if you want

@@ -334,6 +334,9 @@ msgstr ""
 msgid "including taxes"
 msgstr ""
 
+msgid "label"
+msgstr ""
+
 msgctxt "PaidByAccount"
 msgid "label"
 msgstr ""
