@@ -359,6 +359,9 @@ msgstr "dont taxes (EUR)"
 msgid "including taxes"
 msgstr "avec pour taxes"
 
+msgid "label"
+msgstr "label"
+
 msgctxt "PaidByAccount"
 msgid "label"
 msgstr "label"
