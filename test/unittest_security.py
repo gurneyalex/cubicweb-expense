@@ -15,7 +15,7 @@ class SecurityTC(HelpersTC):
         rset = self.execute('Any E WHERE E is Expense, E has_lines EE, EE paid_by PA, '
                             'E in_state S, S name "accepted", PA associated_to U, U eid %(u)s',
                             {'u': self.user1}) # user1 is john
-        self.assertEquals(len(rset), 1)
+        self.assertEqual(len(rset), 1)
         expense = rset.get_entity(0, 0)
         self.add_expense_line(expense, self.account1)
         self.assertRaises(Unauthorized, self.commit)
@@ -24,7 +24,7 @@ class SecurityTC(HelpersTC):
         self.login('john')
         expense = self.create_and_submit_expense()
         self.commit()
-        self.assertRaises(ValidationError, expense.fire_transition, 'accept')
+        self.assertRaises(ValidationError, expense.cw_adapt_to('IWorkflowable').fire_transition, 'accept')
 
     def test_users_cannot_update_accepted_expense_line(self):
         expense = self.request().create_entity('Expense', title=u'company expense')
@@ -45,7 +45,7 @@ class SecurityTC(HelpersTC):
         rset = self.execute('Any EE WHERE E is Expense, E has_lines EE, EE paid_by PA, '
                             'E in_state S, S name "accepted", PA associated_to U, U eid %(u)s',
                             {'u': self.user1}) # user1 is john
-        self.assertEquals(len(rset), 1)
+        self.assertEqual(len(rset), 1)
         lineeid = rset[0][0]
         rql = 'INSERT Refund R: R has_lines E, R to_account A WHERE E eid %(e)s, A eid %(a)s'
         self.execute(rql, {'e': lineeid, 'a': self.account1})
@@ -56,7 +56,7 @@ class SecurityTC(HelpersTC):
         rset = self.execute('Any R WHERE R is Refund, R has_lines EE, EE paid_by PA, '
                             'R to_account PA, PA associated_to U, U eid %(u)s',
                             {'u': self.user1}) # user1 is john
-        self.assertEquals(len(rset), 1)
+        self.assertEqual(len(rset), 1)
         line = self.new_expense_line(self.account1)
         rql = 'SET R has_lines E WHERE E eid %(e)s'
         self.execute(rql, {'e': line.eid})
