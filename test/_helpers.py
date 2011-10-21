@@ -28,10 +28,11 @@ class HelpersTC(CubicWebTC):
         self.commit() # to fire corresponding operations
 
     def new_account(self, login):
-        user = self.create_user(login)
-        self.execute('INSERT EmailAddress E: E address %(add)s, U use_email E, U primary_email E '
+        req = self.request()
+        user = self.create_user(req, login)
+        req.execute('INSERT EmailAddress E: E address %(add)s, U use_email E, U primary_email E '
                      'WHERE U eid %(u)s', {'u': user.eid, 'add': login+'@test.org'})
-        account = self.request().create_entity('PaidByAccount', label=u'%s account' % login)
+        account = req.create_entity('PaidByAccount', label=u'%s account' % login)
         self.add_relation(account.eid, 'associated_to', user.eid)
         return user, account
 

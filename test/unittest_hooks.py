@@ -77,7 +77,7 @@ class HooksTC(HelpersTC):
         self.commit()
         self.accept(expense2)
         rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid", NOT R in_state S'
-        account1.clear_all_caches()
+        account1.cw_clear_all_caches()
         account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
         self.commit() # to fire corresponding operations
         email2 = MAILBOX[0]
