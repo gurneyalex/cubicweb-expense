@@ -10,11 +10,13 @@ import os
 from cStringIO import StringIO
 
 from logilab.mtconverter import xml_escape
+from logilab.common.registry import yes
 
-from cubicweb.selectors import yes, one_line_rset, is_instance
+from cubicweb.predicates import one_line_rset, is_instance
 from cubicweb.view import EntityView
 from cubicweb.web import uicfg, action
-from cubicweb.web.views import primary, autoform, workflow, urlrewrite, ibreadcrumbs
+from cubicweb.web.views import (primary, autoform, workflow, urlrewrite,
+                                ibreadcrumbs, tableview)
 
 class ExpenseLineIBreadCrumbsAdapter(ibreadcrumbs.IBreadCrumbsAdapter):
     __select__ = is_instance('IBreadCrumbs')
@@ -80,10 +82,14 @@ class ExpensePrimaryView(primary.PrimaryView):
                                 'E amount EA, E paid_by C?, C label CL, '
                                 'E paid_for CC, CC label CCL' ,
                                 {'x': entity.eid})
-        headers = [_('eid'), _('type'), _('title'), _('amount'), _('currency'),
-                   _('paid_by'), _('paid_for') ]
-        self.wview('table', rset, headers=headers,
-                   displaycols=range(len(headers)), displayfilter=True)
+        self.wview('expense.table', rset)
+
+
+class ExpenseTable(tableview.RsetTableView):
+    __regid__ = 'expense.table'
+    headers = [_('eid'), _('type'), _('title'), _('amount'), _('currency'),
+               _('paid_by'), _('paid_for') ]
+    layout_args = {'display_filter': 'top'}
 
 
 class RefundPrimaryView(primary.PrimaryView):
@@ -107,7 +113,7 @@ class RefundPrimaryView(primary.PrimaryView):
         rset = self._cw.execute('Any E,ET,EC,EA WHERE X has_lines E, X eid %(x)s, '
                                 'E title ET, E currency EC, E amount EA',
                                 {'x': entity.eid})
-        self.wview('table', rset, displayfilter=True)
+        self.wview('table', rset)
 
 
 try:

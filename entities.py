@@ -56,7 +56,7 @@ class LineContainerMixIn(object):
 
 class Expense(LineContainerMixIn, AnyEntity):
     __regid__ = 'Expense'
-    fetch_attrs, fetch_order = fetch_config(['title'])
+    fetch_attrs, cw_fetch_order = fetch_config(['title'])
 
     def dc_long_title(self):
         users = self.paid_by()
@@ -73,7 +73,7 @@ class Expense(LineContainerMixIn, AnyEntity):
 
 class ExpenseLine(AnyEntity):
     __regid__ = 'ExpenseLine'
-    fetch_attrs, fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
+    fetch_attrs, cw_fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
                                              'currency'])
 
     @property
@@ -111,7 +111,7 @@ class ExpenseLine(AnyEntity):
 
 class PaidByAccount(AnyEntity):
     __regid__ = 'PaidByAccount'
-    fetch_attrs, fetch_order = fetch_config(['label', 'account'])
+    fetch_attrs, cw_fetch_order = fetch_config(['label', 'account'])
 
     def dc_title(self):
         return self.label

@@ -10,7 +10,7 @@ from itertools import groupby
 
 from logilab.common.textutils import normalize_text
 
-from cubicweb.selectors import is_instance, is_in_state
+from cubicweb.predicates import is_instance, is_in_state
 from cubicweb.server import hook
 from cubicweb.sobjects import notification
 
