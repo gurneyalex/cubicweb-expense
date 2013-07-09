@@ -218,9 +218,15 @@ msgstr ""
 msgid "account to refund"
 msgstr ""
 
+msgid "add Expense has_attachment File subject"
+msgstr ""
+
 # add related box generated message
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "expense line"
+
+msgid "add ExpenseLine has_attachment File subject"
+msgstr ""
 
 msgctxt "inlined:Expense.has_lines.subject"
 msgid "add a ExpenseLine"
@@ -262,6 +268,12 @@ msgstr ""
 
 msgid "creating ExpenseLine (Expense %(linkto)s has_lines ExpenseLine)"
 msgstr "creating expense line inside %(linkto)s"
+
+msgid "creating File (Expense %(linkto)s has_attachment File)"
+msgstr ""
+
+msgid "creating File (ExpenseLine %(linkto)s has_attachment File)"
+msgstr ""
 
 msgid "currency"
 msgstr ""
@@ -308,6 +320,24 @@ msgid "food"
 msgstr ""
 
 msgid "generate pdf document"
+msgstr ""
+
+msgid "has_attachment"
+msgstr ""
+
+msgctxt "Expense"
+msgid "has_attachment"
+msgstr ""
+
+msgctxt "ExpenseLine"
+msgid "has_attachment"
+msgstr ""
+
+msgid "has_attachment_object"
+msgstr ""
+
+msgctxt "File"
+msgid "has_attachment_object"
 msgstr ""
 
 msgid "has_lines"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"PO-Revision-Date: 2008-07-29 19:29+0200\n"
+"PO-Revision-Date: 2013-07-09 15:43+0200\n"
 "Last-Translator: Logilab Team <contact@logilab.fr>\n"
 "Language-Team: fr <contact@logilab.fr>\n"
 "Language: \n"
@@ -243,9 +243,15 @@ msgstr "compte"
 msgid "account to refund"
 msgstr "compte à rembourser"
 
+msgid "add Expense has_attachment File subject"
+msgstr "fichier"
+
 # add related box generated message
 msgid "add Expense has_lines ExpenseLine subject"
 msgstr "ligne de dépense"
+
+msgid "add ExpenseLine has_attachment File subject"
+msgstr "fichier"
 
 msgctxt "inlined:Expense.has_lines.subject"
 msgid "add a ExpenseLine"
@@ -287,6 +293,12 @@ msgstr "communication"
 
 msgid "creating ExpenseLine (Expense %(linkto)s has_lines ExpenseLine)"
 msgstr "création d'une ligne de dépense pour la note %(linkto)s"
+
+msgid "creating File (Expense %(linkto)s has_attachment File)"
+msgstr "rattachement d'un fichier pour la note de frais %(linkto)s"
+
+msgid "creating File (ExpenseLine %(linkto)s has_attachment File)"
+msgstr "rattachement d'un fichier pour la ligne de dépense %(linkto)s"
 
 msgid "currency"
 msgstr "devise"
@@ -334,6 +346,24 @@ msgstr "repas"
 
 msgid "generate pdf document"
 msgstr "générer le document PDF"
+
+msgid "has_attachment"
+msgstr "fichiers joints"
+
+msgctxt "Expense"
+msgid "has_attachment"
+msgstr "fichiers joints"
+
+msgctxt "ExpenseLine"
+msgid "has_attachment"
+msgstr "fichiers joints"
+
+msgid "has_attachment_object"
+msgstr "rattaché à"
+
+msgctxt "File"
+msgid "has_attachment_object"
+msgstr "rattaché à"
 
 msgid "has_lines"
 msgstr "a pour lignes"
