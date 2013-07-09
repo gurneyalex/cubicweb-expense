@@ -20,8 +20,9 @@ classifiers = [
 ]
 
 __depends__ = {'cubicweb': '>= 3.15.0',
-               'cubicweb-addressbook': None}
-
+               'cubicweb-addressbook': None,
+               'cubicweb-file': None,
+               }
 
 # packaging ###
 

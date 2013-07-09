@@ -31,6 +31,10 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
                        'E in_state S, S name "submitted"')),
         ]
 
+_abaa = uicfg.actionbox_appearsin_addmenu
+
+_abaa.tag_subject_of(('*', 'has_attachment', '*'), True)
+
 ## forms #######################################################################
 
 _afs = uicfg.autoform_section
@@ -47,7 +51,6 @@ _affk.tag_subject_of(('ExpenseLine', 'paid_for', '*'), {'sort': True})
 # XXX still necessary?
 uicfg.autoform_permissions_overrides.tag_subject_of(
     ('Expense', 'has_lines', '*'), 'add_on_new')
-
 
 class RefundChangeStateForm(workflow.ChangeStateForm):
     __select__ = is_instance('Refund')
