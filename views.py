@@ -12,9 +12,9 @@ from cStringIO import StringIO
 from logilab.mtconverter import xml_escape
 from logilab.common.registry import yes
 
-from cubicweb.predicates import one_line_rset, is_instance
+from cubicweb.predicates import one_line_rset, is_instance, rql_condition, authenticated_user
 from cubicweb.view import EntityView
-from cubicweb.web import uicfg, action
+from cubicweb.web import uicfg, action, component
 from cubicweb.web.views import (primary, autoform, workflow, urlrewrite,
                                 ibreadcrumbs, tableview)
 
@@ -64,6 +64,7 @@ _pvs = uicfg.primaryview_section
 _pvs.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
 _pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
 _pvs.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
+_pvs.tag_subject_of(('Expense', 'has_attachment', 'File'), 'hidden')
 
 class ExpensePrimaryView(primary.PrimaryView):
     __select__ = is_instance('Expense',)
@@ -169,3 +170,20 @@ class PdfExportView(EntityView):
                 os.environ['HOME'] = home_backup
             os.getcwd = getcwd_backup
 
+# boxes ########################################################################
+
+class ExpenseLineFilesComponent(component.EntityCtxComponent):
+    """display the list of files attached to the expenselines"""
+    __regid__ = 'expenseline.attachments'
+    __select__ = (component.EntityCtxComponent.__select__ &
+                  authenticated_user() & is_instance('Expense') &
+                  rql_condition('EXISTS(X has_lines Y, Y has_attachment F) '
+                                'OR EXISTS(X has_attachment F)'))
+    title = _('has_attachment')
+
+    def render_body(self, w):
+        rset = self._cw.execute('(Any F WHERE X has_attachment F, X eid %(x)s)'
+                                ' UNION '
+                                '(Any F WHERE X has_lines Y, Y has_attachment F, X eid %(x)s)',
+                                dict(x=self.entity.eid))
+        self._cw.view('incontext', rset, 'null', w=w)
