@@ -2,7 +2,7 @@
 """cubicweb-expense specific hooks and notification views
 
 :organization: Logilab
-:copyright: 2008-2011 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2013 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 
