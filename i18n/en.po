@@ -86,6 +86,9 @@ msgstr ""
 msgid "Expense Type"
 msgstr ""
 
+msgid "Expense summary"
+msgstr ""
+
 msgid "ExpenseLine"
 msgstr "Expense line"
 
@@ -153,6 +156,9 @@ msgstr "Refund"
 
 msgid "Refund Document"
 msgstr "Refund document"
+
+msgid "Refund summary"
+msgstr ""
 
 msgid "Refund_plural"
 msgstr "Refunds"
@@ -273,6 +279,18 @@ msgid "creating File (Expense %(linkto)s has_attachment File)"
 msgstr ""
 
 msgid "creating File (ExpenseLine %(linkto)s has_attachment File)"
+msgstr ""
+
+msgid "ctxcomponents_expense.summary"
+msgstr ""
+
+msgid "ctxcomponents_expense.summary_description"
+msgstr ""
+
+msgid "ctxcomponents_expenseline.attachments"
+msgstr ""
+
+msgid "ctxcomponents_expenseline.attachments_description"
 msgstr ""
 
 msgid "currency"

@@ -111,6 +111,9 @@ msgstr "Fiche de frais"
 msgid "Expense Type"
 msgstr "Type dépense"
 
+msgid "Expense summary"
+msgstr "Résumé des dépenses"
+
 msgid "ExpenseLine"
 msgstr "Ligne de dépense"
 
@@ -178,6 +181,9 @@ msgstr "Feuille de remboursement"
 
 msgid "Refund Document"
 msgstr "Remboursement de Frais"
+
+msgid "Refund summary"
+msgstr "Dépenses remboursées"
 
 msgid "Refund_plural"
 msgstr "Feuilles de remboursements"
@@ -299,6 +305,18 @@ msgstr "rattachement d'un fichier pour la note de frais %(linkto)s"
 
 msgid "creating File (ExpenseLine %(linkto)s has_attachment File)"
 msgstr "rattachement d'un fichier pour la ligne de dépense %(linkto)s"
+
+msgid "ctxcomponents_expense.summary"
+msgstr ""
+
+msgid "ctxcomponents_expense.summary_description"
+msgstr ""
+
+msgid "ctxcomponents_expenseline.attachments"
+msgstr ""
+
+msgid "ctxcomponents_expenseline.attachments_description"
+msgstr ""
 
 msgid "currency"
 msgstr "devise"

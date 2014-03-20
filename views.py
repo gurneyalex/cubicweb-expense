@@ -1,7 +1,7 @@
 """specific views for expense component
 
 :organization: Logilab
-:copyright: 2008-2013 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
+:copyright: 2008-2014 LOGILAB S.A. (Paris, FRANCE), all rights reserved.
 :contact: http://www.logilab.fr/ -- mailto:contact@logilab.fr
 """
 __docformat__ = "restructuredtext en"
@@ -61,13 +61,15 @@ class RefundChangeStateForm(workflow.ChangeStateForm):
 ## views #######################################################################
 
 _pvs = uicfg.primaryview_section
+_pvs.tag_attribute(('Expense', 'title'), 'hidden')
 _pvs.tag_subject_of(('Expense', 'has_lines', '*'), 'hidden')
-_pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
-_pvs.tag_subject_of(('Refund', 'paid_by_accounts', '*'), 'hidden')
 _pvs.tag_subject_of(('Expense', 'has_attachment', 'File'), 'hidden')
+_pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
+_pvdc = uicfg.primaryview_display_ctrl
+_pvdc.tag_attribute(('Expense', 'description'), {'showlabel': False})
 
 class ExpensePrimaryView(primary.PrimaryView):
-    __select__ = is_instance('Expense',)
+    __select__ = is_instance('Expense')
 
     def render_entity_title(self, entity):
         state = self._cw._(entity.cw_adapt_to('IWorkflowable').state)
@@ -75,10 +77,26 @@ class ExpensePrimaryView(primary.PrimaryView):
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
-    def render_entity_attributes(self, entity):
+
+class ExpenseSummaryComponent(component.EntityCtxComponent):
+    __regid__ = 'expense.summary'
+    __select__ = component.EntityCtxComponent.__select__ & is_instance('Expense')
+    context = 'navcontentbottom'
+    title = _('Expense summary')
+    order = -1
+
+
+    def field(self, label, value, w):
+        w(u'<div class="entityfield">')
+        w(u'<span class="label">%s</span> ' % label)
+        w(u'<span>%s</span></div>' % value)
+
+    def render_body(self, w):
         _ = self._cw._
-        self.w(u'%s: %s %s %s' % (_('total'), entity.euro_total(),
-                                  _('including taxes'), entity.euro_taxes()))
+        entity = self.entity
+        total = '%s %s %s' % (entity.euro_total(),
+                              _('including taxes'), entity.euro_taxes())
+        self.field(_('total'), total, w)
         rset = self._cw.execute('Any EID,T,ET,EA,EC,C,GROUP_CONCAT(CCL),CL '
                                 'GROUPBY EID,T,ET,EC,EA,C,CL '
                                 'WHERE X has_lines E, X eid %(x)s, E eid EID, '
@@ -86,7 +104,7 @@ class ExpensePrimaryView(primary.PrimaryView):
                                 'E amount EA, E paid_by C?, C label CL, '
                                 'E paid_for CC, CC label CCL' ,
                                 {'x': entity.eid})
-        self.wview('expense.table', rset)
+        self._cw.view('expense.table', rset, w=w)
 
 
 class ExpenseTable(tableview.RsetTableView):
@@ -97,7 +115,7 @@ class ExpenseTable(tableview.RsetTableView):
 
 
 class RefundPrimaryView(primary.PrimaryView):
-    __select__ = is_instance('Refund',)
+    __select__ = is_instance('Refund')
 
     def render_entity_title(self, entity):
         state = self._cw._(entity.cw_adapt_to('IWorkflowable').state)
@@ -105,19 +123,22 @@ class RefundPrimaryView(primary.PrimaryView):
         self.w(u'<h1><span class="etype">%s</span> %s</h1>'
                % (entity.dc_type().capitalize(), title))
 
-    def render_entity_attributes(self, entity):
+
+class RefundSummaryComponent(ExpenseSummaryComponent):
+    __regid__ = 'expense.summary'
+    __select__ = component.EntityCtxComponent.__select__ & is_instance('Refund')
+    title = _('Refund summary')
+
+    def render_body(self, w):
         _ = self._cw._
-        self.field(_('account to refund'),
-                   entity.paid_by_accounts()[0].view('oneline'), tr=False)
-        self.field(_('total'), entity.total, tr=False)
-        if entity.payment_date:
-            self.field('payment_date', entity.printable_value('payment_date'))
-        if entity.payment_mode:
-            self.field('payment_mode', xml_escape(entity.payment_mode))
+        entity = self.entity
+        accounts = [act.view('oneline') for act in entity.paid_by_accounts()]
+        self.field(_('account to refund'), ','.join(accounts), w)
+        self.field(_('total'), entity.total, w)
         rset = self._cw.execute('Any E,ET,EC,EA WHERE X has_lines E, X eid %(x)s, '
                                 'E title ET, E currency EC, E amount EA',
                                 {'x': entity.eid})
-        self.wview('table', rset)
+        self._cw.view('table', rset, w=w)
 
 
 try:
@@ -140,7 +161,7 @@ class PDFAction(action.Action):
         return self.cw_rset.get_entity(self.cw_row or 0, self.cw_col or 0).absolute_url(vid='pdfexport')
 
 
-class PdfExportView(EntityView):
+class PDFExportView(EntityView):
     __regid__ = 'pdfexport'
     __select__ = has_reportlab & one_line_rset() & is_instance('Refund', 'Expense')
 
