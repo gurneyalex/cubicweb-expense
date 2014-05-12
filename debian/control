@@ -14,6 +14,7 @@ Architecture: all
 Depends:
  cubicweb-common (>= 3.15.0),
  cubicweb-addressbook,
+ cubicweb-file,
  ${python:Depends},
  ${misc:Depends},
 Description: expense component for the CubicWeb framework
