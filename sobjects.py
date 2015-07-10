@@ -22,8 +22,8 @@ class UpdateRefundStateOperation(hook.Operation):
     """
 
     def precommit_event(self):
-        session = self.session
-        execute = session.execute
+        cnx = self.cnx
+        execute = cnx.execute
         rql = 'Any A,U,EL ORDERBY A WHERE X has_lines EL, EL paid_by A, ' \
               'A associated_to U?, X eid %(x)s'
         acc_rset = execute(rql, {'x' : self.expense})
@@ -40,12 +40,12 @@ class UpdateRefundStateOperation(hook.Operation):
     def get_or_create_refund_for(self, account):
         rql = 'Any R WHERE R is Refund, R to_account A, A eid %(a)s, ' \
               'R in_state S, S name "preparation"'
-        rset = self.session.execute(rql, {'a': account})
+        rset = self.cnx.execute(rql, {'a': account})
         if rset:
             return rset[0][0]
         rql = 'INSERT Refund R: R to_account A WHERE A eid %(a)s'
         # users don't have permission to add refunds
-        return self.session.execute(rql, {'a': account})[0][0]
+        return self.cnx.execute(rql, {'a': account})[0][0]
 
 
 class OnExpenseAcceptedHook(hook.Hook):
@@ -58,13 +58,13 @@ class OnExpenseAcceptedHook(hook.Hook):
     events = ('after_add_relation',)
 
     def __call__(self):
-        session = self._cw
-        etype = session.describe(self.eidfrom)[0]
+        cnx = self._cw
+        etype = cnx.entity_metas(self.eidfrom)['type']
         if etype != 'Expense':
             return
-        newstate = session.entity_from_eid(self.eidto).name
+        newstate = cnx.entity_from_eid(self.eidto).name
         if newstate == 'accepted':
-            UpdateRefundStateOperation(session, expense=self.eidfrom)
+            UpdateRefundStateOperation(cnx, expense=self.eidfrom)
 
 
 class ExpenseLinesRecipientsFinder(notification.RecipientsFinder):
