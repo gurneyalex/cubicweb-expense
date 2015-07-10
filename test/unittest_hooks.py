@@ -60,7 +60,7 @@ class HooksTC(HelpersTC):
             self.assertEqual(len(MAILBOX), 0, MAILBOX)
             self.accept(cnx, expense) # to fire corresponding operations
             self.assertEqual(len(MAILBOX), 1, MAILBOX)
-            self.assertItemsEqual(MAILBOX[0].recipients, ['john@test.org'])
+            self.assertCountEqual(MAILBOX[0].recipients, ['john@test.org'])
 
     def test_refund_acted_notification(self):
         with self.admin_access.repo_cnx() as cnx:
@@ -76,7 +76,7 @@ class HooksTC(HelpersTC):
             cnx.commit() # to fire corresponding operations
             self.assertEqual(len(MAILBOX), 1, MAILBOX)
             email1 = MAILBOX[0]
-            self.assertItemsEqual(email1.recipients, ['john@test.org'])
+            self.assertCountEqual(email1.recipients, ['john@test.org'])
             MAILBOX[:] = []
             expense2 = cnx.create_entity('Expense', title=u'expense 3')
             self.add_expense_line(cnx, expense2, self.account1)
@@ -87,7 +87,7 @@ class HooksTC(HelpersTC):
             account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
             cnx.commit() # to fire corresponding operations
             email2 = MAILBOX[0]
-            self.assertItemsEqual(email2.recipients, ['john@test.org'])
+            self.assertCountEqual(email2.recipients, ['john@test.org'])
             self.assertNotEqual(email2.message.get('Message-id'), email1.message.get('Message-id'))
 
 
