@@ -1,3 +1,9 @@
+cubicweb-expense (0.8.0-1) unstable; urgency=medium
+
+  * new upstream release
+
+ -- Julien Cristau <julien.cristau@logilab.fr>  Fri, 24 Jul 2015 15:14:24 +0200
+
 cubicweb-expense (0.7.1-1) unstable; urgency=low
 
   * new upstream release
