@@ -4,10 +4,12 @@ Priority: optional
 Maintainer: Logilab Packaging Team <contact@logilab.fr>
 Uploaders: Sylvain Thenault <sylvain.thenault@logilab.fr>,
   Nicolas Chauvat <nicolas.chauvat@logilab.fr>
-Build-Depends: debhelper (>= 7), python (>= 2.6), python-support
+Build-Depends:
+ debhelper (>= 9),
+ python (>= 2.6.5),
 Standards-Version: 3.9.3
 Homepage: http://www.cubicweb.org/project/cubicweb-expense
-XS-Python-Version: >= 2.6
+X-Python-Version: >= 2.6
 
 Package: cubicweb-expense
 Architecture: all
