@@ -1,6 +1,6 @@
 from yams.buildobjs import (EntityType, RelationType, SubjectRelation,
-                            ObjectRelation, Float, Date, String, RichString)
-from cubicweb.schema import (WorkflowableEntityType, RQLConstraint,
+                            Float, Date, String, RichString)
+from cubicweb.schema import (WorkflowableEntityType,
                              RRQLExpression, ERQLExpression)
 
 from cubicweb import _

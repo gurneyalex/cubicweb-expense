@@ -2,7 +2,6 @@
 
 import unittest
 
-from cubicweb.devtools.testlib import MAILBOX
 from cubicweb import Unauthorized, ValidationError
 
 from _helpers import HelpersTC
