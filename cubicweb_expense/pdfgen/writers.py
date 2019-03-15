@@ -7,9 +7,9 @@ ReportLab platypus and is based on specific flow generators and
 templates.
 """
 
-from cubes.expense.pdfgen.templates import FreshDocTemplate
-from cubes.expense.pdfgen.flowgenerators import ExpenseFlowGenerator
-from cubes.expense.pdfgen.flowgenerators import RefundFlowGenerator
+from cubicweb_expense.pdfgen.templates import FreshDocTemplate
+from cubicweb_expense.pdfgen.flowgenerators import ExpenseFlowGenerator
+from cubicweb_expense.pdfgen.flowgenerators import RefundFlowGenerator
 
 
 class PDFWriter(object):

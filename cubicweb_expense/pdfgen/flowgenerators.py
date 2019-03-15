@@ -16,10 +16,10 @@ from reportlab.platypus import Table, TableStyle
 
 from logilab.mtconverter import xml_escape
 
-from cubes.expense.pdfgen.utils import format_number
-from cubes.expense.pdfgen.styles import style_metadata, style_ids, style_address
-from cubes.expense.pdfgen.styles import style_table_header, style_table_data
-from cubes.expense.pdfgen.styles import style_table_data_num
+from cubicweb_expense.pdfgen.utils import format_number
+from cubicweb_expense.pdfgen.styles import style_metadata, style_ids, style_address
+from cubicweb_expense.pdfgen.styles import style_table_header, style_table_data
+from cubicweb_expense.pdfgen.styles import style_table_data_num
 
 
 _ = unicode

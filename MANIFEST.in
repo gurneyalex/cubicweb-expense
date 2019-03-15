@@ -1,11 +1,9 @@
+include README
 include *.py
-include ChangeLog
-
-recursive-include pdfgen *.py
-recursive-include views *.py
-recursive-include entities *.py
-recursive-include sobjects *.py
-recursive-include schema Include *.py *.sql.postgres 
-recursive-include data external_resources *.gif *.png *.css *.ico *.js
-recursive-include i18n *.pot *.po
-recursive-include migration *.sql *.py depends.map
+include */*.py
+recursive-include cubicweb_expense *.py
+recursive-include cubicweb_expense/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_expense/i18n *.po *.pot
+recursive-include test/data bootstrap_cubes *.py
+include *.ini
+recursive-include debian changelog compat control copyright rules

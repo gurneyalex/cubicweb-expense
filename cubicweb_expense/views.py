@@ -142,7 +142,7 @@ class RefundSummaryComponent(ExpenseSummaryComponent):
 
 
 try:
-    from cubes.expense.pdfgen.writers import PDFWriter
+    from cubicweb_expense.pdfgen.writers import PDFWriter
     has_reportlab = yes()
 except ImportError:
     has_reportlab = yes(0)

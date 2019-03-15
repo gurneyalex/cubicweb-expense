@@ -12,4 +12,4 @@ details).
 # and then:
 #     wrt.write(entity,output)
 
-from cubes.expense.pdfgen.writers import PDFWriter
+from cubicweb_expense.pdfgen.writers import PDFWriter
