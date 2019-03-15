@@ -60,7 +60,7 @@ class OnExpenseAcceptedHook(hook.Hook):
 
     def __call__(self):
         cnx = self._cw
-        etype = cnx.entity_metas(self.eidfrom)['type']
+        etype = cnx.entity_type(self.eidfrom)
         if etype != 'Expense':
             return
         newstate = cnx.entity_from_eid(self.eidto).name
