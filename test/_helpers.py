@@ -42,7 +42,7 @@ class HelpersTC(CubicWebTC):
 
     def create_and_submit_expense(self, cnx):
         expense = cnx.create_entity('Expense', title=u'company expense')
-        lineeid = self.add_expense_line(cnx, expense, self.account1)
+        self.add_expense_line(cnx, expense, self.account1)
         cnx.commit()
         expense.cw_adapt_to('IWorkflowable').fire_transition('submit')
         return expense
@@ -60,8 +60,8 @@ class HelpersTC(CubicWebTC):
             self.account_comp, self.accountfor = account_comp.eid, accountfor.eid
             # expense creation
             self.expense = add('Expense', title=u'sprint')
-            self.line1 = line1 = self.add_expense_line(cnx, self.expense, account1.eid)
-            line_comp = self.add_expense_line(cnx, self.expense, account_comp.eid)
+            self.add_expense_line(cnx, self.expense, account1.eid)
+            self.add_expense_line(cnx, self.expense, account_comp.eid)
             cnx.commit()
             self.accept(cnx, self.expense)
 

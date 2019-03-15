@@ -99,7 +99,7 @@ class HooksTC(HelpersTC):
             expense = cnx.create_entity('Expense', title=u'expense 2')
             line1eid = self.add_expense_line(cnx, expense, self.account2)
             line2eid = self.add_expense_line(cnx, expense, self.account2)
-            line3eid = self.add_expense_line(cnx, expense, self.account2)
+            self.add_expense_line(cnx, expense, self.account2)
             self.add_relation(cnx, refund.eid, 'has_lines', line1eid)
             self.add_relation(cnx, refund.eid, 'has_lines', line2eid)
             cnx.commit()
