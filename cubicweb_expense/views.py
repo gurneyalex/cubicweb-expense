@@ -18,6 +18,9 @@ from cubicweb.web import uicfg, action, component
 from cubicweb.web.views import (primary, autoform, workflow, urlrewrite,
                                 ibreadcrumbs, tableview)
 
+from cubicweb import _
+
+
 class ExpenseLineIBreadCrumbsAdapter(ibreadcrumbs.IBreadCrumbsAdapter):
     __select__ = is_instance('IBreadCrumbs')
 

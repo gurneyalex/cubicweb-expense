@@ -3,6 +3,7 @@ from yams.buildobjs import (EntityType, RelationType, SubjectRelation,
 from cubicweb.schema import (WorkflowableEntityType, RQLConstraint,
                              RRQLExpression, ERQLExpression)
 
+from cubicweb import _
 from cubicweb.schemas.base import CWUser
 
 CWUser.add_relation(String(maxsize=32, description=_('social security number')), name='ssnum')

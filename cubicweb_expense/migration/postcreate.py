@@ -1,4 +1,7 @@
 # expense workflow
+
+from cubicweb import _
+
 wf = add_workflow(_('expense workflow'), 'Expense')
 draft = wf.add_state(_('draft'), initial=True)
 submitted = wf.add_state(_('submitted'))
