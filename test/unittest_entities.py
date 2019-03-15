@@ -1,4 +1,4 @@
-from logilab.common.testlib import unittest_main
+import unittest
 
 from _helpers import HelpersTC
 
@@ -15,4 +15,4 @@ class EntitiesTC(HelpersTC):
             self.assertEqual(paid_by, {self.user1: 2, self.user2: 1})
 
 if __name__ == '__main__':
-    unittest_main()
+    unittest.main()

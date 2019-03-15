@@ -1,5 +1,5 @@
 """template automatic tests"""
-from logilab.common.testlib import unittest_main
+import unittest
 from cubicweb.devtools.testlib import AutomaticWebTest
 
 class AutomaticWebTest(AutomaticWebTest):
@@ -13,4 +13,4 @@ class AutomaticWebTest(AutomaticWebTest):
 
 
 if __name__ == '__main__':
-    unittest_main()
+    unittest.main()

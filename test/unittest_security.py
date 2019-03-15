@@ -1,6 +1,6 @@
 """tests for expense's security"""
 
-from logilab.common.testlib import unittest_main
+import unittest
 
 from cubicweb.devtools.testlib import MAILBOX
 from cubicweb import Unauthorized, ValidationError
@@ -66,4 +66,4 @@ class SecurityTC(HelpersTC):
 
 
 if __name__ == '__main__':
-    unittest_main()
+    unittest.main()

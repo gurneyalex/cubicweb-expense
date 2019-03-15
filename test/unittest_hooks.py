@@ -1,6 +1,6 @@
 """unittests for cubicweb-expense hooks"""
 
-from logilab.common.testlib import unittest_main
+import unittest
 
 from cubicweb.devtools.testlib import MAILBOX
 
@@ -112,4 +112,4 @@ class HooksTC(HelpersTC):
 
 
 if __name__ == '__main__':
-    unittest_main()
+    unittest.main()
