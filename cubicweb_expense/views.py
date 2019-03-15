@@ -14,8 +14,8 @@ from logilab.common.registry import yes
 
 from cubicweb.predicates import one_line_rset, is_instance, rql_condition, authenticated_user
 from cubicweb.view import EntityView
-from cubicweb.web import uicfg, action, component
-from cubicweb.web.views import (primary, autoform, workflow, urlrewrite,
+from cubicweb.web import action, component
+from cubicweb.web.views import (uicfg, primary, autoform, workflow, urlrewrite,
                                 ibreadcrumbs, tableview)
 
 from cubicweb import _
