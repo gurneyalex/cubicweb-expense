@@ -7,7 +7,7 @@
 __docformat__ = "restructuredtext en"
 
 import os
-from cStringIO import StringIO
+from io import BytesIO
 
 from logilab.mtconverter import xml_escape
 from logilab.common.registry import yes
@@ -183,7 +183,7 @@ class PDFExportView(EntityView):
             os.environ['HOME'] = 'wtf'
             os.getcwd = lambda: 'wtf'
             # NOTE: we could use self.w.__self__ directly
-            stream = StringIO()
+            stream = BytesIO()
             writer.write(entity, stream)
             self.w(stream.getvalue())
         finally:
