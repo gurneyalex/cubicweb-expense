@@ -33,7 +33,6 @@ class PDFWriter(object):
         # type of document to be generated
         self._doc_type = None  # string "expense" or "refund"
 
-
     def __init_flow_generator(self, entity):
         """
         Instanciates the flow generator that will create the PDF flow content
@@ -54,7 +53,6 @@ class PDFWriter(object):
         else:
             self._doc_type = None
             self._flow_generator = None
-
 
     def write(self, entity, output):
         """

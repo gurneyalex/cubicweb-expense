@@ -90,7 +90,6 @@ class ExpenseSummaryComponent(component.EntityCtxComponent):
     title = _('Expense summary')
     order = -1
 
-
     def field(self, label, value, w):
         w(u'<div class="entityfield">')
         w(u'<span class="label">%s</span> ' % label)

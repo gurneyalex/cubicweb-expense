@@ -50,7 +50,6 @@ class FreshPageTemplate(PageTemplate):
 
         PageTemplate.__init__(self, id=template_id, frames=[main_f])
 
-
     def beforeDrawPage(self, canvas, document):
         """
         Overrides the method called before drawing on a new page of the PDF
@@ -67,7 +66,6 @@ class FreshPageTemplate(PageTemplate):
 
         # Puts back the canvas in its previous state
         canvas.restoreState()
-
 
     def draw_static_content(self, canvas, document):
         """
@@ -146,7 +144,6 @@ class FreshPageTemplate(PageTemplate):
         canvas.drawCentredString(14.2 * cm, 26.7 * cm,
               _(u"All the amounts are displayed in Euros, except if specified"))
 
-
     def draw_string_in_width(self, canvas, string, x, y, width):
         """
         In a canvas, draws a string from the x,y position and within the
@@ -174,7 +171,6 @@ class FreshPageTemplate(PageTemplate):
                 string = string[:-4] + u"..."
                 str_width = canvas.stringWidth(string)
         canvas.drawString(x, y, string)
-
 
 
 class FreshDocTemplate(BaseDocTemplate):

@@ -91,14 +91,12 @@ class ExpenseLine(AnyEntity):
                                           self._cw._(self.type), self.title,
                                           self.amount, self.currency)
 
-
     def dc_long_title(self):
         expense = self.parent_expense
         if expense:
             return u'%s - %s' % (self.title, expense.dc_title())
         else:
             return self.dc_title()
-
 
     def euro_amount(self):
         if self.currency == 'EUR':

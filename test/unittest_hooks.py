@@ -51,7 +51,6 @@ class HooksTC(HelpersTC):
             newcount = self.refund_lines_count(cnx, self.account1)
             self.assertEqual(newcount, count + 1)
 
-
     def test_expense_accepted_notification(self):
         with self.admin_access.repo_cnx() as cnx:
             expense = cnx.create_entity('Expense', title=u'expense 2')
@@ -90,7 +89,6 @@ class HooksTC(HelpersTC):
             email2 = MAILBOX[0]
             self.assertCountEqual(email2.recipients, ['john@test.org'])
             self.assertNotEqual(email2.message.get('Message-id'), email1.message.get('Message-id'))
-
 
     def test_automatic_refund_with_existing_line(self):
         with self.admin_access.repo_cnx() as cnx:

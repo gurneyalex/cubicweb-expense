@@ -9,7 +9,6 @@ from _helpers import HelpersTC
 
 class SecurityTC(HelpersTC):
 
-
     def test_users_cannot_modify_accepted_expense(self):
         with self.new_access('john').repo_cnx() as cnx:
             rset = cnx.execute('Any E WHERE E is Expense, E has_lines EE, EE paid_by PA, '
@@ -62,7 +61,6 @@ class SecurityTC(HelpersTC):
             rql = 'SET R has_lines E WHERE E eid %(e)s'
             cnx.execute(rql, {'e': line.eid})
             self.assertRaises(Unauthorized, cnx.commit)
-
 
 
 if __name__ == '__main__':

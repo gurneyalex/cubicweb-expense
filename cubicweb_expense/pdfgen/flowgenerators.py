@@ -47,7 +47,6 @@ class AbstractFlowGenerator:
         if self.__class__ is AbstractFlowGenerator:
             raise NotImplementedError()
 
-
     def generate_flow(self, entity):
         """
         Generates the flow content (a list of Flowable) for the entity.
@@ -107,7 +106,6 @@ class AbstractFlowGenerator:
 
         return flow_list
 
-
     def get_metadata(self, entity):
         """
         Gives the table that contains metadata about the entity (title,
@@ -118,7 +116,6 @@ class AbstractFlowGenerator:
         Returns: Flowable (very likely a Table).
         """
         raise NotImplementedError()
-
 
     def get_person_name(self, entity):
         """
@@ -131,7 +128,6 @@ class AbstractFlowGenerator:
         """
         raise NotImplementedError()
 
-
     def get_total(self, entity):
         """
         Gives the table that contains the total.
@@ -141,7 +137,6 @@ class AbstractFlowGenerator:
         Returns: Flowable (very likely a Table).
         """
         raise NotImplementedError()
-
 
     def get_total_relative_data(self, entity):
         """
@@ -154,7 +149,6 @@ class AbstractFlowGenerator:
         """
         raise NotImplementedError()
 
-
     def get_expenses_table(self, entity):
         """
         Gives the main table of the document (that contains lines describing
@@ -165,7 +159,6 @@ class AbstractFlowGenerator:
         Returns: Flowable (very likely a Table).
         """
         raise NotImplementedError()
-
 
 
 class ExpenseFlowGenerator (AbstractFlowGenerator):
@@ -180,7 +173,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         Initializes the flow content generator for Expense entities.
         """
         AbstractFlowGenerator.__init__(self)
-
 
     def get_metadata(self, entity):
         """
@@ -231,7 +223,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
 
         return meta_table
 
-
     def get_person_name(self, entity):
         """
         Gives the table that contains the name and address of the person
@@ -241,7 +232,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         Returns: Flowable (very likely a Table).
         """
         return Spacer(0, 0 * cm)
-
 
     def get_total(self, entity):
         """
@@ -290,7 +280,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
 
         return tot_table
 
-
     def get_total_relative_data(self, entity):
         """
         Gives the table that contains useful data relative to the total
@@ -331,7 +320,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
 
         else:
             return Spacer(0, 0 * cm)
-
 
     def get_expenses_table(self, entity):
         """
@@ -459,7 +447,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
 
         return main_table
 
-
     def _build_inner_tables(self, line1_data, line2_data):
         """
         Builds inner tables that will be displayed into the main table (the
@@ -525,7 +512,6 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         return both_lines_table
 
 
-
 class RefundFlowGenerator (AbstractFlowGenerator):
     """
     Class building the specific contents for PDF flow content generation.
@@ -533,13 +519,11 @@ class RefundFlowGenerator (AbstractFlowGenerator):
     Refund.
     """
 
-
     def __init__(self):
         """
         Initializes the flow content generator for Refund entities.
         """
         AbstractFlowGenerator.__init__(self)
-
 
     def get_metadata(self, entity):
         """
@@ -550,7 +534,6 @@ class RefundFlowGenerator (AbstractFlowGenerator):
         Returns: Flowable (very likely a Table).
         """
         return Spacer(0, 0 * cm)
-
 
     def get_person_name(self, entity):
         """
@@ -607,7 +590,6 @@ class RefundFlowGenerator (AbstractFlowGenerator):
 
         return addr_table
 
-
     def get_total(self, entity):
         """
         Gives the table that contains the total.
@@ -642,7 +624,6 @@ class RefundFlowGenerator (AbstractFlowGenerator):
             )
 
         return tot_table
-
 
     def get_total_relative_data(self, entity):
         """
@@ -686,7 +667,6 @@ class RefundFlowGenerator (AbstractFlowGenerator):
             )
 
         return payment_table
-
 
     def get_expenses_table(self, entity):
         """

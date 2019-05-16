@@ -11,7 +11,6 @@ class HelpersTC(CubicWebTC):
         cnx.execute('SET X %s Y WHERE X eid %%(x)s, Y eid %%(y)s' % rtype,
                     {'x': eidfrom, 'y': eidto})
 
-
     def new_expense_line(self, cnx, paid_by_eid):
         line = cnx.create_entity('ExpenseLine', title=u'aline', diem=date.today(),
                                  type=u'food', amount=1., taxes=0.)
