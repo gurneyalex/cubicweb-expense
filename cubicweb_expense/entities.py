@@ -5,6 +5,7 @@ from cubicweb.entities import AnyEntity, fetch_config
 
 class LineContainerMixIn(object):
     """mixin class used by all entities containing expense lines"""
+
     def paid_by(self):
         """returns the list of eusers who paid something
         in this container
