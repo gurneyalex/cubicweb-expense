@@ -12,7 +12,7 @@ class EntitiesTC(HelpersTC):
             self.add_expense_line(cnx, expense, self.account2)
             self.add_expense_line(cnx, expense, self.account1)
             paid_by = dict((euser.eid, value)
-                            for euser, value in expense.totals_paid_by().items())
+                           for euser, value in expense.totals_paid_by().items())
             self.assertEqual(paid_by, {self.user1: 2, self.user2: 1})
 
 

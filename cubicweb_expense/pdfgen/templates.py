@@ -193,7 +193,7 @@ class FreshDocTemplate(BaseDocTemplate):
         """
         # Initializes the document template with the correct page templates
         templates = [FreshPageTemplate(doc_type, company_data,
-                                        template_id="Pages", _=_)]
+                                       template_id="Pages", _=_)]
         BaseDocTemplate.__init__(self, output, pageTemplates=templates,
                                  allowSplitting=1)
 
