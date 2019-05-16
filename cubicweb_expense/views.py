@@ -34,6 +34,7 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
                        'E in_state S, S name "submitted"')),
     ]
 
+
 _abaa = uicfg.actionbox_appearsin_addmenu
 
 _abaa.tag_subject_of(('*', 'has_attachment', '*'), True)
