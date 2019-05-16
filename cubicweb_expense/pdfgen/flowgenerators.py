@@ -22,9 +22,6 @@ from cubicweb_expense.pdfgen.styles import style_table_header, style_table_data
 from cubicweb_expense.pdfgen.styles import style_table_data_num
 
 
-_ = unicode
-
-
 class AbstractFlowGenerator:
     """
     Abstract class containing the common parts for generating the PDF flow

@@ -10,10 +10,10 @@ def format_number(number, digits=2):
     """
     Function that formats a number to be written in the PDF document. It uses
     the separating characters for numbers defined in the localized
-    dictionnary. 
+    dictionnary
 
     number: float or int. number to be formatted.
-    digits: int. number of digits to be displayed ('number' is rounded if it 
+    digits: int. number of digits to be displayed ('number' is rounded if it
             has more digits).
     Returns: unicode string.
     """

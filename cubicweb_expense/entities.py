@@ -76,7 +76,7 @@ class Expense(LineContainerMixIn, AnyEntity):
 class ExpenseLine(AnyEntity):
     __regid__ = 'ExpenseLine'
     fetch_attrs, cw_fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
-                                             'currency'])
+                                                'currency'])
 
     @property
     def parent_expense(self):

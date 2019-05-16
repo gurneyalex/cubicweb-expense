@@ -69,7 +69,6 @@ class HooksTC(HelpersTC):
             cnx.commit()
             self.accept(cnx, expense1)
             MAILBOX[:] = []
-            rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid"'
             account1 = cnx.execute('Any X WHERE X eid %(x)s', {'x': self.account1}).get_entity(0, 0)
             account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
             self.assertEqual(len(MAILBOX), 0, MAILBOX)
@@ -82,7 +81,6 @@ class HooksTC(HelpersTC):
             self.add_expense_line(cnx, expense2, self.account1)
             cnx.commit()
             self.accept(cnx, expense2)
-            rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid", NOT R in_state S'
             account1.cw_clear_all_caches()
             account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
             cnx.commit()  # to fire corresponding operations

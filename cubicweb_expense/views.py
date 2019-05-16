@@ -39,7 +39,7 @@ _abaa = uicfg.actionbox_appearsin_addmenu
 
 _abaa.tag_subject_of(('*', 'has_attachment', '*'), True)
 
-## forms #######################################################################
+# forms
 
 _afs = uicfg.autoform_section
 _affk = uicfg.autoform_field_kwargs
@@ -63,7 +63,7 @@ class RefundChangeStateForm(workflow.ChangeStateForm):
     payment_mode = autoform.etype_relation_field('Refund', 'payment_mode')
 
 
-## views #######################################################################
+# views
 
 _pvs = uicfg.primaryview_section
 _pvs.tag_attribute(('Expense', 'title'), 'hidden')
@@ -206,7 +206,7 @@ class ExpenseLineFilesComponent(component.EntityCtxComponent):
     __select__ = (component.EntityCtxComponent.__select__
                   & authenticated_user() & is_instance('Expense')
                   & rql_condition('EXISTS(X has_lines Y, Y has_attachment F) '
-                                'OR EXISTS(X has_attachment F)'))
+                                  'OR EXISTS(X has_attachment F)'))
     title = _('has_attachment')
 
     def render_body(self, w):

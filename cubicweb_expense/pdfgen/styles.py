@@ -1,7 +1,7 @@
 # -*- coding: iso-8859-15 -*-
 
 """
-Library package containing the styles used in the PDF generation with 
+Library package containing the styles used in the PDF generation with
 ReportLab platypus.
 """
 

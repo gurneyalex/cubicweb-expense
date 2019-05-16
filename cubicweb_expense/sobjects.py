@@ -31,12 +31,13 @@ class UpdateRefundStateOperation(hook.Operation):
         for account, lines in groupby(acc_rset, lambda row: row[0]):
             # reset refund to None for this new account
             ref = None
-            for _, user, line in lines:
+            for __, user, line in lines:
                 if user is None:  # this is a company account, no refund needed
                     break
                 ref = ref or self.get_or_create_refund_for(account)
                 # users don't have permissions to add lines to refunds
-                execute('SET R has_lines EL WHERE R is Refund, R eid %(r)s, EL eid %(el)s, NOT EXISTS(R has_lines EL)', {'r': ref, 'el': line})
+                execute('SET R has_lines EL WHERE R is Refund, R eid %(r)s, '
+                        'EL eid %(el)s, NOT EXISTS(R has_lines EL)', {'r': ref, 'el': line})
 
     def get_or_create_refund_for(self, account):
         rql = 'Any R WHERE R is Refund, R to_account A, A eid %(a)s, ' \

@@ -7,6 +7,7 @@ These classes are derived from platypus standard classes but are specific to
 the Fresh application. The page template draw the static content in the
 PDF documents.
 """
+import six
 
 from reportlab import Version as reportlab_version
 
@@ -16,8 +17,6 @@ from reportlab.lib.utils import ImageReader
 from reportlab.platypus import PageTemplate, BaseDocTemplate, Frame
 
 from logilab.mtconverter import xml_escape
-
-_ = unicode
 
 
 class FreshPageTemplate(PageTemplate):
@@ -29,7 +28,7 @@ class FreshPageTemplate(PageTemplate):
     (static content).
     """
 
-    def __init__(self, doc_type, company_data, template_id="", _=unicode):
+    def __init__(self, doc_type, company_data, template_id="", _=six.text_type):
         """
         Instanciates a FreshPageTemplate.
 
@@ -89,7 +88,7 @@ class FreshPageTemplate(PageTemplate):
             logo = ImageReader(self.company_data["logo-filename"])
             if reportlab_version >= "2.1" and reportlab_version <= "2.3":
                 canvas.drawImage(logo, 1.2 * cm, 28.5 * cm, 5 * cm, 2.5 * cm,
-                               preserveAspectRatio=True, anchor="nw")
+                                 preserveAspectRatio=True, anchor="nw")
             else:
                 # Old version of reportlab. must compute the height and width
                 # of the image. draws the image from the southwest corner.
@@ -101,7 +100,7 @@ class FreshPageTemplate(PageTemplate):
                     height = 5 * cm / ratio
                 else:
                     width = ratio * 2.5 * cm
-                    heigth = 2.5 * cm
+                    height = 2.5 * cm
                 canvas.drawImage(logo, 1.2 * cm, 28.5 * cm - height, width, height)
         except IOError:
             # Unable to read logo filename
@@ -116,18 +115,15 @@ class FreshPageTemplate(PageTemplate):
         canvas.drawRightString(19.8 * cm, 28.2 * cm, str_data)
 
         # company address
-        str_data = _(u"Est.") + _(u": ") \
-        + self.company_data["company-address"]
+        str_data = _(u"Est.") + _(u": ") + self.company_data["company-address"]
         self.draw_string_in_width(canvas, str_data, 1.2 * cm, 25.6 * cm, 9.5 * cm)
 
         # company official ID number
-        str_data = _(u"Official ID num") + _(u": ") \
-        + self.company_data["company-offnum"]
+        str_data = _(u"Official ID num") + _(u": ") + self.company_data["company-offnum"]
         self.draw_string_in_width(canvas, str_data, 11.2 * cm, 25.6 * cm, 5 * cm)
 
         # company activity number
-        str_data = _(u"Activity num") + _(u": ") \
-        + self.company_data["company-actnum"]
+        str_data = _(u"Activity num") + _(u": ") + self.company_data["company-actnum"]
         self.draw_string_in_width(canvas, str_data, 16.7 * cm, 25.6 * cm, 3.5 * cm)
 
         # title depending on document type
@@ -141,8 +137,8 @@ class FreshPageTemplate(PageTemplate):
 
         # preamble remark
         canvas.setFont("Helvetica-Oblique", 9)
-        canvas.drawCentredString(14.2 * cm, 26.7 * cm,
-              _(u"All the amounts are displayed in Euros, except if specified"))
+        canvas.drawCentredString(14.2 * cm, 26.7 * cm, _(
+            u"All the amounts are displayed in Euros, except if specified"))
 
     def draw_string_in_width(self, canvas, string, x, y, width):
         """
@@ -180,7 +176,7 @@ class FreshDocTemplate(BaseDocTemplate):
     the FreshPageTemplate.
     """
 
-    def __init__(self, output, doc_type, company_data, _=unicode):
+    def __init__(self, output, doc_type, company_data, _=six.text_type):
         """
         Instanciates a FreshDocTemplate.
         output: string or output flow. name of the PDF output file or

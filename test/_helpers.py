@@ -6,7 +6,7 @@ from cubicweb.devtools.testlib import CubicWebTC
 
 
 class HelpersTC(CubicWebTC):
-    ## helpers ################################################################
+    # helpers
     def add_relation(self, cnx, eidfrom, rtype, eidto):
         cnx.execute('SET X %s Y WHERE X eid %%(x)s, Y eid %%(y)s' % rtype,
                     {'x': eidfrom, 'y': eidto})
