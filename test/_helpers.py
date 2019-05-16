@@ -64,5 +64,3 @@ class HelpersTC(CubicWebTC):
             self.add_expense_line(cnx, self.expense, account_comp.eid)
             cnx.commit()
             self.accept(cnx, self.expense)
-
-

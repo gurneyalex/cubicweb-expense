@@ -105,4 +105,3 @@ class has_attachment(RelationType):
     }
     subject = ('Expense', 'ExpenseLine')
     object = 'File'
-
