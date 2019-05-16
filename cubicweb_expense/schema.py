@@ -15,7 +15,7 @@ class Expense(WorkflowableEntityType):
                        'add': ('users', 'managers'),
                        'update': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
                        'delete': ('managers', ERQLExpression('X in_state S, NOT S name "accepted"')),
-                   }
+                       }
     title = String(maxsize=128, required=True, fulltextindexed=True)
     description = RichString(fulltextindexed=True)
 
@@ -30,7 +30,7 @@ class ExpenseLine(EntityType):
                        'add': ('users', 'managers'),
                        'update': ('managers', ERQLExpression('E is Expense, E has_lines X, E in_state S, NOT S name "accepted"')),
                        'delete': ('managers', ERQLExpression('E is Expense, E has_lines X, E in_state S, NOT S name "accepted"')),
-                   }
+                       }
     title = String(maxsize=256, required=True, fulltextindexed=True)
     diem = Date(required=True)
     type = String(required=True, internationalizable=True,
