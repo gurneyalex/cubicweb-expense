@@ -6,7 +6,7 @@ library, and specifically on platypus (see ReportLab documentation for
 details).
 """
 
-# The only class that have to be used for generating PDFs. Just instantiate 
+# The only class that have to be used for generating PDFs. Just instantiate
 # the class:
 #     wrt = PDFWriter(company_data)
 # and then:
