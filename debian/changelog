@@ -1,3 +1,9 @@
+cubicweb-expense (0.9.0-1) unstable; urgency=medium
+
+  * new upstream release
+
+ -- Philippe Pepiot <philippe.pepiot@logilab.fr>  Thu, 16 May 2019 13:43:43 +0200
+
 cubicweb-expense (0.8.0-1) unstable; urgency=medium
 
   * new upstream release
