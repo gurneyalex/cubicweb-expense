@@ -94,7 +94,7 @@ class has_lines(RelationType):
         'read' : ('managers', 'users'),
         'add': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
         'delete': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
-        }
+    }
 
 class has_attachment(RelationType):
     __permissions__ = {

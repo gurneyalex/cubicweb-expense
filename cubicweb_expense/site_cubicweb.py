@@ -36,4 +36,4 @@ options = (
       'help': 'activity number of the company editing PDFs',
       'group': 'expense', 'level': 2,
       }),
-    )
+)

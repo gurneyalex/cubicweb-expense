@@ -32,7 +32,7 @@ class ExpenseURLRewriter(urlrewrite.SimpleReqRewriter):
     rules = [
         ('/todo', dict(rql='Any E,S WHERE E is Expense, '
                        'E in_state S, S name "submitted"')),
-        ]
+    ]
 
 _abaa = uicfg.actionbox_appearsin_addmenu
 
