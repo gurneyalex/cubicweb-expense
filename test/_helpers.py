@@ -4,6 +4,7 @@ from datetime import date
 
 from cubicweb.devtools.testlib import CubicWebTC
 
+
 class HelpersTC(CubicWebTC):
     ## helpers ################################################################
     def add_relation(self, cnx, eidfrom, rtype, eidto):

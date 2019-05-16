@@ -55,6 +55,7 @@ _affk.tag_subject_of(('ExpenseLine', 'paid_for', '*'), {'sort': True})
 uicfg.autoform_permissions_overrides.tag_subject_of(
     ('Expense', 'has_lines', '*'), 'add_on_new')
 
+
 class RefundChangeStateForm(workflow.ChangeStateForm):
     __select__ = is_instance('Refund')
     payment_date = autoform.etype_relation_field('Refund', 'payment_date')
@@ -70,6 +71,7 @@ _pvs.tag_subject_of(('Expense', 'has_attachment', 'File'), 'hidden')
 _pvs.tag_subject_of(('Refund', 'has_lines', '*'), 'hidden')
 _pvdc = uicfg.primaryview_display_ctrl
 _pvdc.tag_attribute(('Expense', 'description'), {'showlabel': False})
+
 
 class ExpensePrimaryView(primary.PrimaryView):
     __select__ = is_instance('Expense')
@@ -153,6 +155,7 @@ except ImportError:
 # use the has_reportlab selector trick to have them in the registry anyway
 # and avoid for instance i18n messages removing due to missing reportlab
 
+
 class PDFAction(action.Action):
     __regid__ = 'pdfaction'
     __select__ = has_reportlab & one_line_rset() & is_instance('Expense', 'Refund')
@@ -195,6 +198,7 @@ class PDFExportView(EntityView):
             os.getcwd = getcwd_backup
 
 # boxes ########################################################################
+
 
 class ExpenseLineFilesComponent(component.EntityCtxComponent):
     """display the list of files attached to the expenselines"""

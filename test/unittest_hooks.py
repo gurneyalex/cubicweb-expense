@@ -6,6 +6,7 @@ from cubicweb.devtools.testlib import MAILBOX
 
 from _helpers import HelpersTC
 
+
 class HooksTC(HelpersTC):
     def test_refund_is_created(self):
         with self.admin_access.repo_cnx() as cnx:

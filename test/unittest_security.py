@@ -6,6 +6,7 @@ from cubicweb import Unauthorized, ValidationError
 
 from _helpers import HelpersTC
 
+
 class SecurityTC(HelpersTC):
 
 

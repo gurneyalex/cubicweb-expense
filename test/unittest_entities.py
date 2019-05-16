@@ -2,6 +2,7 @@ import unittest
 
 from _helpers import HelpersTC
 
+
 class EntitiesTC(HelpersTC):
 
     def test_totals_paid_by(self):

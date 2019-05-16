@@ -72,6 +72,7 @@ class Expense(LineContainerMixIn, AnyEntity):
     def euro_total(self):
         return sum(line.euro_amount() for line in self.has_lines)
 
+
 class ExpenseLine(AnyEntity):
     __regid__ = 'ExpenseLine'
     fetch_attrs, cw_fetch_order = fetch_config(['diem', 'type', 'title', 'amount',
