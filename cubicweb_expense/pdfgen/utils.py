@@ -40,7 +40,7 @@ def format_number(number, digits=2) :
             result_int = u'%s\u00a0%s' % (char, result_int)
 
     result_int = u" ".join(result_int.split())
-    
+
     if digits == 0 :
         formatted_num = result_int
     else :
