@@ -67,11 +67,11 @@ class AbstractFlowGenerator:
                            [11.5 * cm, 0.5 * cm, 7 * cm]
                            )
         top_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
             )
@@ -94,11 +94,11 @@ class AbstractFlowGenerator:
                               [12.5 * cm, 0.5 * cm, 6 * cm]
                               )
         bottom_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
             )
@@ -219,13 +219,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                             [11.5 * cm]
                             )
         meta_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -277,14 +277,14 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                            [3.25 * cm, 2.75 * cm]
                            )
         tot_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
-                         ('INNERGRID',     (0, 0), (-1, -1), 0.02 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('INNERGRID', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -317,13 +317,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                                [12.5 * cm]
                                )
             rel_table.setStyle(
-                TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                             ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                             ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                             ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                             ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                             ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                             ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                             ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                              ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                             ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                             ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                              ])
                 )
 
@@ -446,14 +446,14 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         main_table.repeatRows = 1
         main_table.setStyle(
             TableStyle([
-                ('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
-                ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
-                ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                ('LEFTPADDING', (0, 0), (-1, -1), 0 * cm),
+                ('RIGHTPADDING', (0, 0), (-1, -1), 0 * cm),
+                ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                 ('BOTTOMPADDING', (0, 0), (-1, -2), 0.3 * cm),
                 ('BOTTOMPADDING', (0, -1), (-1, -1), 0 * cm),
-                ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                 ])
             )
 
@@ -477,13 +477,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                              [2.25 * cm, 14 * cm, 2.75 * cm]
                              )
         line1_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, 0), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, 0), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, 0), 0.1 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, 0), 0.1 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, 0), 0.1 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, 0), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, 0), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('TOPPADDING', (0, 0), (-1, 0), 0.1 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, 0), 0.1 * cm),
-                         ('INNERGRID',     (0, 0), (-1, 0), 0.02 * cm, black),
+                         ('INNERGRID', (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
             )
 
@@ -494,14 +494,14 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                               2.25 * cm]
                              )
         line2_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, 0), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, 0), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, 0), 0.1 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, 0), 0.1 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, 0), 0.1 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, 0), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, 0), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('TOPPADDING', (0, 0), (-1, 0), 0.1 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, 0), 0.1 * cm),
-                         ('INNERGRID',     (0, 0), (-1, 0), 0.02 * cm, black),
-                         ('LINEABOVE',     (0, 0), (-1, 0), 0.02 * cm, black),
+                         ('INNERGRID', (0, 0), (-1, 0), 0.02 * cm, black),
+                         ('LINEABOVE', (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
             )
 
@@ -512,13 +512,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                                   [19 * cm]
                                   )
         both_lines_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.02 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -595,13 +595,13 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                             [7 * cm]
                             )
         addr_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -630,14 +630,14 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                            [3.25 * cm, 2.75 * cm]
                            )
         tot_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
-                         ('INNERGRID',     (0, 0), (-1, -1), 0.02 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('INNERGRID', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -675,13 +675,13 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                                [12.5 * cm]
                                )
         payment_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -768,20 +768,20 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                             )
         main_table.repeatRows = 1
         main_table.setStyle(
-            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
-                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
-                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.1 * cm),
-                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.1 * cm),
-                         ('TOPPADDING',    (0, 0), (-1, -1), 0.1 * cm),
+            TableStyle([('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING', (0, 0), (-1, -1), 0.1 * cm),
+                         ('RIGHTPADDING', (0, 0), (-1, -1), 0.1 * cm),
+                         ('TOPPADDING', (0, 0), (-1, -1), 0.1 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.1 * cm),
-                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
-                         ('LINEAFTER',     (0, 0), (0, -1), 0.02 * cm, black),
-                         ('LINEAFTER',     (1, 0), (1, -1), 0.02 * cm, black),
-                         ('LINEAFTER',     (2, 0), (2, -1), 0.05 * cm, black),
-                         ('LINEAFTER',     (3, 0), (3, -1), 0.02 * cm, black),
-                         ('LINEAFTER',     (4, 0), (4, -1), 0.02 * cm, black),
-                         ('LINEAFTER',     (5, 0), (5, -1), 0.05 * cm, black),
-                         ('LINEBELOW',     (0, 0), (-1, 0), 0.05 * cm, black),
+                         ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('LINEAFTER', (0, 0), (0, -1), 0.02 * cm, black),
+                         ('LINEAFTER', (1, 0), (1, -1), 0.02 * cm, black),
+                         ('LINEAFTER', (2, 0), (2, -1), 0.05 * cm, black),
+                         ('LINEAFTER', (3, 0), (3, -1), 0.02 * cm, black),
+                         ('LINEAFTER', (4, 0), (4, -1), 0.02 * cm, black),
+                         ('LINEAFTER', (5, 0), (5, -1), 0.05 * cm, black),
+                         ('LINEBELOW', (0, 0), (-1, 0), 0.05 * cm, black),
                          ])
             )
 

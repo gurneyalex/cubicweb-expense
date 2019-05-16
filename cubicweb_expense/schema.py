@@ -98,8 +98,8 @@ class has_lines(RelationType):
 
 class has_attachment(RelationType):
     __permissions__ = {
-        'read':   ('managers', 'users', 'guests'),
-        'add':    ('managers', RRQLExpression('U has_update_permission S', 'S')),
+        'read': ('managers', 'users', 'guests'),
+        'add': ('managers', RRQLExpression('U has_update_permission S', 'S')),
         'delete': ('managers', RRQLExpression('U has_update_permission S', 'S')),
     }
     subject = ('Expense', 'ExpenseLine')
