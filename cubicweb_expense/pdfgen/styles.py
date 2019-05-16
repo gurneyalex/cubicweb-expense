@@ -7,7 +7,7 @@ ReportLab platypus.
 
 from reportlab.lib.units import cm
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import  TA_LEFT, TA_CENTER, TA_RIGHT
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 
 STANDARD_FONT_SIZE = 9.0
 
