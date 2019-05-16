@@ -12,8 +12,8 @@ class SecurityTC(HelpersTC):
     def test_users_cannot_modify_accepted_expense(self):
         with self.new_access('john').repo_cnx() as cnx:
             rset = cnx.execute('Any E WHERE E is Expense, E has_lines EE, EE paid_by PA, '
-                                'E in_state S, S name "accepted", PA associated_to U, U eid %(u)s',
-                                {'u': self.user1}) # user1 is john
+                               'E in_state S, S name "accepted", PA associated_to U, U eid %(u)s',
+                               {'u': self.user1}) # user1 is john
             self.assertEqual(len(rset), 1)
             expense = rset.get_entity(0, 0)
             self.add_expense_line(cnx, expense, self.account1)

@@ -119,17 +119,17 @@ class FreshPageTemplate(PageTemplate):
 
         # company address
         str_data = _(u"Est.") + _(u": ") \
-                   + self.company_data["company-address"]
+        + self.company_data["company-address"]
         self.draw_string_in_width(canvas,str_data,1.2*cm,25.6*cm,9.5*cm)
 
         # company official ID number
         str_data = _(u"Official ID num") + _(u": ") \
-                   + self.company_data["company-offnum"]
+        + self.company_data["company-offnum"]
         self.draw_string_in_width(canvas,str_data,11.2*cm,25.6*cm,5*cm)
 
         # company activity number
         str_data = _(u"Activity num") + _(u": ") \
-                   + self.company_data["company-actnum"]
+        + self.company_data["company-actnum"]
         self.draw_string_in_width(canvas,str_data,16.7*cm,25.6*cm,3.5*cm)
 
         # title depending on document type

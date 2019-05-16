@@ -79,7 +79,7 @@ class ExpenseLine(AnyEntity):
     @property
     def parent_expense(self):
         expenses = [entity for entity in self.reverse_has_lines
-                        if entity.e_schema == 'Expense']
+                    if entity.e_schema == 'Expense']
         if expenses:
             return expenses[0]
         return None
