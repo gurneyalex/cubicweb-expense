@@ -447,13 +447,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator) :
         main_table.setStyle(
             TableStyle([
                 ('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                          ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                          ('LEFTPADDING',   (0,0), (-1,-1), 0*cm),
-                          ('RIGHTPADDING',  (0,0), (-1,-1), 0*cm),
-                          ('TOPPADDING',    (0,0), (-1,-1), 0*cm),
-                          ('BOTTOMPADDING', (0,0), (-1,-2), 0.3*cm),
-                          ('BOTTOMPADDING', (0,-1), (-1,-1), 0*cm),
-                          ('BOX',           (0,0), (-1,-1), 0.05*cm, black),
+                ('VALIGN',        (0,0), (-1,-1), 'TOP'),
+                ('LEFTPADDING',   (0,0), (-1,-1), 0*cm),
+                ('RIGHTPADDING',  (0,0), (-1,-1), 0*cm),
+                ('TOPPADDING',    (0,0), (-1,-1), 0*cm),
+                ('BOTTOMPADDING', (0,0), (-1,-2), 0.3*cm),
+                ('BOTTOMPADDING', (0,-1), (-1,-1), 0*cm),
+                ('BOX',           (0,0), (-1,-1), 0.05*cm, black),
                 ])
             )
 

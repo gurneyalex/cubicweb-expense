@@ -14,9 +14,9 @@ description = 'expense component for the CubicWeb framework'
 web = 'http://www.cubicweb.org/project/%s' % distname
 classifiers = [
     'Environment :: Web Environment',
-           'Framework :: CubicWeb',
-           'Programming Language :: Python',
-           'Programming Language :: JavaScript',
+    'Framework :: CubicWeb',
+    'Programming Language :: Python',
+    'Programming Language :: JavaScript',
 ]
 
 __depends__ = {'cubicweb': '>= 3.24.0',
