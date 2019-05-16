@@ -73,7 +73,7 @@ class AbstractFlowGenerator:
                          ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
-            )
+        )
 
         flow_list.append(top_table)
 
@@ -100,7 +100,7 @@ class AbstractFlowGenerator:
                          ('TOPPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
-            )
+        )
 
         flow_list.append(KeepTogether(bottom_table))
 
@@ -219,7 +219,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
-            )
+        )
 
         return meta_table
 
@@ -276,7 +276,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                          ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ('INNERGRID', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
-            )
+        )
 
         return tot_table
 
@@ -314,7 +314,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                              ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
                              ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                              ])
-                )
+            )
 
             return rel_table
 
@@ -442,8 +442,8 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                 ('BOTTOMPADDING', (0, 0), (-1, -2), 0.3 * cm),
                 ('BOTTOMPADDING', (0, -1), (-1, -1), 0 * cm),
                 ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
-                ])
-            )
+            ])
+        )
 
         return main_table
 
@@ -472,7 +472,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                          ('BOTTOMPADDING', (0, 0), (-1, 0), 0.1 * cm),
                          ('INNERGRID', (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
-            )
+        )
 
         # Builds table for the second line
         line2_table = Table([line2_data
@@ -490,7 +490,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                          ('INNERGRID', (0, 0), (-1, 0), 0.02 * cm, black),
                          ('LINEABOVE', (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
-            )
+        )
 
         # Builds the table that contains the two lines describing the expense
         both_lines_table = Table([[line1_table],
@@ -507,7 +507,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ('BOX', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
-            )
+        )
 
         return both_lines_table
 
@@ -586,7 +586,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
-            )
+        )
 
         return addr_table
 
@@ -621,7 +621,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                          ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ('INNERGRID', (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
-            )
+        )
 
         return tot_table
 
@@ -664,7 +664,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                          ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
                          ('BOX', (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
-            )
+        )
 
         return payment_table
 
@@ -763,6 +763,6 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                          ('LINEAFTER', (5, 0), (5, -1), 0.05 * cm, black),
                          ('LINEBELOW', (0, 0), (-1, 0), 0.05 * cm, black),
                          ])
-            )
+        )
 
         return main_table
