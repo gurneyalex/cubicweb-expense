@@ -203,9 +203,9 @@ class PDFExportView(EntityView):
 class ExpenseLineFilesComponent(component.EntityCtxComponent):
     """display the list of files attached to the expenselines"""
     __regid__ = 'expenseline.attachments'
-    __select__ = (component.EntityCtxComponent.__select__ &
-                  authenticated_user() & is_instance('Expense') &
-                  rql_condition('EXISTS(X has_lines Y, Y has_attachment F) '
+    __select__ = (component.EntityCtxComponent.__select__
+                  & authenticated_user() & is_instance('Expense')
+                  & rql_condition('EXISTS(X has_lines Y, Y has_attachment F) '
                                 'OR EXISTS(X has_attachment F)'))
     title = _('has_attachment')
 
