@@ -6,4 +6,5 @@ recursive-include cubicweb_expense/data *.gif *.png *.ico *.css *.js
 recursive-include cubicweb_expense/i18n *.po *.pot
 recursive-include test/data bootstrap_cubes *.py
 include *.ini
-recursive-include debian changelog compat control copyright rules
+prune debian
+include *.txt
