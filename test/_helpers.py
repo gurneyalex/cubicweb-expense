@@ -25,7 +25,7 @@ class HelpersTC(CubicWebTC):
 
     def accept(self, cnx, expense):
         expense.cw_adapt_to('IWorkflowable').change_state('accepted')
-        cnx.commit() # to fire corresponding operations
+        cnx.commit()  # to fire corresponding operations
 
     def new_account(self, cnx, login):
         user = self.create_user(cnx, login)

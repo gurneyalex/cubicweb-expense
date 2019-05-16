@@ -29,9 +29,9 @@ class PDFWriter(object):
         self.company_data = company_data
 
         # flow generator that can create the PDF content flow of the document.
-        self._flow_generator = None # AbstractFlowGenerator
+        self._flow_generator = None  # AbstractFlowGenerator
         # type of document to be generated
-        self._doc_type = None # string "expense" or "refund"
+        self._doc_type = None  # string "expense" or "refund"
 
 
     def __init_flow_generator(self, entity):

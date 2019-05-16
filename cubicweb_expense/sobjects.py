@@ -32,7 +32,7 @@ class UpdateRefundStateOperation(hook.Operation):
             # reset refund to None for this new account
             ref = None
             for _, user, line in lines:
-                if user is None: # this is a company account, no refund needed
+                if user is None:  # this is a company account, no refund needed
                     break
                 ref = ref or self.get_or_create_refund_for(account)
                 # users don't have permissions to add lines to refunds

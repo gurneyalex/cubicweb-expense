@@ -43,7 +43,7 @@ class HooksTC(HelpersTC):
             count = self.refund_lines_count(cnx, self.account1)
             expense = cnx.create_entity('Expense', title=u'expense 1')
             self.add_expense_line(cnx, expense, self.account1)
-            cnx.commit() # to fire corresponding operations
+            cnx.commit()  # to fire corresponding operations
             newcount = self.refund_lines_count(cnx, self.account1)
             self.assertEqual(newcount, count)
             self.accept(cnx, expense)
@@ -58,7 +58,7 @@ class HooksTC(HelpersTC):
             # force expense to its initial state, otherwise StatusChangeHook won't be called
             cnx.commit()
             self.assertEqual(len(MAILBOX), 0, MAILBOX)
-            self.accept(cnx, expense) # to fire corresponding operations
+            self.accept(cnx, expense)  # to fire corresponding operations
             self.assertEqual(len(MAILBOX), 1, MAILBOX)
             self.assertCountEqual(MAILBOX[0].recipients, ['john@test.org'])
 
@@ -73,7 +73,7 @@ class HooksTC(HelpersTC):
             account1 = cnx.execute('Any X WHERE X eid %(x)s', {'x': self.account1}).get_entity(0, 0)
             account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
             self.assertEqual(len(MAILBOX), 0, MAILBOX)
-            cnx.commit() # to fire corresponding operations
+            cnx.commit()  # to fire corresponding operations
             self.assertEqual(len(MAILBOX), 1, MAILBOX)
             email1 = MAILBOX[0]
             self.assertCountEqual(email1.recipients, ['john@test.org'])
@@ -85,7 +85,7 @@ class HooksTC(HelpersTC):
             rql = 'SET R in_state S WHERE R is Refund, R to_account A, A eid %(a)s, S name "paid", NOT R in_state S'
             account1.cw_clear_all_caches()
             account1.reverse_to_account[0].cw_adapt_to('IWorkflowable').fire_transition('pay')
-            cnx.commit() # to fire corresponding operations
+            cnx.commit()  # to fire corresponding operations
             email2 = MAILBOX[0]
             self.assertCountEqual(email2.recipients, ['john@test.org'])
             self.assertNotEqual(email2.message.get('Message-id'), email1.message.get('Message-id'))

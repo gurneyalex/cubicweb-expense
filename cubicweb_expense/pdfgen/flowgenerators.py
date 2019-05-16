@@ -56,7 +56,7 @@ class AbstractFlowGenerator:
                 be displayed in PDF.
         Returns: [Flowable, ...]
         """
-        flow_list = [] # [Flowable, ...]
+        flow_list = []  # [Flowable, ...]
 
         # top table containing on the left the metadata and on the right the
         # name of the person concerned by the document
@@ -585,7 +585,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                                 xml_escape(addr.city))
                 col_data.append(Paragraph(s, style_address))
 
-        else: # could not find related euser
+        else:  # could not find related euser
             s = u'<b>???</b>'
             col_data.append(Paragraph(s, style_address))
 
