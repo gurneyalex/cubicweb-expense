@@ -13,7 +13,7 @@ author_email = 'contact@logilab.fr'
 description = 'expense component for the CubicWeb framework'
 web = 'http://www.cubicweb.org/project/%s' % distname
 classifiers = [
-           'Environment :: Web Environment',
+    'Environment :: Web Environment',
            'Framework :: CubicWeb',
            'Programming Language :: Python',
            'Programming Language :: JavaScript',
