@@ -750,7 +750,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
             s = format_number(exp_line.amount, 2)
             lin_data.append(Paragraph(s, style_table_data_num))
 
-            s = xml_escape (exp_line.currency)
+            s = xml_escape(exp_line.currency)
             lin_data.append(Paragraph(s,style_table_data))
 
             s = format_number(exp_line.exchange_rate, 5)
