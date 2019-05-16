@@ -30,7 +30,7 @@ class HelpersTC(CubicWebTC):
     def new_account(self, cnx, login):
         user = self.create_user(cnx, login)
         cnx.execute('INSERT EmailAddress E: E address %(add)s, U use_email E, U primary_email E '
-                    'WHERE U eid %(u)s', {'u': user.eid, 'add': login+'@test.org'})
+                    'WHERE U eid %(u)s', {'u': user.eid, 'add': login + '@test.org'})
         account = cnx.create_entity('PaidByAccount', label=u'%s account' % login)
         self.add_relation(cnx, account.eid, 'associated_to', user.eid)
         return user, account

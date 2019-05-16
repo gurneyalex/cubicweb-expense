@@ -48,7 +48,7 @@ class HooksTC(HelpersTC):
             self.assertEqual(newcount, count)
             self.accept(cnx, expense)
             newcount = self.refund_lines_count(cnx, self.account1)
-            self.assertEqual(newcount, count+1)
+            self.assertEqual(newcount, count + 1)
 
 
     def test_expense_accepted_notification(self):

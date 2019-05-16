@@ -40,9 +40,9 @@ class FreshPageTemplate(PageTemplate):
         template_id: string. id of the page template.
         """
         # Defines the main frame in which the expenses data will be displayed
-        main_f = Frame(1*cm, 1*cm, 19*cm, 23.9*cm,
-                       leftPadding=0*cm, bottomPadding=0*cm,
-                       rightPadding=0*cm, topPadding=0*cm)
+        main_f = Frame(1 * cm, 1 * cm, 19 * cm, 23.9 * cm,
+                       leftPadding=0 * cm, bottomPadding=0 * cm,
+                       rightPadding=0 * cm, topPadding=0 * cm)
 
         self.company_data = company_data
         self.doc_type = doc_type
@@ -83,14 +83,14 @@ class FreshPageTemplate(PageTemplate):
         # with platypus, we can't draw an image (logo) that is left-aligned.
 
         # rectangle around the header
-        canvas.setLineWidth(0.05*cm)
-        canvas.rect(1*cm,28.7*cm,19*cm,-3.3*cm,stroke=1,fill=0)
+        canvas.setLineWidth(0.05 * cm)
+        canvas.rect(1 * cm,28.7 * cm,19 * cm,-3.3 * cm,stroke=1,fill=0)
 
         # company logo
         try:
             logo = ImageReader(self.company_data["logo-filename"])
             if reportlab_version >= "2.1" and reportlab_version <= "2.3":
-                canvas.drawImage(logo, 1.2*cm, 28.5*cm, 5*cm, 2.5*cm,
+                canvas.drawImage(logo, 1.2 * cm, 28.5 * cm, 5 * cm, 2.5 * cm,
                                preserveAspectRatio=True, anchor="nw")
             else:
                 # Old version of reportlab. must compute the height and width
@@ -98,39 +98,39 @@ class FreshPageTemplate(PageTemplate):
                 # 2.4 Version has the same problem!
                 img_width,img_height = logo.getSize()
                 ratio = img_width / img_height
-                if ratio >= 5/2.5:
-                    width = 5*cm
-                    height = 5*cm / ratio
+                if ratio >= 5 / 2.5:
+                    width = 5 * cm
+                    height = 5 * cm / ratio
                 else:
-                    width = ratio * 2.5*cm
-                    heigth = 2.5*cm
-                canvas.drawImage(logo, 1.2*cm, 28.5*cm-height, width, height)
+                    width = ratio * 2.5 * cm
+                    heigth = 2.5 * cm
+                canvas.drawImage(logo, 1.2 * cm, 28.5 * cm - height, width, height)
         except IOError:
             # Unable to read logo filename
             canvas.setFont("Helvetica",12)
             str_data = xml_escape(self.company_data["company-name"])
-            canvas.drawString(1.2*cm,28*cm,str_data)
+            canvas.drawString(1.2 * cm,28 * cm,str_data)
 
         canvas.setFont("Helvetica",8)
 
         # page number
-        str_data = _(u"Page") + _(u": ") + u"%d" %document.page
-        canvas.drawRightString(19.8*cm,28.2*cm,str_data)
+        str_data = _(u"Page") + _(u": ") + u"%d" % document.page
+        canvas.drawRightString(19.8 * cm,28.2 * cm,str_data)
 
         # company address
         str_data = _(u"Est.") + _(u": ") \
         + self.company_data["company-address"]
-        self.draw_string_in_width(canvas,str_data,1.2*cm,25.6*cm,9.5*cm)
+        self.draw_string_in_width(canvas,str_data,1.2 * cm,25.6 * cm,9.5 * cm)
 
         # company official ID number
         str_data = _(u"Official ID num") + _(u": ") \
         + self.company_data["company-offnum"]
-        self.draw_string_in_width(canvas,str_data,11.2*cm,25.6*cm,5*cm)
+        self.draw_string_in_width(canvas,str_data,11.2 * cm,25.6 * cm,5 * cm)
 
         # company activity number
         str_data = _(u"Activity num") + _(u": ") \
         + self.company_data["company-actnum"]
-        self.draw_string_in_width(canvas,str_data,16.7*cm,25.6*cm,3.5*cm)
+        self.draw_string_in_width(canvas,str_data,16.7 * cm,25.6 * cm,3.5 * cm)
 
         # title depending on document type
         title = u""
@@ -139,11 +139,11 @@ class FreshPageTemplate(PageTemplate):
         elif self.doc_type == "expense":
             title = _(u"Expense Document").upper()
         canvas.setFont("Helvetica-Bold",14)
-        canvas.drawCentredString(14.2*cm,27.2*cm,title)
+        canvas.drawCentredString(14.2 * cm,27.2 * cm,title)
 
         # preamble remark
         canvas.setFont("Helvetica-Oblique",9)
-        canvas.drawCentredString(14.2*cm,26.7*cm,
+        canvas.drawCentredString(14.2 * cm,26.7 * cm,
               _(u"All the amounts are displayed in Euros, except if specified"))
 
 
@@ -168,10 +168,10 @@ class FreshPageTemplate(PageTemplate):
             str_width = canvas.stringWidth(string,canvas._fontname,
                                            canvas._fontsize)
         if str_width > width:
-            string = string+u"..."
+            string = string + u"..."
             str_width = canvas.stringWidth(string)
             while str_width > width:
-                string = string[:-4]+u"..."
+                string = string[:-4] + u"..."
                 str_width = canvas.stringWidth(string)
         canvas.drawString(x,y,string)
 
