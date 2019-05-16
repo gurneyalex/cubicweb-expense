@@ -112,7 +112,7 @@ URL
         context.update({'description': description,
                         'title': entity.title,
                         'url': entity.absolute_url(),
-                        'detail': detail,})
+                        'detail': detail, })
         return context
 
 
@@ -140,5 +140,5 @@ URL
         detail = u'\n'.join(line.view('textoutofcontext') for line in entity.has_lines)
         context.update({'amount': entity.total,
                         'url': entity.absolute_url(),
-                        'detail': detail,})
+                        'detail': detail, })
         return context

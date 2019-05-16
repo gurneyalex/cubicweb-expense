@@ -67,12 +67,12 @@ class AbstractFlowGenerator:
                            [11.5 * cm, 0.5 * cm, 7 * cm]
                            )
         top_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0 * cm),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
             )
 
@@ -94,12 +94,12 @@ class AbstractFlowGenerator:
                               [12.5 * cm, 0.5 * cm, 6 * cm]
                               )
         bottom_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0 * cm),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
                          ])
             )
 
@@ -219,13 +219,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                             [11.5 * cm]
                             )
         meta_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -240,7 +240,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         entity: Entity. Any entity of class Expense.
         Returns: Flowable (very likely a Table).
         """
-        return Spacer(0,0 * cm)
+        return Spacer(0, 0 * cm)
 
 
     def get_total(self, entity):
@@ -258,8 +258,8 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         s = "<b>%s</b>" % xml_escape(_(u"Total (EUR)"))
         lin_data.append(Paragraph(s, style_table_data))
 
-        s = u"<b>%s</b>" % format_number(entity.total,2)
-        lin_data.append(Paragraph(s,style_table_data_num))
+        s = u"<b>%s</b>" % format_number(entity.total, 2)
+        lin_data.append(Paragraph(s, style_table_data_num))
 
         tab_data.append(lin_data)
 
@@ -268,23 +268,23 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         s = "<i>%s</i>" % xml_escape(_(u"included taxes (EUR)"))
         lin_data.append(Paragraph(s, style_table_data))
 
-        s = u"<i>%s</i>" % format_number(entity.euro_taxes(),2)
-        lin_data.append(Paragraph(s,style_table_data_num))
+        s = u"<i>%s</i>" % format_number(entity.euro_taxes(), 2)
+        lin_data.append(Paragraph(s, style_table_data_num))
 
         tab_data.append(lin_data)
 
         tot_table = Table(tab_data,
-                           [3.25 * cm,2.75 * cm]
+                           [3.25 * cm, 2.75 * cm]
                            )
         tot_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
-                         ('INNERGRID',     (0,0), (-1,-1), 0.02 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('INNERGRID',     (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -305,7 +305,7 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         refundable_tot = entity.totals_paid_by()
         for euser in refundable_tot.keys():
             s = u"%s %s %s %s" % (
-                format_number(refundable_tot[euser],2),
+                format_number(refundable_tot[euser], 2),
                 xml_escape(_(u"EUR")),
                 xml_escape(_(u"to be refunded to")),
                 xml_escape(euser.dc_title()))
@@ -317,20 +317,20 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                                [12.5 * cm]
                                )
             rel_table.setStyle(
-                TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                             ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                             ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                             ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                             ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                             ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                             ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
+                TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                             ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                             ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                             ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                             ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                             ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                             ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
                              ])
                 )
 
             return rel_table
 
         else:
-            return Spacer(0,0 * cm)
+            return Spacer(0, 0 * cm)
 
 
     def get_expenses_table(self, entity):
@@ -356,40 +356,40 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         lin_data_1 = []
 
         s = u"<b>%s</b>" % xml_escape(_(u"Date"))
-        lin_data_1.append(Paragraph(s,style_table_header))
+        lin_data_1.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Description"))
-        lin_data_1.append(Paragraph(s,style_table_header))
+        lin_data_1.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Expense Type"))
-        lin_data_1.append(Paragraph(s,style_table_header))
+        lin_data_1.append(Paragraph(s, style_table_header))
 
         # Second line
         lin_data_2 = []
 
         s = u"<b>%s</b>" % xml_escape(_(u"Paid by"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Paid for"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Amount"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Curr."))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Rate"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Amount (EUR)"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Taxes (EUR)"))
-        lin_data_2.append(Paragraph(s,style_table_header))
+        lin_data_2.append(Paragraph(s, style_table_header))
 
         # adds a table built with the two previously defined lines
-        tab_data.append([self._build_inner_tables(lin_data_1,lin_data_2)
+        tab_data.append([self._build_inner_tables(lin_data_1, lin_data_2)
                           ])
 
         # Writes the accounting lines
@@ -399,44 +399,44 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
             lin_data_1 = []
 
             s = xml_escape(exp_line.printable_value('diem'))
-            lin_data_1.append(Paragraph(s,style_table_data))
+            lin_data_1.append(Paragraph(s, style_table_data))
 
             s = xml_escape(exp_line.title)
-            lin_data_1.append(Paragraph(s,style_table_data))
+            lin_data_1.append(Paragraph(s, style_table_data))
 
             s = xml_escape(_(exp_line.type))
-            lin_data_1.append(Paragraph(s,style_table_data))
+            lin_data_1.append(Paragraph(s, style_table_data))
 
             # Second line
             lin_data_2 = []
 
             s = xml_escape(exp_line.paid_by[0].label)
-            lin_data_2.append(Paragraph(s,style_table_data))
+            lin_data_2.append(Paragraph(s, style_table_data))
 
             col_data = []
             for dest in exp_line.paid_for:
                 s = xml_escape(dest.label)
-                col_data.append(Paragraph(s,style_table_data))
+                col_data.append(Paragraph(s, style_table_data))
             lin_data_2.append(col_data)
 
-            s = format_number(exp_line.amount,2)
-            lin_data_2.append(Paragraph(s,style_table_data_num))
+            s = format_number(exp_line.amount, 2)
+            lin_data_2.append(Paragraph(s, style_table_data_num))
 
             s = xml_escape(exp_line.currency)
-            lin_data_2.append(Paragraph(s,style_table_data))
+            lin_data_2.append(Paragraph(s, style_table_data))
 
-            s = format_number(exp_line.exchange_rate,5)
-            lin_data_2.append(Paragraph(s,style_table_data_num))
+            s = format_number(exp_line.exchange_rate, 5)
+            lin_data_2.append(Paragraph(s, style_table_data_num))
 
             s = "<b>%s</b>" \
-                % format_number(exp_line.euro_amount(),2)
-            lin_data_2.append(Paragraph(s,style_table_data_num))
+                % format_number(exp_line.euro_amount(), 2)
+            lin_data_2.append(Paragraph(s, style_table_data_num))
 
-            s = "<i>%s</i>" % format_number(exp_line.euro_taxes(),2)
-            lin_data_2.append(Paragraph(s,style_table_data_num))
+            s = "<i>%s</i>" % format_number(exp_line.euro_taxes(), 2)
+            lin_data_2.append(Paragraph(s, style_table_data_num))
 
             # adds a table built with the two previously defined lines
-            tab_data.append([self._build_inner_tables(lin_data_1,lin_data_2)
+            tab_data.append([self._build_inner_tables(lin_data_1, lin_data_2)
                               ])
 
         # Builds the main table that will be returned
@@ -446,21 +446,21 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         main_table.repeatRows = 1
         main_table.setStyle(
             TableStyle([
-                ('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                ('LEFTPADDING',   (0,0), (-1,-1), 0 * cm),
-                ('RIGHTPADDING',  (0,0), (-1,-1), 0 * cm),
-                ('TOPPADDING',    (0,0), (-1,-1), 0 * cm),
-                ('BOTTOMPADDING', (0,0), (-1,-2), 0.3 * cm),
-                ('BOTTOMPADDING', (0,-1), (-1,-1), 0 * cm),
-                ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
+                ('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
+                ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
+                ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+                ('BOTTOMPADDING', (0, 0), (-1, -2), 0.3 * cm),
+                ('BOTTOMPADDING', (0, -1), (-1, -1), 0 * cm),
+                ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
                 ])
             )
 
         return main_table
 
 
-    def _build_inner_tables(self,line1_data,line2_data):
+    def _build_inner_tables(self, line1_data, line2_data):
         """
         Builds inner tables that will be displayed into the main table (the
         one that contains ExpenseLines). Hence, an ExpenseLine cannot be
@@ -474,34 +474,34 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
         # Builds table for the first line
         line1_table = Table([line1_data
                                ],
-                             [2.25 * cm,14 * cm,2.75 * cm]
+                             [2.25 * cm, 14 * cm, 2.75 * cm]
                              )
         line1_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,0), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,0), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,0), 0.1 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,0), 0.1 * cm),
-                         ('TOPPADDING',    (0,0), (-1,0), 0.1 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,0), 0.1 * cm),
-                         ('INNERGRID',     (0,0), (-1,0), 0.02 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, 0), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, 0), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, 0), 0.1 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, 0), 0.1 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, 0), 0.1 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('INNERGRID',     (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
             )
 
         # Builds table for the second line
         line2_table = Table([line2_data
                                ],
-                             [4.25 * cm,4.5 * cm,2.25 * cm,1.25 * cm,1.75 * cm,2.75 * cm,
+                             [4.25 * cm, 4.5 * cm, 2.25 * cm, 1.25 * cm, 1.75 * cm, 2.75 * cm,
                               2.25 * cm]
                              )
         line2_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,0), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,0), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,0), 0.1 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,0), 0.1 * cm),
-                         ('TOPPADDING',    (0,0), (-1,0), 0.1 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,0), 0.1 * cm),
-                         ('INNERGRID',     (0,0), (-1,0), 0.02 * cm, black),
-                         ('LINEABOVE',     (0,0), (-1,0), 0.02 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, 0), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, 0), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, 0), 0.1 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, 0), 0.1 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, 0), 0.1 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, 0), 0.1 * cm),
+                         ('INNERGRID',     (0, 0), (-1, 0), 0.02 * cm, black),
+                         ('LINEABOVE',     (0, 0), (-1, 0), 0.02 * cm, black),
                          ])
             )
 
@@ -512,13 +512,13 @@ class ExpenseFlowGenerator (AbstractFlowGenerator):
                                   [19 * cm]
                                   )
         both_lines_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.02 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -549,7 +549,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
         entity: Entity. Any entity of class Refund.
         Returns: Flowable (very likely a Table).
         """
-        return Spacer(0,0 * cm)
+        return Spacer(0, 0 * cm)
 
 
     def get_person_name(self, entity):
@@ -570,16 +570,16 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                              xml_escape(euser.ssnum or u"missing SS number"))
             col_data.append(Paragraph(s, style_ids))
 
-            col_data.append(Spacer(1,0.2 * cm))
+            col_data.append(Spacer(1, 0.2 * cm))
 
             s = u"<b>%s</b>" % xml_escape(euser.name())
-            col_data.append(Paragraph(s,style_address))
+            col_data.append(Paragraph(s, style_address))
 
             if euser.lives_at:
                 addr = euser.lives_at[0]
 
                 s = xml_escape(addr.street)
-                col_data.append(Paragraph(s,style_address))
+                col_data.append(Paragraph(s, style_address))
 
                 s = u"%s %s" % (xml_escape(addr.postalcode),
                                 xml_escape(addr.city))
@@ -587,7 +587,7 @@ class RefundFlowGenerator (AbstractFlowGenerator):
 
         else: # could not find related euser
             s = u'<b>???</b>'
-            col_data.append(Paragraph(s,style_address))
+            col_data.append(Paragraph(s, style_address))
 
         # Builds address table
         addr_table = Table([[col_data],
@@ -595,13 +595,13 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                             [7 * cm]
                             )
         addr_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -627,17 +627,17 @@ class RefundFlowGenerator (AbstractFlowGenerator):
         # Builds the total table
         tot_table = Table([lin_data
                              ],
-                           [3.25 * cm,2.75 * cm]
+                           [3.25 * cm, 2.75 * cm]
                            )
         tot_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
-                         ('INNERGRID',     (0,0), (-1,-1), 0.02 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('INNERGRID',     (0, 0), (-1, -1), 0.02 * cm, black),
                          ])
             )
 
@@ -675,13 +675,13 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                                [12.5 * cm]
                                )
         payment_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.2 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.2 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.2 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.2 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.2 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.2 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
                          ])
             )
 
@@ -703,25 +703,25 @@ class RefundFlowGenerator (AbstractFlowGenerator):
         lin_data = []
 
         s = u"<b>%s</b>" % xml_escape(_(u"Date"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Description"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Workcase"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Amount"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Curr."))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Rate"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         s = u"<b>%s</b>" % xml_escape(_(u"Amount (EUR)"))
-        lin_data.append(Paragraph(s,style_table_header))
+        lin_data.append(Paragraph(s, style_table_header))
 
         tab_data.append(lin_data)
 
@@ -730,10 +730,10 @@ class RefundFlowGenerator (AbstractFlowGenerator):
             lin_data = []
 
             s = xml_escape(exp_line.printable_value('diem'))
-            lin_data.append(Paragraph(s,style_table_data))
+            lin_data.append(Paragraph(s, style_table_data))
 
             s = xml_escape(exp_line.title)
-            lin_data.append(Paragraph(s,style_table_data))
+            lin_data.append(Paragraph(s, style_table_data))
 
             s = u''
             expense = exp_line.parent_expense
@@ -745,13 +745,13 @@ class RefundFlowGenerator (AbstractFlowGenerator):
                     pass
                 else:
                     s = xml_escape(wcase.ref)
-            lin_data.append(Paragraph(s,style_table_data))
+            lin_data.append(Paragraph(s, style_table_data))
 
             s = format_number(exp_line.amount, 2)
             lin_data.append(Paragraph(s, style_table_data_num))
 
             s = xml_escape(exp_line.currency)
-            lin_data.append(Paragraph(s,style_table_data))
+            lin_data.append(Paragraph(s, style_table_data))
 
             s = format_number(exp_line.exchange_rate, 5)
             lin_data.append(Paragraph(s, style_table_data_num))
@@ -763,25 +763,25 @@ class RefundFlowGenerator (AbstractFlowGenerator):
 
         # Builds the main table containing the expenses lines
         main_table = Table(tab_data,
-                            [2.25 * cm,7 * cm,1.75 * cm,2.25 * cm,1.25 * cm,1.75 * cm,
+                            [2.25 * cm, 7 * cm, 1.75 * cm, 2.25 * cm, 1.25 * cm, 1.75 * cm,
                              2.75 * cm]
                             )
         main_table.repeatRows = 1
         main_table.setStyle(
-            TableStyle([('ALIGN',         (0,0), (-1,-1), 'LEFT'),
-                         ('VALIGN',        (0,0), (-1,-1), 'TOP'),
-                         ('LEFTPADDING',   (0,0), (-1,-1), 0.1 * cm),
-                         ('RIGHTPADDING',  (0,0), (-1,-1), 0.1 * cm),
-                         ('TOPPADDING',    (0,0), (-1,-1), 0.1 * cm),
-                         ('BOTTOMPADDING', (0,0), (-1,-1), 0.1 * cm),
-                         ('BOX',           (0,0), (-1,-1), 0.05 * cm, black),
-                         ('LINEAFTER',     (0,0), (0,-1), 0.02 * cm, black),
-                         ('LINEAFTER',     (1,0), (1,-1), 0.02 * cm, black),
-                         ('LINEAFTER',     (2,0), (2,-1), 0.05 * cm, black),
-                         ('LINEAFTER',     (3,0), (3,-1), 0.02 * cm, black),
-                         ('LINEAFTER',     (4,0), (4,-1), 0.02 * cm, black),
-                         ('LINEAFTER',     (5,0), (5,-1), 0.05 * cm, black),
-                         ('LINEBELOW',     (0,0), (-1,0), 0.05 * cm, black),
+            TableStyle([('ALIGN',         (0, 0), (-1, -1), 'LEFT'),
+                         ('VALIGN',        (0, 0), (-1, -1), 'TOP'),
+                         ('LEFTPADDING',   (0, 0), (-1, -1), 0.1 * cm),
+                         ('RIGHTPADDING',  (0, 0), (-1, -1), 0.1 * cm),
+                         ('TOPPADDING',    (0, 0), (-1, -1), 0.1 * cm),
+                         ('BOTTOMPADDING', (0, 0), (-1, -1), 0.1 * cm),
+                         ('BOX',           (0, 0), (-1, -1), 0.05 * cm, black),
+                         ('LINEAFTER',     (0, 0), (0, -1), 0.02 * cm, black),
+                         ('LINEAFTER',     (1, 0), (1, -1), 0.02 * cm, black),
+                         ('LINEAFTER',     (2, 0), (2, -1), 0.05 * cm, black),
+                         ('LINEAFTER',     (3, 0), (3, -1), 0.02 * cm, black),
+                         ('LINEAFTER',     (4, 0), (4, -1), 0.02 * cm, black),
+                         ('LINEAFTER',     (5, 0), (5, -1), 0.05 * cm, black),
+                         ('LINEBELOW',     (0, 0), (-1, 0), 0.05 * cm, black),
                          ])
             )
 

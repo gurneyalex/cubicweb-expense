@@ -155,7 +155,7 @@ except ImportError:
 
 class PDFAction(action.Action):
     __regid__ = 'pdfaction'
-    __select__ = has_reportlab & one_line_rset() & is_instance('Expense','Refund')
+    __select__ = has_reportlab & one_line_rset() & is_instance('Expense', 'Refund')
 
     title = _('generate pdf document')
     category = 'mainactions'

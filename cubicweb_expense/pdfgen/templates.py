@@ -84,7 +84,7 @@ class FreshPageTemplate(PageTemplate):
 
         # rectangle around the header
         canvas.setLineWidth(0.05 * cm)
-        canvas.rect(1 * cm,28.7 * cm,19 * cm,-3.3 * cm,stroke=1,fill=0)
+        canvas.rect(1 * cm, 28.7 * cm, 19 * cm, -3.3 * cm, stroke=1, fill=0)
 
         # company logo
         try:
@@ -96,7 +96,7 @@ class FreshPageTemplate(PageTemplate):
                 # Old version of reportlab. must compute the height and width
                 # of the image. draws the image from the southwest corner.
                 # 2.4 Version has the same problem!
-                img_width,img_height = logo.getSize()
+                img_width, img_height = logo.getSize()
                 ratio = img_width / img_height
                 if ratio >= 5 / 2.5:
                     width = 5 * cm
@@ -107,30 +107,30 @@ class FreshPageTemplate(PageTemplate):
                 canvas.drawImage(logo, 1.2 * cm, 28.5 * cm - height, width, height)
         except IOError:
             # Unable to read logo filename
-            canvas.setFont("Helvetica",12)
+            canvas.setFont("Helvetica", 12)
             str_data = xml_escape(self.company_data["company-name"])
-            canvas.drawString(1.2 * cm,28 * cm,str_data)
+            canvas.drawString(1.2 * cm, 28 * cm, str_data)
 
-        canvas.setFont("Helvetica",8)
+        canvas.setFont("Helvetica", 8)
 
         # page number
         str_data = _(u"Page") + _(u": ") + u"%d" % document.page
-        canvas.drawRightString(19.8 * cm,28.2 * cm,str_data)
+        canvas.drawRightString(19.8 * cm, 28.2 * cm, str_data)
 
         # company address
         str_data = _(u"Est.") + _(u": ") \
         + self.company_data["company-address"]
-        self.draw_string_in_width(canvas,str_data,1.2 * cm,25.6 * cm,9.5 * cm)
+        self.draw_string_in_width(canvas, str_data, 1.2 * cm, 25.6 * cm, 9.5 * cm)
 
         # company official ID number
         str_data = _(u"Official ID num") + _(u": ") \
         + self.company_data["company-offnum"]
-        self.draw_string_in_width(canvas,str_data,11.2 * cm,25.6 * cm,5 * cm)
+        self.draw_string_in_width(canvas, str_data, 11.2 * cm, 25.6 * cm, 5 * cm)
 
         # company activity number
         str_data = _(u"Activity num") + _(u": ") \
         + self.company_data["company-actnum"]
-        self.draw_string_in_width(canvas,str_data,16.7 * cm,25.6 * cm,3.5 * cm)
+        self.draw_string_in_width(canvas, str_data, 16.7 * cm, 25.6 * cm, 3.5 * cm)
 
         # title depending on document type
         title = u""
@@ -138,16 +138,16 @@ class FreshPageTemplate(PageTemplate):
             title = _(u"Refund Document").upper()
         elif self.doc_type == "expense":
             title = _(u"Expense Document").upper()
-        canvas.setFont("Helvetica-Bold",14)
-        canvas.drawCentredString(14.2 * cm,27.2 * cm,title)
+        canvas.setFont("Helvetica-Bold", 14)
+        canvas.drawCentredString(14.2 * cm, 27.2 * cm, title)
 
         # preamble remark
-        canvas.setFont("Helvetica-Oblique",9)
-        canvas.drawCentredString(14.2 * cm,26.7 * cm,
+        canvas.setFont("Helvetica-Oblique", 9)
+        canvas.drawCentredString(14.2 * cm, 26.7 * cm,
               _(u"All the amounts are displayed in Euros, except if specified"))
 
 
-    def draw_string_in_width(self,canvas,string,x,y,width):
+    def draw_string_in_width(self, canvas, string, x, y, width):
         """
         In a canvas, draws a string from the x,y position and within the
         specified width. If the value is too large, the string
@@ -165,7 +165,7 @@ class FreshPageTemplate(PageTemplate):
             str_width = canvas.stringWidth(string)
         else:
             # Old version of reportlab library. must provide font informations
-            str_width = canvas.stringWidth(string,canvas._fontname,
+            str_width = canvas.stringWidth(string, canvas._fontname,
                                            canvas._fontsize)
         if str_width > width:
             string = string + u"..."
@@ -173,7 +173,7 @@ class FreshPageTemplate(PageTemplate):
             while str_width > width:
                 string = string[:-4] + u"..."
                 str_width = canvas.stringWidth(string)
-        canvas.drawString(x,y,string)
+        canvas.drawString(x, y, string)
 
 
 
