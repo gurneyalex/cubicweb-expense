@@ -92,7 +92,7 @@ class ExpenseLine(AnyEntity):
 
     def dc_long_title(self):
         expense = self.parent_expense
-        if expense :
+        if expense:
             return u'%s - %s' % (self.title, expense.dc_title())
         else:
             return self.dc_title()

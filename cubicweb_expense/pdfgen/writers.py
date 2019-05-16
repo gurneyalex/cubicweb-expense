@@ -34,7 +34,7 @@ class PDFWriter(object):
         self._doc_type = None # string "expense" or "refund"
 
 
-    def __init_flow_generator(self, entity) :
+    def __init_flow_generator(self, entity):
         """
         Instanciates the flow generator that will create the PDF flow content
         of the document. The real class of flow generator
@@ -56,7 +56,7 @@ class PDFWriter(object):
             self._flow_generator = None
 
 
-    def write(self, entity, output) :
+    def write(self, entity, output):
         """
         Writes a PDF document representing the entity object.
 
@@ -77,4 +77,4 @@ class PDFWriter(object):
         pdf_doc = FreshDocTemplate(output, self._doc_type, self.company_data, entity._cw._)
 
         # Builds it with the content flow returned by the flow generator
-        pdf_doc.build( self._flow_generator.generate_flow(entity) )
+        pdf_doc.build(self._flow_generator.generate_flow(entity))

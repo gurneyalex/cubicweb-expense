@@ -105,7 +105,7 @@ class ExpenseSummaryComponent(component.EntityCtxComponent):
                                 'WHERE X has_lines E, X eid %(x)s, E eid EID, '
                                 'E type T, E title ET, E currency EC, '
                                 'E amount EA, E paid_by C?, C label CL, '
-                                'E paid_for CC, CC label CCL' ,
+                                'E paid_for CC, CC label CCL',
                                 {'x': entity.eid})
         self._cw.view('expense.table', rset, w=w)
 
@@ -113,7 +113,7 @@ class ExpenseSummaryComponent(component.EntityCtxComponent):
 class ExpenseTable(tableview.RsetTableView):
     __regid__ = 'expense.table'
     headers = [_('eid'), _('type'), _('title'), _('amount'), _('currency'),
-               _('paid_by'), _('paid_for') ]
+               _('paid_by'), _('paid_for')]
     layout_args = {'display_filter': 'top'}
 
 

@@ -27,7 +27,7 @@ class UpdateRefundStateOperation(hook.Operation):
         execute = cnx.execute
         rql = 'Any A,U,EL ORDERBY A WHERE X has_lines EL, EL paid_by A, ' \
               'A associated_to U?, X eid %(x)s'
-        acc_rset = execute(rql, {'x' : self.expense})
+        acc_rset = execute(rql, {'x': self.expense})
         for account, lines in groupby(acc_rset, lambda row: row[0]):
             # reset refund to None for this new account
             ref = None
@@ -36,7 +36,7 @@ class UpdateRefundStateOperation(hook.Operation):
                     break
                 ref = ref or self.get_or_create_refund_for(account)
                 # users don't have permissions to add lines to refunds
-                execute('SET R has_lines EL WHERE R is Refund, R eid %(r)s, EL eid %(el)s, NOT EXISTS(R has_lines EL)', {'r' : ref, 'el': line})
+                execute('SET R has_lines EL WHERE R is Refund, R eid %(r)s, EL eid %(el)s, NOT EXISTS(R has_lines EL)', {'r': ref, 'el': line})
 
     def get_or_create_refund_for(self, account):
         rql = 'Any R WHERE R is Refund, R to_account A, A eid %(a)s, ' \

@@ -91,7 +91,7 @@ class has_lines(RelationType):
     # Expense, and not on refund. ExpenseLines are supposed to be added to
     # Refund automatically via a hook through an unsafe_execute
     __permissions__ = {
-        'read' : ('managers', 'users'),
+        'read': ('managers', 'users'),
         'add': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
         'delete': ('managers', RRQLExpression('S is Expense, S in_state ST, NOT ST name "accepted"')),
     }

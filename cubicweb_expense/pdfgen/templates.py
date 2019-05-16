@@ -51,7 +51,7 @@ class FreshPageTemplate(PageTemplate):
         PageTemplate.__init__(self, id=template_id, frames=[main_f])
 
 
-    def beforeDrawPage(self, canvas, document) :
+    def beforeDrawPage(self, canvas, document):
         """
         Overrides the method called before drawing on a new page of the PDF
         document. This method draws various static data on the page
@@ -69,7 +69,7 @@ class FreshPageTemplate(PageTemplate):
         canvas.restoreState()
 
 
-    def draw_static_content(self, canvas, document) :
+    def draw_static_content(self, canvas, document):
         """
         Draws on the PDF page the static content that is displayed on all
         pages, i.e. logo, company address, header, page number.
@@ -108,7 +108,7 @@ class FreshPageTemplate(PageTemplate):
         except IOError:
             # Unable to read logo filename
             canvas.setFont("Helvetica",12)
-            str_data = xml_escape( self.company_data["company-name"] )
+            str_data = xml_escape(self.company_data["company-name"])
             canvas.drawString(1.2*cm,28*cm,str_data)
 
         canvas.setFont("Helvetica",8)
@@ -167,17 +167,17 @@ class FreshPageTemplate(PageTemplate):
             # Old version of reportlab library. must provide font informations
             str_width = canvas.stringWidth(string,canvas._fontname,
                                            canvas._fontsize)
-        if str_width > width :
+        if str_width > width:
             string = string+u"..."
             str_width = canvas.stringWidth(string)
-            while str_width > width :
+            while str_width > width:
                 string = string[:-4]+u"..."
                 str_width = canvas.stringWidth(string)
         canvas.drawString(x,y,string)
 
 
 
-class FreshDocTemplate(BaseDocTemplate) :
+class FreshDocTemplate(BaseDocTemplate):
     """
     The Fresh document template is a class explaining how to create a PDF
     document for the Fresh application (Expense or Refund). It uses
@@ -196,8 +196,8 @@ class FreshDocTemplate(BaseDocTemplate) :
                       the company.
         """
         # Initializes the document template with the correct page templates
-        templates = [ FreshPageTemplate(doc_type, company_data,
-                                        template_id="Pages", _=_) ]
+        templates = [FreshPageTemplate(doc_type, company_data,
+                                        template_id="Pages", _=_)]
         BaseDocTemplate.__init__(self, output, pageTemplates=templates,
                                  allowSplitting=1)
 

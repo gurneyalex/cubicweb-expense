@@ -6,7 +6,7 @@ functions.
 """
 
 
-def format_number(number, digits=2) :
+def format_number(number, digits=2):
     """
     Function that formats a number to be written in the PDF document. It uses
     the separating characters for numbers defined in the localized
@@ -31,7 +31,7 @@ def format_number(number, digits=2) :
     count = 0
     for char in str_int[::-1]:
         if char in '0123456789':
-            if count != 0 and count % 3 == 0 :
+            if count != 0 and count % 3 == 0:
                 # result_int = _(u"thousands sep") + result_int
                 result_int = u'\u00a0%s' % result_int
             result_int = char + result_int
@@ -41,8 +41,8 @@ def format_number(number, digits=2) :
 
     result_int = u" ".join(result_int.split())
 
-    if digits == 0 :
+    if digits == 0:
         formatted_num = result_int
-    else :
+    else:
         formatted_num = u'%s,%s' % (result_int, str_num.split('.')[1])
     return formatted_num
